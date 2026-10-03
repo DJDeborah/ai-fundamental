@@ -143,3 +143,28 @@ A/B 的 summary 都为 complete，实际更新各 1000；A 320.7028 秒，B 313.
 流程成功生成最终 ZIP 并进入 120 秒下载窗口，但 SFTP 下载至 388,497,408 字节时平台自动关机、SSH 被断开，尚未取得整包末段和最终关机后的预算 JSON。已请求无卡模式补取，不启动新训练。已从完整 local ZIP 条目恢复 56 个文件并逐项 CRC 校验；两套最终模型、所有 0/500 快照、WAV、共同原声及 A/B step1000 都与声明 SHA256 相符。缺少的 B step1000 条目从相同 SHA256 的最终 finetune/model.pth 复制恢复，留收据。原部分压缩包重命名 results.zip.partial，不能当完整 ZIP 使用。
 
 本机核心结果在 runs/new4090d_ab_retry1，已生成 MEASURED_REPORT.md、标准绘图 training_curves.png、LISTEN.html 和深度拆解教程。应用内 Browser 实际载入五个音频控件，controls=true、readyState=4、error=null，原声20秒、输出19.98秒；已检查布局和图像。没有代替用户填写听评。模型/音频/更新步数已核验；整份原云端归档的末段仍待恢复，实际平台账单仍未核实。取回时保护估算上界约26.102元，25元起始基线为保守预留而非账单。
+
+
+### 2026-10-03 GitHub 项目与在线试听发布
+
+用户授权新建 `DJDeborah/sideproject` 公开仓库，项目位于 `ai-fundamental/`。README 已加入亮点、Mermaid 流程图、原声/匿名 X/Y 的实际波形、scaling 曲线、A/B 原始训练曲线及试听入口。719 个 Git blob 与本机字节核对通过；五个线上 WAV 与核验过的本机文件完全相同，浏览器中五个播放器均 controls=true、readyState=4、error=null。
+
+公开入口：https://djdeborah.github.io/sideproject/ 。模型和完整本机结果包在 https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03 ，共六个资产全部由 GitHub 服务端 SHA256 对照本机确认。凭据、虚拟环境、浏览器会话截图、缓存和中断下载残包未上传。0.1B 云端 checkpoint 没有完整本机副本，已在 README 明确其未包含；原语音云端 ZIP 尾段仍待无卡模式补取，本次发布不会把该归档状态改称完成。此次只发布既有产物，没有训练或付费 GPU 操作。
+
+
+### 2026-10-03 用户音质失败反馈与新路线
+
+用户明确反馈匿名 Y 有多声部叠音感，匿名 X 有滋滋噪声；这两项记录为音质验收失败，不用完成 1000 更新或 pYIN 基频指标反驳。旧定时任务 `a-b-4090` 已依用户要求通过应用工具删除，没有再创建新的定时任务。
+
+只读诊断新增 `runs/quality_audit_20261003`。X 为 scratch，Y 为 finetune；匿名化是单增益缩放，未叠轨。X 被放大约 9.32 dB。原声安静帧 RMS −53.05 dBFS，A −31.70，B −39.96；A 包络相关 −0.119，B 0.902。两个模型各 457 个导出张量有限且架构加载完整；B step0 与固定官方预训练导出逐张量一致。全 F0 零值插值会移除清浊音掩码，是待控制消融的原因候选，尚未证实唯一根因。保留原 WAV/报告，未重训。
+
+新 SSH 正常认证成功，经已登记同一主机公钥验证。实际回到原 RTX 4090 容器，24564 MiB，GPU 空闲、无训练进程；系统盘约25 GiB空闲，数据盘4.4 GiB空闲。新的租赁价格/预算与目标参考录音仍待用户回答，没有启动付费推理或训练。认证信息未写入文件、参数、日志或报告。
+
+改为先本机 CPU OpenVoice V2 参考条件转换 + 音色 embedding 插值原型；歌声质量候选是 SoulX-Singer-SVC，并可用 Seed-VC v1 交叉验证。未在本人输入上实测前不宣布模型音质更好。已取 LJ Speech 官方单条公共领域女声 Linda Johnson，7.584秒、22050Hz，资产收据有来源与 SHA256，明确不是 Adele。用户目标是 Adele；尚无目标录音，不能把开放女声试验当已实现 Adele 混合。
+
+
+### 2026-10-03 OpenVoice CPU 小样和实际界面
+
+固定官方OpenVoiceV2 converter131320490字节，代码74a1d147、模型f36e7ed，SHA校验通过。新的隔离venv复用CPU Torch2.4.1，未改全局或旧RVC。直接extract_se、模型内部LERP/SLERP条件插值，官方encoder/flow/decoder；关闭额外watermark模型的薄子类初始化原因和代码哈希已记metadata，上游未改。实际本人8秒清唱→本人参考重建及LJ目标25/50/75/100共五条输出，7.99927秒、finite、无数字削波，预热后总耗时5.76–8.07秒；不是Adele，不是新的训练，轻唱自然度/身份尚未验收。
+
+本机API实际上传/转码/推理/下载/收据全部通过；浏览器点击载入样例、生成按钮产生真实WAV，播放器readyState4且无错误；正常点击验证同时只播一个。麦克风硬件待用户实录。工作台localhost:8872；GitHub静态新小样仅展示现有WAV。源码/教程和五档证据分别为voice_workbench、VOICE_NEXT_EXPERIMENT.md、benchmarks/BENCHMARK_RECEIPT.json。本轮未启GPU任务；新的租赁预算与Adele参考仍待回答。

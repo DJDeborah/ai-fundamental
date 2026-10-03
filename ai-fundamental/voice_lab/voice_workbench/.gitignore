@@ -1,0 +1,15 @@
+.venv/
+upstream/
+assets/
+benchmarks/
+local_sessions/
+outputs/
+__pycache__/
+*.log
+*.pth
+*.pt
+*.wav
+*.webm
+*.m4a
+*.mp3
+.env

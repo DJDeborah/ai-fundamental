@@ -1,0 +1,205 @@
+{
+  "scope": "Local code, WAV and checkpoint audit; no listening claim and no model rerun.",
+  "audio": {
+    "input": {
+      "sha256": "fce371222a2574d9d1f9449f98ded72b2a428d63469b07bdbe8667544d219e1e",
+      "channels": 1,
+      "samplerate": 40000,
+      "subtype": "PCM_16",
+      "samples": 800000,
+      "seconds": 20.0,
+      "peak": 0.657470703125,
+      "rms_dbfs": -27.48003418736667,
+      "fraction_abs_ge_0_99": 0.0,
+      "dc_mean": 4.291419982910156e-06,
+      "power_fraction_0_80_hz": 0.0008265563929456927,
+      "power_fraction_80_500_hz": 0.8042521742837403,
+      "power_fraction_500_4000_hz": 0.1885976252629802,
+      "power_fraction_4000_16000_hz": 0.006323617337850489,
+      "power_fraction_16000_20001_hz": 2.672248308708889e-08,
+      "source_quiet_frame_test": {
+        "block_ms": 20,
+        "criterion": "input RMS < input p95 RMS - 30 dB",
+        "input_rms_threshold": 0.0029410917049204096,
+        "quiet_frame_count": 240,
+        "total_frame_count": 999,
+        "quiet_rms_dbfs": -53.047773186045376,
+        "active_rms_dbfs": -26.29221161796074,
+        "envelope_correlation_with_input": 1.0,
+        "caveat": "Aligned quiet-frame proxy; phoneme and synthesis lag can affect this statistic."
+      }
+    },
+    "scratch": {
+      "sha256": "1df4a771fab9e9fc5c93685cd5942c6557527472b684bd8833d0c496f9f9e96d",
+      "channels": 1,
+      "samplerate": 40000,
+      "subtype": "PCM_16",
+      "samples": 799200,
+      "seconds": 19.98,
+      "peak": 0.251953125,
+      "rms_dbfs": -31.261269750939704,
+      "fraction_abs_ge_0_99": 0.0,
+      "dc_mean": 0.0015304398178696275,
+      "power_fraction_0_80_hz": 0.03847181969550612,
+      "power_fraction_80_500_hz": 0.9000411398760014,
+      "power_fraction_500_4000_hz": 0.05228225220798803,
+      "power_fraction_4000_16000_hz": 0.009197111625033332,
+      "power_fraction_16000_20001_hz": 7.676595470861641e-06,
+      "source_quiet_frame_test": {
+        "block_ms": 20,
+        "criterion": "input RMS < input p95 RMS - 30 dB",
+        "input_rms_threshold": 0.0029410917049204096,
+        "quiet_frame_count": 240,
+        "total_frame_count": 999,
+        "quiet_rms_dbfs": -31.69508385476228,
+        "active_rms_dbfs": -31.13264753541179,
+        "envelope_correlation_with_input": -0.11850201523040028,
+        "caveat": "Aligned quiet-frame proxy; phoneme and synthesis lag can affect this statistic."
+      }
+    },
+    "finetune": {
+      "sha256": "e02b895683e7b8338e145191a8720bebdc7387f5f9e1cd4d832d23535e55682b",
+      "channels": 1,
+      "samplerate": 40000,
+      "subtype": "PCM_16",
+      "samples": 799200,
+      "seconds": 19.98,
+      "peak": 0.611328125,
+      "rms_dbfs": -19.04544688576752,
+      "fraction_abs_ge_0_99": 0.0,
+      "dc_mean": 0.00018916488051772475,
+      "power_fraction_0_80_hz": 0.001095820387363601,
+      "power_fraction_80_500_hz": 0.8704977787418116,
+      "power_fraction_500_4000_hz": 0.12477849278487572,
+      "power_fraction_4000_16000_hz": 0.003627853197960519,
+      "power_fraction_16000_20001_hz": 5.4887988529983106e-08,
+      "source_quiet_frame_test": {
+        "block_ms": 20,
+        "criterion": "input RMS < input p95 RMS - 30 dB",
+        "input_rms_threshold": 0.0029410917049204096,
+        "quiet_frame_count": 240,
+        "total_frame_count": 999,
+        "quiet_rms_dbfs": -39.960574568191305,
+        "active_rms_dbfs": -17.860669174881764,
+        "envelope_correlation_with_input": 0.9023426853499983,
+        "caveat": "Aligned quiet-frame proxy; phoneme and synthesis lag can affect this statistic."
+      }
+    },
+    "X": {
+      "sha256": "d4dceb38186a7b977febf58dea0ca15c58700290a3ed586f5d3c6dd10905d7a8",
+      "channels": 1,
+      "samplerate": 40000,
+      "subtype": "PCM_16",
+      "samples": 799200,
+      "seconds": 19.98,
+      "peak": 0.737030029296875,
+      "rms_dbfs": -21.93829357286581,
+      "fraction_abs_ge_0_99": 0.0,
+      "dc_mean": 0.0044615723969819426,
+      "power_fraction_0_80_hz": 0.03847189753163812,
+      "power_fraction_80_500_hz": 0.9000410003374593,
+      "power_fraction_500_4000_hz": 0.05228232446782337,
+      "power_fraction_4000_16000_hz": 0.00919709909869352,
+      "power_fraction_16000_20001_hz": 7.678564385578228e-06,
+      "scaled_raw_comparison": {
+        "raw_arm": "scratch",
+        "least_squares_gain": 2.925154425432942,
+        "gain_db": 9.322975967974761,
+        "correlation": 0.9999999939005414,
+        "residual_rms_dbfs": -95.09189422325818,
+        "max_abs_residual": 3.765195100169372e-05,
+        "pcm16_quantization_step": 3.0517578125e-05
+      }
+    },
+    "Y": {
+      "sha256": "b02ab2143562aba9e265c0597698bda134c045d49ca6d10ebd4d4bd5d6d21888",
+      "channels": 1,
+      "samplerate": 40000,
+      "subtype": "PCM_16",
+      "samples": 799200,
+      "seconds": 19.98,
+      "peak": 0.438140869140625,
+      "rms_dbfs": -21.938203985387823,
+      "fraction_abs_ge_0_99": 0.0,
+      "dc_mean": 0.00012034018118460258,
+      "power_fraction_0_80_hz": 0.001095831701405298,
+      "power_fraction_80_500_hz": 0.8704976585491683,
+      "power_fraction_500_4000_hz": 0.12477860984466499,
+      "power_fraction_4000_16000_hz": 0.0036278425018519507,
+      "power_fraction_16000_20001_hz": 5.740290950417622e-08,
+      "scaled_raw_comparison": {
+        "raw_arm": "finetune",
+        "least_squares_gain": 0.7167408122093697,
+        "gain_db": -2.892757310004066,
+        "correlation": 0.9999999939286356,
+        "residual_rms_dbfs": -95.08592488544241,
+        "max_abs_residual": 3.0623898500725666e-05,
+        "pcm16_quantization_step": 3.0517578125e-05
+      }
+    }
+  },
+  "weights": {
+    "scratch": {
+      "sha256": "814f4116777e12ae41cb13ec5f575f7892c5856fc272193a01b2939a76244486",
+      "version": "v2",
+      "f0": 1,
+      "sr_metadata": "40k",
+      "sample_rate_config": 40000,
+      "speaker_embedding_shape": [
+        109,
+        256
+      ],
+      "tensor_count": 457,
+      "missing_inference_keys": [],
+      "unexpected_inference_keys": [],
+      "all_finite": true,
+      "dtypes": [
+        "torch.float16"
+      ],
+      "changed_tensors_since_step0": 457
+    },
+    "finetune": {
+      "sha256": "29a6ce3a3e3a19a0fca6ad4efdb899cb1544bd410388365ac6179343a8cae25e",
+      "version": "v2",
+      "f0": 1,
+      "sr_metadata": "40k",
+      "sample_rate_config": 40000,
+      "speaker_embedding_shape": [
+        109,
+        256
+      ],
+      "tensor_count": 457,
+      "missing_inference_keys": [],
+      "unexpected_inference_keys": [],
+      "all_finite": true,
+      "dtypes": [
+        "torch.float16"
+      ],
+      "changed_tensors_since_step0": 457,
+      "step0_vs_official_pretrained": {
+        "official_sha256": "3b2c44035e782c4b14ddc0bede9e2f4a724d025cd073f736d4f43708453adfcb",
+        "matched_exported_half_tensor_count": 457,
+        "mismatched_keys": [],
+        "absent_official_keys": [],
+        "note": "Training export intentionally omits posterior encoder enc_q; compares exported inference tensors only."
+      }
+    }
+  },
+  "static_evidence": {
+    "blind_postprocessing": "rvc_compare.py:249-256 only multiplies each raw output by one gain then PCM16 quantizes; no second track added.",
+    "rms_mix_rate": "Recorded --rms-mix-rate 1 skips change_rms. That function changes loudness envelope and is not timbre or track mixing.",
+    "chunking": "Recorded 20 s input; fp16 4090 D config x_max=65 s. No multi-chunk loop in this sample. Output chunks would be concatenated, not summed.",
+    "f0_zero_interpolation": "Both train/dataset/extract_f0.py and infer/vc/pipeline.py interpolate ALL f0==0 positions from voiced positions.",
+    "nsf_voicing": "infer/module/models.py SineGen._f02uv uses f0 > voiced_threshold with threshold 0; thus interpolated positive F0 makes originally unvoiced positions harmonic-source eligible.",
+    "protect": "Inference index_rate=0 means retrieval blend is absent; protect blends identical HuBERT feature streams. Additionally F0 zero interpolation removes the low-F0 mask. No claim that protect=.33 fixes artifacts is warranted here.",
+    "precision": "Training batch math was FP32; upstream exports small .pth tensors as FP16; recorded inference is FP16. 'FP32 experiment' should not imply FP32 checkpoint storage or inference.",
+    "speaker_count": "Only speaker ID 0 has user training samples. 109 embedding rows are architecture metadata, not 109 trained target singers and contain no Adele training."
+  },
+  "limitations": [
+    "Mono files can still contain summed tracks; mono alone does not rule out polyphony.",
+    "Code absence of waveform addition rules out the wrapper summing tracks, not neural artifacts.",
+    "F0 interpolation is a testable cause candidate, not an experimentally isolated root cause.",
+    "Spectral power and pitch estimators are diagnostics, not naturalness or identity scores."
+  ],
+  "audit_wall_seconds": 28.156000000191852
+}

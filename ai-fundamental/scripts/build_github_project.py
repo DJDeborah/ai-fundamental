@@ -17,7 +17,7 @@ RESULT = ROOT / 'voice_lab/runs/new4090d_ab_retry1'
 BLOCKED_PARTS = {'.git', '.venv', '.cloud-access', '__pycache__', '.pytest_cache',
                  '.rvc-venv', '.voice-venv', 'node_modules'}
 TEXT_SUFFIXES = {'.py', '.sh', '.md', '.txt', '.json', '.jsonl', '.yaml', '.yml',
-                 '.toml', '.html', '.csv', '.ipynb', '.gitignore', '.gitmodules'}
+                 '.toml', '.html', '.csv', '.ipynb', '.ps1', '.gitignore', '.gitmodules'}
 SECRET_RULES = {
     'GitHub token': r'\b(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,})\b',
     'OpenAI token': r'\bsk-(?:proj-)?[A-Za-z0-9_-]{35,}\b',
@@ -66,6 +66,18 @@ def collect_source():
             files.add(path)
     for directory in ('voicelab', 'configs', 'tests', 'data'):
         files.update(p for p in (ROOT / 'voice_lab' / directory).rglob('*') if eligible(p))
+    # New uploads/references and model caches stay on the user's computer.
+    workbench = ROOT / 'voice_lab/voice_workbench'
+    files.update(p for p in workbench.glob('*')
+                 if eligible(p) and (p.suffix.lower() in {'.py', '.md', '.txt', '.ps1'}
+                                     or p.name == '.gitignore'))
+    files.update(p for p in (workbench / 'static').rglob('*') if eligible(p))
+    files.update(p for p in (workbench / 'static_demo').rglob('*') if eligible(p))
+    audit = ROOT / 'voice_lab/runs/quality_audit_20261003'
+    files.update(p for p in audit.glob('*')
+                 if eligible(p) and p.name in {'QUALITY_AUDIT.md', 'AUDIT.json',
+                                              'audit_outputs.py', 'spectrogram_envelope.png',
+                                              'OPENVOICE_BENCHMARK.json'})
     for snapshot, vendor in (('RVC_SNAPSHOT.json', 'RVC'), ('UPSTREAM_SNAPSHOT.json', 'DDSP-SVC')):
         manifest = json.loads((ROOT / 'voice_lab' / snapshot).read_text(encoding='utf-8'))
         for relative, expected in manifest['files'].items():
@@ -117,7 +129,14 @@ img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-
 def frame(title, content, source, release):
     return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><style>{CSS}</style></head>
 <body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="{html.escape(source)}">GitHub 项目</a></nav>{content}
-<footer>2026-10-03 · 实测记录 · <a href="{html.escape(release)}">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>'''
+<footer>2026-10-03 · 实测记录 · <a href="{html.escape(release)}">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main><script>
+document.addEventListener('play', function(event) {{
+  if (!(event.target instanceof HTMLAudioElement)) return;
+  document.querySelectorAll('audio').forEach(function(player) {{
+    if (player !== event.target) player.pause();
+  }});
+}}, true);
+</script></body></html>'''
 
 
 def make_site(site, source, release, asset_base):
@@ -140,6 +159,25 @@ def make_site(site, source, release, asset_base):
 <p>本片段 B 的估计音高保留更好；尚未收集盲听评分，没有自然度或音色质量胜者。0 cent 是离散音高估计的中位数，不代表真实误差为零。</p><p class="muted">两组共享冻结的预训练 HuBERT / RMVPE，因此 A 只称为转换 G/D 随机初始化。约六分钟、一位歌者、一个种子、一个固定测试片段的重建实验，不能验证跨歌者能力。</p>
 <img src="training_curves.png" alt="两组实际记录的六项训练损失随更新步数变化"><p class="muted">GAN loss 是训练目标，不是听感评分。</p>
 <h2>在另一台电脑继续学习</h2><a class="button" href="tutorial.html">术语与每步操作</a><a class="button secondary" href="{release}">下载项目与模型</a><a class="button secondary" href="{source}">查看全部源码</a>'''
+    audit = ROOT / 'voice_lab/runs/quality_audit_20261003/spectrogram_envelope.png'
+    if audit.is_file():
+        shutil.copy2(audit, site / 'quality_audit.png')
+        notice = '<section class="panel"><h2>2026-10-03 音质反馈</h2><p>用户试听反馈：X 有滋滋噪声，Y 有多声部感；原结果尚未通过音质验收。审计未发现包装器叠轨，匿名 X 增益约 +9.32 dB。停顿残留、F0 清浊音条件和快照仍需分别排查。</p><a class="button" href="next-voice/">新的本人重建与四档插值小样</a><p>新参考为 Linda Johnson，不是 Adele；轻唱与插值音质待试听验收。</p><details><summary>频谱与停顿诊断</summary><img src="quality_audit.png" alt="原声与两组模型输出的同尺度频谱和响度包络"></details></section>'
+        content = notice + content
+    demo_template = ROOT / 'voice_lab/voice_workbench/static_demo/index.html'
+    if demo_template.is_file():
+        demo = site / 'next-voice'
+        (demo / 'audio').mkdir(parents=True, exist_ok=True)
+        shutil.copy2(demo_template, demo / 'index.html')
+        for name in ('self_singing_input_8s', 'model_self_reconstruction',
+                     'experimental_alpha_025', 'experimental_alpha_050',
+                     'experimental_alpha_075', 'experimental_alpha_100'):
+            candidates = (ROOT / f'voice_lab/voice_workbench/benchmarks/{name}.wav',
+                          ROOT / f'website/next-voice/audio/{name}.wav')
+            original = next((p for p in candidates if p.is_file()), None)
+            if original is None:
+                raise FileNotFoundError('Verified demo audio missing: ' + name)
+            shutil.copy2(original, demo / 'audio' / (name + '.wav'))
     (site / 'index.html').write_text(frame('AI Fundamental · 本人清唱试听', content, source, release), encoding='utf-8')
     import markdown
     for source_md, target, title in ((RESULT / 'MEASURED_REPORT.md', 'report.html', '清唱实测报告'),

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>声音工作台 · 录音与音色探索</title>
+  <style>
+    :root{--ink:#162b35;--muted:#617782;--paper:#f2f6f5;--line:#d6e2dd;--green:#006952;--orange:#a85815}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.65 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+    main{max-width:1020px;margin:0 auto;padding:40px 24px 72px}header{margin-bottom:26px}.eyebrow{letter-spacing:.15em;font-size:12px;color:var(--green);font-weight:750}h1{font-size:clamp(28px,5vw,42px);line-height:1.25;margin:10px 0 12px}h2{font-size:20px;margin:0 0 15px}p{margin:8px 0}.muted,.help{color:var(--muted)}.help{font-size:13px}.grid{display:grid;grid-template-columns:1.08fr .92fr;gap:20px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 4px 20px #1b4a3010}.full{grid-column:1/-1}.status{border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:flex;align-items:flex-start;gap:10px;background:white;margin-top:18px}.dot{width:9px;height:9px;margin-top:9px;flex:none;border-radius:50%;background:#aaa}.dot.ready{background:#008666}.dot.warn{background:#dc973d}.field{margin:20px 0}label{display:block;font-size:14px;font-weight:650;margin-bottom:7px}input[type=file]{width:100%;font-size:14px;border:1px dashed #bbd0c7;padding:13px;border-radius:10px;background:#f8fbfa}input[type=file]::file-selector-button{border:0;border-radius:7px;padding:7px 11px;margin-right:10px;background:#e4efe9;color:var(--green);font-weight:600}button{font:inherit;font-size:14px;border:0;border-radius:10px;padding:11px 17px;cursor:pointer;background:#e8efec;color:var(--ink)}button.primary{background:var(--green);color:white;font-weight:650}button.record{border:1px solid #c8d9d0;background:white}button.record.active{color:#b11d24;background:#fff1f1;border-color:#efb6b6}button:disabled{opacity:.45;cursor:not-allowed}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}audio{width:100%;height:42px;margin-top:12px}.hidden{display:none!important}input[type=range]{width:100%;accent-color:var(--green)}.range-title{display:flex;justify-content:space-between;align-items:center}.value{font-size:26px;font-weight:700;color:var(--green)}select{width:100%;padding:10px;border:1px solid var(--line);background:white;border-radius:9px;font:inherit;font-size:14px}.note{border-left:3px solid #c5a569;padding:8px 12px;background:#fcf8ef;color:#775727;font-size:13px;border-radius:0 8px 8px 0}.check{display:flex;align-items:flex-start;gap:8px;font-weight:400}.check input{margin-top:6px;accent-color:var(--green)}.error{color:#a52d28;background:#fff1ee;border-radius:10px;padding:12px;white-space:pre-wrap}.result-detail{font-size:14px;color:var(--muted);white-space:pre-wrap;margin:12px 0}a{color:var(--green);text-underline-offset:3px}footer{font-size:12px;color:var(--muted);margin-top:26px}.timer{font-variant-numeric:tabular-nums;font-size:14px;color:var(--muted)}.pill{display:inline-block;font-size:11px;color:var(--green);background:#e2eee8;padding:3px 9px;border-radius:20px;margin-left:6px}.task-state{font-size:14px;min-height:24px;margin:12px 0 0;color:var(--muted)}details{margin-top:14px;font-size:13px;color:var(--muted)}summary{cursor:pointer}pre{overflow:auto;font-size:12px;background:#f3f7f5;padding:12px;border-radius:10px}#recHint{font-size:13px;margin-top:10px;color:var(--muted)}@media(max-width:700px){main{padding:26px 16px 48px}.grid{grid-template-columns:1fr}.card{padding:20px}.full{grid-column:auto}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">VOICE LAB / 本地交互实验</div>
+    <h1>先录下来，再听音色变化</h1>
+    <p class="muted">说一句话或轻唱一小段，选择参考声音，生成一条转换结果。每段最多 30 秒。</p>
+    <div class="status" role="status"><span id="statusDot" class="dot"></span><div><strong id="statusTitle">正在检查本地服务…</strong><div id="statusDetail" class="help"></div></div><button id="refresh" style="margin-left:auto">刷新</button></div>
+  </header>
+  <div class="grid">
+    <section class="card">
+      <h2>1 · 你的声音</h2>
+      <div class="row"><button id="record" class="record">● 开始录音</button><button id="stop" disabled>停止</button><span id="timer" class="timer">00:00 / 00:30</span></div>
+      <div style="margin-top:12px"><button id="loadExample" disabled>载入现有 8 秒清唱</button><p class="help">用同一段本人清唱立即体验，或录制你自己的新片段。</p></div>
+      <div id="recHint">点击开始后，浏览器才会请求麦克风权限。建议戴耳机，避免扬声器回录。</div>
+      <div class="field"><label for="sourceFile">也可以上传录音</label><input id="sourceFile" type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac,.mp4"><div class="help">WAV / MP3 / M4A / WebM 等，每个文件最多 20 MB。</div></div>
+      <audio id="sourcePlayer" controls class="hidden"></audio>
+      <div id="sourceInfo" class="help"></div>
+      <div class="field"><label for="mode">录音内容</label><select id="mode"><option value="speech">说话 · 保留原话和语调</option><option value="singing">轻唱 · 此路线尚未验证</option></select><p id="singingNotice" class="note hidden">当前 OpenVoice 引擎以说话为主；此处只用同一模型试转轻唱，未验证旋律与音色质量。SoulX / Seed 的音高条件歌声路线是后续候选。</p></div>
+    </section>
+    <section class="card">
+      <h2>2 · 参考声音</h2>
+      <div class="field"><label for="targetFile">目标参考 · 建议 5–15 秒干净人声</label><input id="targetFile" type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac"><audio id="targetPlayer" controls class="hidden"></audio></div>
+      <div id="defaultArea" class="hidden"><label class="check"><input id="useDefault" type="checkbox"><span>使用开放参考：<strong id="defaultName"></strong></span></label><p id="defaultLicense" class="help"></p><audio id="defaultPlayer" controls preload="metadata"></audio></div>
+      <p class="note">当前开放参考女声不是 Adele。探索 Adele 音色需要真实的目标参考；本工具不会把普通女声标成 Adele。公开展示时应核实录音来源与使用许可。</p>
+      <details><summary>可选：独立的本人参考</summary><div class="field"><label for="selfFile">本人参考 · 决定模型内插值的本人端</label><input id="selfFile" type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac"><audio id="selfPlayer" controls class="hidden"></audio><p class="help">不上传时，由引擎使用本次输入作为本人参考。本人重建诊断也可使用它。</p></div></details>
+    </section>
+    <section class="card full">
+      <h2>3 · 转换设置 <span class="pill">只生成一条输出</span></h2>
+      <div class="grid">
+        <div>
+          <div class="range-title"><label for="alpha">音色插值参数 α</label><span id="alphaValue" class="value">100%</span></div>
+          <input id="alpha" type="range" min="0" max="100" value="100" step="1">
+          <div class="row help" style="justify-content:space-between"><span>0% 原声旁路</span><span>100% 目标参考转换</span></div>
+          <p class="help">中间值是实验插值参数，不能理解为听感上“某人占多少”。模型内部只生成一条波形，不做原声与换声的 dry/wet 叠加。</p>
+        </div>
+        <div>
+          <label for="method">向量插值方法</label><select id="method"><option value="lerp">LERP · 线性插值</option><option value="slerp">SLERP · 球面线性插值</option></select>
+          <label class="check" style="margin-top:15px"><input id="diagnostic" type="checkbox"><span>本人重建诊断：强制运行模型，检查模型是否引入噪声或合唱感</span></label>
+          <p id="diagnosticHint" class="help hidden">此模式忽略目标参考与 α，使用本人参考进行重建。即使 α 为 0，也不会旁路。</p>
+        </div>
+      </div>
+      <div class="row" style="margin-top:18px"><button id="convert" class="primary" disabled>生成并试听</button><span id="taskState" class="task-state" role="status"></span></div>
+      <div id="error" class="error hidden" role="alert" style="margin-top:14px"></div>
+    </section>
+    <section id="resultArea" class="card full hidden">
+      <h2>4 · 真实输出</h2><audio id="resultPlayer" controls></audio>
+      <div id="resultMessage" class="result-detail"></div>
+      <div class="row"><a id="download" download>下载 WAV</a><a id="receiptLink" target="_blank" rel="noopener">查看本次运行收据</a></div>
+      <details><summary>查看引擎返回信息</summary><pre id="resultJson"></pre></details>
+    </section>
+    <section class="card full">
+      <details style="margin:0"><summary style="font-size:15px;color:var(--ink);font-weight:650">已生成的小样：本人 → Linda Johnson，非 Adele；OpenVoice 轻唱研究试转</summary>
+        <p class="note">以下六条是实际生成的固定清唱小样，不是讲话样例。中间参数不代表感知上的身份百分比；请逐条听噪声、清晰度与是否出现双声部，尚未验证混合音质。</p>
+        <div id="examplesList" class="grid" style="margin-top:16px"><p class="help">正在读取固定示例…</p></div>
+      </details>
+    </section>
+  </div>
+  <footer>本地文件保存在独立会话目录，便于复盘输入、参数与结果。GitHub Pages 展示历史声音；AI 转换需要运行此本地服务或部署推理后端。</footer>
+</main>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+let sourceBlob = null, sourceName = '', sourceUrl = null, recording = null, mediaStream = null, chunks = [], timerId = null, stopTimeout = null, startAt = 0, converting = false, starting = false, exampleAvailable = false;
+const fileUrls = new Map();
+// Each preview is heard alone, so two controls cannot accidentally sound like a chorus.
+document.addEventListener('play',event=>{if(event.target instanceof HTMLMediaElement){document.querySelectorAll('audio').forEach(player=>{if(player!==event.target)player.pause();});}},true);
+function showError(message){$('error').textContent=message;$('error').classList.remove('hidden');}
+function clearError(){$('error').classList.add('hidden');$('error').textContent='';}
+function controls(){const busy = converting || starting || !!(recording && recording.state!=='inactive');$('convert').disabled=busy||!sourceBlob;$('record').disabled=busy;$('stop').disabled=!(recording&&recording.state==='recording');$('sourceFile').disabled=busy;$('loadExample').disabled=busy||!exampleAvailable;}
+function preview(file,playerId){const previous=fileUrls.get(playerId);if(previous)URL.revokeObjectURL(previous);const url=URL.createObjectURL(file);fileUrls.set(playerId,url);$(playerId).src=url;$(playerId).classList.remove('hidden');}
+function setSource(blob,name){sourceBlob=blob;sourceName=name;preview(blob,'sourcePlayer');$('sourceInfo').textContent=`${name} · ${(blob.size/1024).toFixed(1)} KB`;controls();}
+function updateTimer(){const seconds=Math.min(30,Math.floor((performance.now()-startAt)/1000));$('timer').textContent=`00:${String(seconds).padStart(2,'0')} / 00:30`;}
+function releaseMicrophone(){if(mediaStream){mediaStream.getTracks().forEach(track=>track.stop());mediaStream=null;}clearInterval(timerId);clearTimeout(stopTimeout);timerId=null;stopTimeout=null;}
+function stopRecording(){if(recording&&recording.state==='recording'){recording.stop();$('stop').disabled=true;}releaseMicrophone();}
+$('record').addEventListener('click',async()=>{
+  clearError();if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){showError('当前浏览器不支持录音。请用 Chrome/Edge 打开 localhost 或上传音频文件。');return;}
+  document.querySelectorAll('audio').forEach(player=>player.pause());
+  starting=true;controls();$('recHint').textContent='正在等待麦克风权限…';
+  try{
+    mediaStream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false});
+    let options={};for(const type of ['audio/webm;codecs=opus','audio/webm','audio/mp4']){if(MediaRecorder.isTypeSupported(type)){options={mimeType:type};break;}}
+    recording=new MediaRecorder(mediaStream,options);chunks=[];
+    recording.addEventListener('dataavailable',event=>{if(event.data.size)chunks.push(event.data);});
+    recording.addEventListener('stop',()=>{const type=recording.mimeType||'audio/webm';const blob=new Blob(chunks,{type});if(blob.size){setSource(blob,`microphone.${type.includes('mp4')?'m4a':'webm'}`);$('sourceFile').value='';}else{showError('未收到录音数据，请检查麦克风后重试。');}recording=null;releaseMicrophone();$('record').classList.remove('active');$('record').textContent='● 重新录音';$('recHint').textContent='录音已停止，麦克风已释放。你可以先试听，再生成。';controls();});
+    recording.addEventListener('error',event=>{showError(`录音失败：${event.error?.message||'未知错误'}`);stopRecording();});
+    recording.start(250);startAt=performance.now();updateTimer();timerId=setInterval(updateTimer,200);stopTimeout=setTimeout(stopRecording,30000);$('record').classList.add('active');$('record').textContent='录音中';$('recHint').textContent='正在录音。30 秒会自动停止并释放麦克风。';
+  }catch(error){releaseMicrophone();showError(`无法开始录音：${error.message}。请检查浏览器麦克风权限。`);$('recHint').textContent='未开始录音；也可以直接上传文件。';}
+  finally{starting=false;controls();}
+});
+$('stop').addEventListener('click',stopRecording);
+$('sourceFile').addEventListener('change',()=>{const file=$('sourceFile').files[0];if(file){if(file.size>20*1024*1024){showError('输入文件超过 20 MB。');return;}clearError();setSource(file,file.name);}});
+for(const [input,player] of [['targetFile','targetPlayer'],['selfFile','selfPlayer']]){$(input).addEventListener('change',()=>{const file=$(input).files[0];if(file){preview(file,player);if(input==='targetFile')$('useDefault').checked=false;}else{$(player).classList.add('hidden');}});}
+$('useDefault').addEventListener('change',()=>{if($('useDefault').checked){$('targetFile').value='';$('targetPlayer').classList.add('hidden');}});
+$('alpha').addEventListener('input',()=>{$('alphaValue').textContent=`${$('alpha').value}%`;});
+$('mode').addEventListener('change',()=>{$('singingNotice').classList.toggle('hidden',$('mode').value!=='singing');});
+$('diagnostic').addEventListener('change',()=>{$('diagnosticHint').classList.toggle('hidden',!$('diagnostic').checked);$('alpha').disabled=$('diagnostic').checked;});
+async function refreshStatus(){
+  try{const response=await fetch('/api/status',{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const state=await response.json();const ready=state.ffmpeg_ready&&state.engine?.ready;$('statusDot').className='dot '+(ready?'ready':'warn');$('statusTitle').textContent=state.busy?'模型正在处理录音':ready?'本地推理引擎已就绪':'本地服务已连接 · 模型尚未就绪';$('statusDetail').textContent=[state.engine?.message,state.engine?.device?`设备 ${state.engine.device}`:'',state.ffmpeg_ready?'':'缺少 FFmpeg；目前不能转码'].filter(Boolean).join(' · ')||'可以录音或上传。0% 旁路只做格式规范化。';if(state.default_reference){const ref=state.default_reference;$('defaultName').textContent=ref.name||'开放参考女声';$('defaultLicense').textContent=[ref.license,ref.description].filter(Boolean).join(' · ');$('defaultPlayer').src=ref.audio_url;$('defaultArea').classList.remove('hidden');}else{$('defaultArea').classList.add('hidden');$('useDefault').checked=false;}controls();}
+  catch(error){$('statusDot').className='dot warn';$('statusTitle').textContent='未连接到本地转换服务';$('statusDetail').textContent='请运行 app.py，并打开 http://127.0.0.1:8872。GitHub 静态页面无法执行模型。';}
+}
+$('refresh').addEventListener('click',refreshStatus);
+async function loadExamples(){
+  try{
+    const response=await fetch('/api/examples',{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();$('examplesList').replaceChildren();
+    for(const item of data.items||[]){const entry=document.createElement('div');const label=document.createElement('label');label.textContent=item.label;entry.append(label);if(item.available){const player=document.createElement('audio');player.controls=true;player.preload='metadata';player.src=item.audio_url;entry.append(player);}else{const absent=document.createElement('p');absent.className='help';absent.textContent='此条尚未生成。';entry.append(absent);}$('examplesList').append(entry);}
+    exampleAvailable=!!data.items?.find(item=>item.name==='self_singing_input_8s'&&item.available);controls();
+  }catch(error){$('examplesList').textContent='固定示例暂时不可用；你仍可录音或上传。';exampleAvailable=false;controls();}
+}
+$('loadExample').addEventListener('click',async()=>{
+  clearError();starting=true;controls();$('taskState').textContent='正在载入固定清唱输入…';
+  try{const response=await fetch('/examples/self_singing_input_8s.wav');if(!response.ok)throw new Error(`无法读取示例（HTTP ${response.status}）`);const blob=await response.blob();setSource(blob,'demo.wav');$('sourceFile').value='';$('mode').value='singing';$('singingNotice').classList.remove('hidden');if(!$('defaultArea').classList.contains('hidden')&&!$('targetFile').files[0])$('useDefault').checked=true;$('taskState').textContent='已载入本人清唱。先试听输入，再选择参数并生成。';}
+  catch(error){showError(error.message);$('taskState').textContent='载入未完成。';}
+  finally{starting=false;controls();}
+});
+$('convert').addEventListener('click',async()=>{
+  clearError();if(!sourceBlob)return;const alpha=Number($('alpha').value)/100;const diagnostic=$('diagnostic').checked;const target=$('targetFile').files[0];const self=$('selfFile').files[0];const useDefault=$('useDefault').checked;
+  if((alpha>0||diagnostic)&&!diagnostic&&!target&&!useDefault){showError('请上传目标参考，或选择已安装的开放参考女声。0% 可以直接试听原声旁路。');return;}
+  for(const file of [target,self]){if(file&&file.size>20*1024*1024){showError('参考文件超过 20 MB。');return;}}
+  const data=new FormData();data.append('source_file',sourceBlob,sourceName||'recording.webm');if(target)data.append('target_file',target);if(self)data.append('self_file',self);data.append('alpha',String(alpha));data.append('mode',$('mode').value);data.append('method',$('method').value);data.append('diagnostic_self',String(diagnostic));data.append('use_default_reference',String(useDefault));
+  converting=true;controls();$('taskState').textContent=alpha===0&&!diagnostic?'正在规范化原声，不运行 AI…':'正在执行一次模型推理；请等待真实输出…';$('resultArea').classList.add('hidden');
+  try{const response=await fetch('/api/convert',{method:'POST',body:data});const result=await response.json();if(!response.ok){let detail=result.detail;const message=Array.isArray(detail)?detail.map(x=>x.msg).join('；'):(typeof detail==='string'?detail:detail?.message||`HTTP ${response.status}`);throw new Error(message+(result.receipt_url?`\n运行记录：${result.receipt_url}`:''));}
+    const audioUrl=result.audio_url+'?t='+Date.now();$('resultPlayer').src=audioUrl;$('download').href=result.audio_url;$('receiptLink').href=result.receipt_url;$('resultMessage').textContent=result.result?.message||(result.result?.bypass?'这是格式规范化后的原声；没有 AI 推理。':'这是模型生成的一条输出。请试听噪声、清晰度与是否出现双声部。');$('resultJson').textContent=JSON.stringify(result,null,2);$('resultArea').classList.remove('hidden');$('taskState').textContent='完成。点击下方播放器试听。';$('resultArea').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }catch(error){showError(error.message);$('taskState').textContent='转换未完成。没有生成可宣称成功的结果。';}
+  finally{converting=false;controls();refreshStatus();}
+});
+window.addEventListener('pagehide',()=>{stopRecording();for(const url of fileUrls.values())URL.revokeObjectURL(url);});
+refreshStatus();
+loadExamples();
+</script>
+</body>
+</html>

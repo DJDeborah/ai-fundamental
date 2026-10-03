@@ -1,5 +1,8 @@
 # Sideproject · AI Fundamental
 
+**2026-10-03：声音质量反馈与新底座探索。** 原X/Y尚未通过音质验收（X噪声、Y多声部感），现已完成代码/波形审计。新增 [六条研究试听小样](https://djdeborah.github.io/sideproject/next-voice/)、[可录音的本机工作台](https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/voice_lab/voice_workbench) 与 [深度拆解报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/VOICE_NEXT_EXPERIMENT.md)。小样是OpenVoice预训练CPU推理，参考Linda Johnson，**不是Adele**；中间参数和轻唱质量仍待试听验收。旧RVC的FP32指训练，旧导出/推理为FP16。
+
+
 **从代码到真实训练，再到你能亲耳听到的结果。**
 
 Tokenizer、0.1B Transformer、Triton attention、scaling law，以及本人清唱的 RVC 随机初始化 / 微调对照。源码、术语教程、真实日志、图表、失败记录与模型下载放在同一条学习路径里。

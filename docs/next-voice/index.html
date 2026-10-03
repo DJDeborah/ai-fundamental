@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>新底座研究小样 · 非 Adele</title>
+  <style>
+    :root{color-scheme:light;--ink:#18212c;--accent:#175f69;--muted:#53636d;--line:#d5dfdf}
+    *{box-sizing:border-box}body{margin:0;background:#f4f6f5;color:var(--ink);font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif}
+    main{max-width:1040px;margin:auto;padding:28px 22px 60px}a{color:var(--accent);text-underline-offset:3px}
+    nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #ccd7d7;padding-bottom:14px;margin-bottom:30px}
+    h1{font-size:clamp(27px,5vw,40px);line-height:1.25;margin:14px 0}h2{font-size:23px;margin-top:34px}h3{font-size:18px}
+    .eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}.muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0}
+    .card,.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:22px}.card h2,.card h3,.panel h2{margin-top:0}
+    .card p{font-size:14px;color:var(--muted)}audio{display:block;width:100%;margin:16px 0 10px;height:42px}
+    .tag{font-size:12px;display:inline-block;border-radius:5px;background:#e7f0ef;padding:3px 8px}
+    .button{display:inline-block;padding:9px 15px;border:1px solid var(--accent);border-radius:8px;background:var(--accent);color:white;text-decoration:none;margin:6px 8px 6px 0}
+    .secondary{background:white;color:var(--accent)}.note{border-left:3px solid #b89050;padding:12px 16px;background:#fff9ee;color:#775622;border-radius:0 9px 9px 0}
+    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;padding:0;list-style:none}.steps li{border-top:2px solid #abc7c5;padding-top:12px;font-size:14px}.steps strong{display:block;color:var(--accent);margin-bottom:6px}
+    details{margin-top:18px}summary{cursor:pointer;font-weight:600}code{font-family:Consolas,monospace;font-size:.9em;background:#edf2f1;padding:2px 5px;border-radius:4px}
+    footer{margin-top:44px;border-top:1px solid #ccd7d7;padding-top:16px;font-size:13px;color:var(--muted)}
+    @media(max-width:680px){main{padding:22px 16px 44px}.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.card,.panel{padding:20px}nav{gap:10px 16px}}
+  </style>
+</head>
+<body>
+<main>
+  <nav><a href="../index.html">返回声音项目首页</a><a href="#listen">六条试听</a><a href="#try">录音交互说明</a><a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/voice_lab/voice_workbench">工作台源码</a></nav>
+  <p class="eyebrow">VOICE LAB / OPENVOICE V2 / 2026-10-03</p>
+  <h1>新底座研究小样 · 非 Adele</h1>
+  <p class="muted">同一段本人清唱，使用预训练 OpenVoice V2 试转为参考音色。先听模型重建，再比较不同插值参数。</p>
+  <div class="note"><strong>目标参考是 Linda Johnson 的开放讲话录音，不是 Adele。</strong><br>OpenVoice 以讲话转换为主；这里是未经音质验收的清唱研究试转，没有新增训练，也没有将原声与转换结果两条波形叠加。滑杆中间值不是人耳感知的真人身份比例。</div>
+
+  <h2 id="listen">一次听一条，比较实际输出</h2>
+  <p class="muted">原生播放器互斥播放，没有自动播放。用耳机保持同一音量，留意噪声、歌词清晰度、音高变化和双声部感；这些小样没有证明音质胜者或 Adele 混合能力。</p>
+  <div class="grid">
+    <section class="card"><span class="tag">固定输入 · 8 秒</span><h3>本人清唱原声</h3><p>所有转换都使用这一段；它不是新录制的说话样例。</p><audio controls preload="metadata" src="audio/self_singing_input_8s.wav">请下载 WAV 播放。</audio><a href="audio/self_singing_input_8s.wav" download>下载原声 WAV</a></section>
+    <section class="card"><span class="tag">本人参考 · 强制模型推理</span><h3>模型重建本人</h3><p>检查模型本身是否引入缺陷。这与产品 0% 的原声旁路不同。</p><audio controls preload="metadata" src="audio/model_self_reconstruction.wav">请下载 WAV 播放。</audio><a href="audio/model_self_reconstruction.wav" download>下载重建 WAV</a></section>
+    <section class="card"><span class="tag">LERP · 实验向量权重</span><h3>α = 0.25</h3><p>一次模型生成，不是将两条声音按 75:25 混音。</p><audio controls preload="metadata" src="audio/experimental_alpha_025.wav">请下载 WAV 播放。</audio><a href="audio/experimental_alpha_025.wav" download>下载 WAV</a></section>
+    <section class="card"><span class="tag">LERP · 实验向量权重</span><h3>α = 0.50</h3><p>这个参数不能解释成“听起来一半本人、一半目标”。</p><audio controls preload="metadata" src="audio/experimental_alpha_050.wav">请下载 WAV 播放。</audio><a href="audio/experimental_alpha_050.wav" download>下载 WAV</a></section>
+    <section class="card"><span class="tag">LERP · 实验向量权重</span><h3>α = 0.75</h3><p>参考音色变化与自然度要分别试听判断。</p><audio controls preload="metadata" src="audio/experimental_alpha_075.wav">请下载 WAV 播放。</audio><a href="audio/experimental_alpha_075.wav" download>下载 WAV</a></section>
+    <section class="card"><span class="tag">完整参考转换 · 非 Adele</span><h3>α = 1.00 · Linda Johnson</h3><p>使用完整目标参考向量；以本人输入作为内容与旋律来源，实际保留程度待试听。</p><audio controls preload="metadata" src="audio/experimental_alpha_100.wav">请下载 WAV 播放。</audio><a href="audio/experimental_alpha_100.wav" download>下载 WAV</a></section>
+  </div>
+
+  <section class="panel" id="try">
+    <h2>想用自己的新录音？</h2>
+    <p>这张网页只播放预先生成的 WAV。实际录音、上传和转换在本地工作台进行，需要启动推理后端。</p>
+    <ol class="steps"><li><strong>1 · 安装与启动</strong>按照 GitHub 工作台说明准备环境与模型，运行启动脚本并保持终端打开。</li><li><strong>2 · 录音或载入示例</strong>打开本机 <code>http://127.0.0.1:8872</code>，录音或上传；也可点击“载入现有 8 秒清唱”。</li><li><strong>3 · 生成再试听</strong>选择真实目标参考，先试完整目标端，再检查本人重建和实验插值；保存 WAV 与运行收据。</li></ol>
+    <a class="button" href="https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/voice_workbench/README.md">本机操作与安装说明</a><a class="button secondary" href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/voice_lab/voice_workbench">查看与下载工作台源码</a>
+    <p class="muted">本机 CPU 实测：预热后处理 8 秒输入约需 6–8 秒；它是停止录音后的转换，尚未实现连续流式实时变声。本页面播放音频不启动模型推理。</p>
+  </section>
+
+  <details class="panel"><summary>方法与结果边界</summary><p>LERP（Linear Interpolation，线性插值）在模型内部将本人参考与目标参考的身份向量按权重组合，生成单条输出。参数变化不保证听感单调，也不保证单一自然人声。</p><p>本次用了开放女声参考与本人清唱，只进行预训练模型推理；没有训练 Adele 音色，没有完成说话质量基准，清唱质量也尚未验收。后续歌声专用模型仍需使用同一输入做实测比较。</p><p>参考来源：<a href="https://keithito.com/LJ-Speech-Dataset/">LJ Speech 官方资料</a>，Linda Johnson，官方声明为 Public Domain（公共领域）。模型：<a href="https://github.com/myshell-ai/OpenVoice">OpenVoice 官方仓库</a>。</p></details>
+  <footer>2026-10-03 · 固定生成样例 · 六条音频按原文件字节复制<br>没有上传目标参考文件、额外本人参考或交互会话录音。<a href="../index.html">返回完整项目与上次 RVC 实验</a></footer>
+</main>
+<script>
+document.addEventListener('play', function(event) {
+  if (!(event.target instanceof HTMLAudioElement)) return;
+  document.querySelectorAll('audio').forEach(function(player) {
+    if (player !== event.target) player.pause();
+  });
+}, true);
+</script>
+</body>
+</html>

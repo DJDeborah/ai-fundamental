@@ -1,5 +1,8 @@
 # 从零到 0.1B：可复现的语言模型实验课
 
+**2026-10-03：声音质量反馈与新底座探索。** 原X/Y尚未通过音质验收（X噪声、Y多声部感），现已完成代码/波形审计。新增 [六条研究试听小样](https://djdeborah.github.io/sideproject/next-voice/)、[可录音的本机工作台](https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/voice_lab/voice_workbench) 与 [深度拆解报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/VOICE_NEXT_EXPERIMENT.md)。小样是OpenVoice预训练CPU推理，参考Linda Johnson，**不是Adele**；中间参数和轻唱质量仍待试听验收。旧RVC的FP32指训练，旧导出/推理为FP16。
+
+
 **[▶ 在线播放：原声 / 匿名 X / 匿名 Y / A / B](https://DJDeborah.github.io/sideproject/)** · [项目亮点与图表](../README.md) · [模型下载](https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03)
 
 [![原声与匿名输出的实际波形；点击进入播放器](website/audio_preview.png)](https://DJDeborah.github.io/sideproject/)
