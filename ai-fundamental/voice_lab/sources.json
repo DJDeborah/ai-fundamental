@@ -1,0 +1,16 @@
+{
+  "checked_date": "2026-10-01",
+  "ddsp_repository": "https://github.com/yxlllc/DDSP-SVC",
+  "ddsp_branch": "6.3",
+  "ddsp_sha": "d6dd52fcdbce07fbe4c4d120c911b0d63d53e2d2",
+  "contentvec_revision": "ab04aa7067b99ee05cc82499bc64916b980a1967",
+  "licenses": {
+    "DDSP-SVC code": {"label": "MIT", "source": "https://github.com/yxlllc/DDSP-SVC/blob/6.3/LICENSE"},
+    "ContentVec weights": {"label": "MIT model-card tag", "source": "https://huggingface.co/lengyue233/content-vec-best"},
+    "PC-NSF-HiFiGAN weights": {"label": "CC BY-NC-SA 4.0", "source": "https://github.com/openvpi/vocoders/releases/tag/pc-nsf-hifigan-44.1k-hop512-128bin-2025.02"},
+    "openvpi vocoders repository": {"label": "AGPL-3.0 repository license; not identical to weight license", "source": "https://github.com/openvpi/vocoders/blob/main/LICENSE"},
+    "RMVPE release": {"label": "Separate weight grant not verified; no blanket commercial conclusion", "source": "https://github.com/yxlllc/RMVPE/releases/tag/230917"},
+    "SoulX-Singer": {"label": "Apache-2.0 code and model weights according to README; current repository exposes inference code", "source": "https://github.com/Soul-AILab/SoulX-Singer"}
+  },
+  "commercial_status": "This starter's default vocoder is noncommercial. Audit each dependency and recording separately before commercial deployment."
+}

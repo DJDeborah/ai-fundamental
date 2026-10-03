@@ -1,0 +1,16 @@
+{
+  "utc": "2026-10-02T16:15:28.474576+00:00",
+  "device": "NVIDIA GeForce RTX 4090 D",
+  "torch": "2.8.0+cu128",
+  "cuda_runtime": "12.8",
+  "seed": 1234,
+  "dtype": "torch.float32",
+  "steps_requested": 1000,
+  "batch_size": 4,
+  "batches_per_epoch": 17,
+  "generator_parameters": 36458818,
+  "discriminator_parameters": 71410594,
+  "pretrained_g": "",
+  "pretrained_d": "",
+  "step_definition": "One FP32 batch, one G and one D optimizer update; no GradScaler skips."
+}

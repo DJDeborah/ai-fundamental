@@ -1,0 +1,15 @@
+[HuBERT features] Loading model: /root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/hubert_base
+[HuBERT features] Device: cuda:0 | Pending: 62 | Skipped: 0
+[HuBERT features] Progress: 1/62 | Success: 1 | Failed: 0 | 0_0.wav | (184, 768)
+[HuBERT features] Progress: 6/62 | Success: 6 | Failed: 0 | 1_13.wav | (184, 768)
+[HuBERT features] Progress: 12/62 | Success: 12 | Failed: 0 | 2_0.wav | (184, 768)
+[HuBERT features] Progress: 18/62 | Success: 18 | Failed: 0 | 2_14.wav | (184, 768)
+[HuBERT features] Progress: 24/62 | Success: 24 | Failed: 0 | 2_2.wav | (184, 768)
+[HuBERT features] Progress: 30/62 | Success: 30 | Failed: 0 | 2_5.wav | (184, 768)
+[HuBERT features] Progress: 36/62 | Success: 36 | Failed: 0 | 3_11.wav | (184, 768)
+[HuBERT features] Progress: 42/62 | Success: 42 | Failed: 0 | 3_22.wav | (184, 768)
+[HuBERT features] Progress: 48/62 | Success: 48 | Failed: 0 | 3_31.wav | (184, 768)
+[HuBERT features] Progress: 54/62 | Success: 54 | Failed: 0 | 3_43.wav | (184, 768)
+[HuBERT features] Progress: 60/62 | Success: 60 | Failed: 0 | 3_6.wav | (184, 768)
+[HuBERT features] Progress: 62/62 | Success: 62 | Failed: 0 | 3_9.wav | (184, 768)
+[HuBERT features] Completed | Success: 62 | Skipped: 0 | Failed: 0

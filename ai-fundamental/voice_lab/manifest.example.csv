@@ -1,0 +1,5 @@
+speaker_id,group,split,path,consent,quality
+1,songA_session1,train,1/train_songA.wav,self,clean
+1,songB_session2,val,1/val_songB.wav,self,clean
+1,songC_session3,test,1/test_songC.wav,self,clean
+1,songD_session4,stress,stress/noisy_songD.wav,self,noisy

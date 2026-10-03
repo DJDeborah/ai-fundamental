@@ -1,0 +1,27 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Fundamental · 本人清唱试听</title><style>
+:root{color-scheme:light;--ink:#18212c;--accent:#175f69;--muted:#53636d}
+*{box-sizing:border-box}body{margin:0;background:#f4f6f5;color:var(--ink);font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif}
+main{max-width:1040px;margin:auto;padding:28px 22px 60px}a{color:var(--accent);text-underline-offset:3px}
+nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #ccd7d7;padding-bottom:14px;margin-bottom:30px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.25}h2{font-size:24px;margin-top:34px}h3{font-size:19px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin:24px 0}
+.card,.panel{background:white;border:1px solid #d5dfdf;border-radius:14px;padding:22px}.card h2,.card h3{margin-top:0}
+audio{display:block;width:100%;margin-top:16px}.tag{font-size:12px;display:inline-block;border-radius:5px;background:#e7f0ef;padding:3px 8px}
+.button{display:inline-block;padding:9px 15px;border:1px solid #175f69;border-radius:8px;background:#175f69;color:white;text-decoration:none;margin:6px 8px 6px 0}
+.secondary{background:white;color:var(--accent)}summary{cursor:pointer;font-weight:600}details{margin-top:25px}
+table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:14px;margin:22px 0}th,td{text-align:left;border:1px solid #cbd5d5;padding:9px 12px}
+th{background:#e7efee}pre{overflow:auto;padding:16px;background:#e8eeed;border-radius:9px;font-size:13px}code{font-family:Consolas,monospace;font-size:.9em}
+img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-left:16px;color:var(--muted)}footer{margin-top:44px;border-top:1px solid #ccd7d7;padding-top:16px;font-size:13px;color:var(--muted)}
+</style></head>
+<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental">GitHub 项目</a></nav><p class="eyebrow">AI FUNDAMENTAL / VOICE LAB</p><h1>听见训练的结果</h1><p class="muted">同一套本人清唱录音，两种初始化方式，各完成 1000 次真实更新。先听匿名输出，再看模型身份。</p>
+<div class="grid"><section class="card"><span class="tag">20 秒 · 未参与训练</span><h2>固定测试原声</h2><audio controls preload="metadata" src="listening/input.wav">请下载 WAV 播放。</audio><a href="listening/input.wav" download>下载 WAV</a></section><section class="card"><span class="tag">19.98 秒 · 近似响度匹配</span><h2>匿名 X</h2><audio controls preload="metadata" src="blind/X.wav">请下载 WAV 播放。</audio><a href="blind/X.wav" download>下载 WAV</a></section><section class="card"><span class="tag">19.98 秒 · 近似响度匹配</span><h2>匿名 Y</h2><audio controls preload="metadata" src="blind/Y.wav">请下载 WAV 播放。</audio><a href="blind/Y.wav" download>下载 WAV</a></section></div>
+<section class="panel"><h2>怎样体验</h2><ol><li>点三角形播放原声、X、Y。用耳机，保持同一音量。</li><li>比较自然度、歌词清晰度、像不像本人、音高稳定性，各记 1–5 分。</li><li>保存评分后，展开下面的身份与原始输出。</li></ol><a class="button" href="listening_scores.csv" download>下载盲评表</a><a class="button secondary" href="report.html">阅读实测报告</a></section>
+<details class="panel"><summary>揭晓身份与 A/B 原始输出</summary><p><a href="blind_key.json">查看 X/Y 对应关系</a>。匿名输出做了近似 RMS 匹配；以下保留原始输出响度。</p>
+<div class="grid"><section class="card"><span class="tag">转换生成器与判别器从随机权重开始</span><h2>A：随机初始化 G/D</h2><audio controls preload="metadata" src="listening/scratch.wav">请下载 WAV 播放。</audio><a href="listening/scratch.wav" download>下载 WAV</a></section><section class="card"><span class="tag">相同架构，加载固定官方权重</span><h2>B：预训练 G/D 微调</h2><audio controls preload="metadata" src="listening/finetune.wav">请下载 WAV 播放。</audio><a href="listening/finetune.wav" download>下载 WAV</a></section></div>
+<a class="button secondary" href="https://github.com/DJDeborah/sideproject/releases/download/ai-fundamental-2026-10-03/rvc_A_scratch_step1000.pth">下载 A 模型</a><a class="button secondary" href="https://github.com/DJDeborah/sideproject/releases/download/ai-fundamental-2026-10-03/rvc_B_finetune_step1000.pth">下载 B 模型</a><p class="muted">.pth 是模型，不能直接播放。完整结果包包含快照、声音、原始训练日志和教程。</p></details>
+<h2>这次实际测到了什么</h2><table><thead><tr><th>指标</th><th>A：随机 G/D</th><th>B：微调 G/D</th></tr></thead><tbody><tr><td>真实更新数</td><td>1000</td><td>1000</td></tr><tr><td>训练耗时（含初始化与保存）</td><td>320.70 秒</td><td>313.83 秒</td></tr><tr><td>此片段估计音高误差中位数</td><td>3050 cent</td><td>0 cent</td></tr><tr><td>有声 / 无声不一致率</td><td>50.38%</td><td>8.48%</td></tr></tbody></table>
+<p>本片段 B 的估计音高保留更好；尚未收集盲听评分，没有自然度或音色质量胜者。0 cent 是离散音高估计的中位数，不代表真实误差为零。</p><p class="muted">两组共享冻结的预训练 HuBERT / RMVPE，因此 A 只称为转换 G/D 随机初始化。约六分钟、一位歌者、一个种子、一个固定测试片段的重建实验，不能验证跨歌者能力。</p>
+<img src="training_curves.png" alt="两组实际记录的六项训练损失随更新步数变化"><p class="muted">GAN loss 是训练目标，不是听感评分。</p>
+<h2>在另一台电脑继续学习</h2><a class="button" href="tutorial.html">术语与每步操作</a><a class="button secondary" href="https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03">下载项目与模型</a><a class="button secondary" href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental">查看全部源码</a>
+<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>

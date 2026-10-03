@@ -1,0 +1,7 @@
+{
+  "labels": {
+    "X": "scratch",
+    "Y": "finetune"
+  },
+  "note": "Keep hidden until scoring; blind versions only are RMS matched and peak limited."
+}

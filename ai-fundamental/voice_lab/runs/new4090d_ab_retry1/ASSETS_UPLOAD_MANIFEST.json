@@ -1,0 +1,16 @@
+{
+  "repository": "lj1995/VoiceConversionWebUI",
+  "revision": "e6d0c1a17da07c33557852f9dfa2bd44cc75737d",
+  "files": {
+    "upstream/RVC/assets/hubert_base/config.json": "0346950779dfb7f9316fa74ed846e2b8a22a08eedfdc5387b73f327cb1a4a7cf",
+    "upstream/RVC/assets/hubert_base/preprocessor_config.json": "7c1976a680fb7acc757cd36fb08eef878fa36c70b4c9d2d595df9c608bbbbf0e",
+    "upstream/RVC/assets/hubert_base/pytorch_model.bin": "cc8c20f4b90a520757260197a3ff2505705a7adbd20ad9eeaa4e1a9b38442ef5",
+    "upstream/RVC/assets/pretrained_v2/f0G40k.pth": "3b2c44035e782c4b14ddc0bede9e2f4a724d025cd073f736d4f43708453adfcb",
+    "upstream/RVC/assets/pretrained_v2/f0D40k.pth": "6b6ab091e70801b28e3f41f335f2fc5f3f35c75b39ae2628d419644ec2b0fa09",
+    "upstream/RVC/assets/rmvpe/rmvpe.pt": "6d62215f4306e3ca278246188607209f09af3dc77ed4232efdd069798c4ec193"
+  },
+  "transport": "Verified local download followed by upload",
+  "archive_sha256": "7179eedfcbd6a1ed40791efcec5c889154162bfdf5d6380be561125384f87c18",
+  "verified_files": 6,
+  "utc_unix": 1790955698.8903008
+}

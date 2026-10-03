@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>本人清唱 · A/B 试听</title><style>body{max-width:880px;margin:40px auto;padding:0 22px;background:#f5f7fb;color:#1e2b43;font:17px/1.7 system-ui,sans-serif}h1{font-size:32px}article,details{padding:20px;background:white;border:1px solid #d7e0ed;border-radius:12px;margin:16px 0}audio{display:block;width:100%;margin:12px 0}a{color:#245db5}.badge{display:inline-block;background:#e4eefb;padding:3px 12px;border-radius:20px}summary{cursor:pointer;font-weight:bold}</style>
+<span class="badge">两组真实训练 · 本人清唱重建</span><h1>先听原声，再比较 X / Y</h1><p>戴耳机，保持相同播放音量。先记录听感，再揭晓模型身份。这里只验证这段未参与训练的本人录音，没有跨歌者效果结论。</p>
+<article><h3>测试原声</h3><audio controls preload="metadata" src="listening/input.wav"></audio><a download href="listening/input.wav">下载 WAV</a></article>
+<article><h3>匿名 X</h3><audio controls preload="metadata" src="blind/X.wav"></audio><a download href="blind/X.wav">下载 WAV</a></article>
+<article><h3>匿名 Y</h3><audio controls preload="metadata" src="blind/Y.wav"></audio><a download href="blind/Y.wav">下载 WAV</a></article><p>评分：自然度、歌词清晰度、像不像本人、音高稳定性，各 1–5 分，加备注。</p>
+<p><a href="listening_scores.csv" download>下载评分表</a> · <a href="MEASURED_REPORT.md">实测报告</a></p>
+<details><summary>完成评分后：揭晓身份与原始输出</summary><p><a href="blind_key.json">查看 X/Y 对应模型</a></p><h3>A：G/D 随机初始化后训练</h3><audio controls src="listening/scratch.wav"></audio><h3>B：预训练 G/D 微调</h3><audio controls src="listening/finetune.wav"></audio><p>这里是未做响度匹配的原始输出。loss 不能替代听评。</p><a href="scratch/model.pth" download>A 模型</a> · <a href="finetune/model.pth" download>B 模型</a></details>
+<h2>怎么看训练证据</h2><p>两个 summary 的实际更新数必须相等且状态 complete；这表示完成本轮训练协议。声音质量还需要试听与评分。</p><img alt="原始训练曲线" src="training_curves.png" style="width:100%"><p>两组共享冻结 HuBERT 与 RMVPE，A 不代表整个系统从零训练。全部音频在本机播放。</p></html>

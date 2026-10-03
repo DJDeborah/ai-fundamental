@@ -1,0 +1,10 @@
+Current device: cuda:0 | Inference precision: torch.float16
+Select model: model.pth
+Speaker ID (0-109): 0
+Select index: Not used
+【Single Inference】
+Status：Success
+
+Index：Not used
+Elapsed time：Features 0.08s | F0 2.16s | Synthesis 0.29s
+/root/autodl-tmp/voice-self-compare-e64531a3/runs/new4090d_ab_retry1/listening/finetune.wav

@@ -1,0 +1,11 @@
+{
+  "original_sha256": "fde77f556252cab98e398a3501f653b3e4fe17d128e0fa3857c1dd5b8b8d3bbf",
+  "instrumented_sha256": "b6763c6e3dd4b76a44b8dae23638da1e2e69b9591569cf62b2b1c85f4a3963b3",
+  "changes": [
+    "same FP32 precision for both arms",
+    "step/time stop and export",
+    "raw-loss recording before display caps"
+  ],
+  "upstream_file_changed": false,
+  "bitwise_reproducibility_claimed": false
+}

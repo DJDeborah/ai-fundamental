@@ -1,0 +1,15 @@
+{
+  "counts": {
+    "raw": 6309,
+    "train": 6028,
+    "test": 73,
+    "exact_duplicate": 139,
+    "val": 62,
+    "near_duplicate": 7
+  },
+  "allowed_licenses": [
+    "commoncrawl-access-terms"
+  ],
+  "split": "sha256(normalized text) mod 1000: 980/10/10",
+  "min_chars": 20
+}

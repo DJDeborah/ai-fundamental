@@ -1,0 +1,17 @@
+FreeSimpleGUI
+librosa
+matplotlib
+numpy==1.26.4
+praat-parselmouth
+pyworld
+PyYAML
+resampy
+scikit_learn
+scipy
+sounddevice
+soundfile
+tensorboard
+torchcrepe
+torchfcpe
+tqdm
+transformers

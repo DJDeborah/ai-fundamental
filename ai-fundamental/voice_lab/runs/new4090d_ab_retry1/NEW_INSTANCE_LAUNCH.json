@@ -1,0 +1,31 @@
+{
+  "utc_started": "2026-10-02T15:54:41.080160+00:00",
+  "launcher_pid": 2300,
+  "command": [
+    "/root/miniconda3/bin/python",
+    "-u",
+    "launch_rvc.py",
+    "--hourly-rate",
+    "1.88",
+    "--budget",
+    "50",
+    "--spent-so-far",
+    "25.0",
+    "--max-hours",
+    "2",
+    "--out",
+    "runs/new4090d_ab"
+  ],
+  "user_confirmed_hourly_rate": 1.88,
+  "user_confirmed_credit_balance": 32,
+  "user_authorized_new_max_hours": 2,
+  "legacy_expense_upper_bound_including_offline_time": 18.24546318328889,
+  "new_instance_onboarding_seconds_upper_bound": 1483.519999999553,
+  "prior_expense_upper_bound": 19.020190294399768,
+  "protection_baseline_yuan": 25.0,
+  "protection_baseline_is_actual_bill": false,
+  "baseline_note": "Conservative upper bound including possible old-instance charges during the new two-hour window; not a platform bill",
+  "planned_new_gpu_cost_max_yuan": 3.76,
+  "reused_image_torch": "2.8.0+cu128",
+  "runtime_patch_sha256": "51058ddd90c457f48d221ab8fe1d5ed756e4518583370db4b9c14d1d7923c59c"
+}

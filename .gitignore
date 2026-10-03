@@ -1,0 +1,12 @@
+**/.venv/
+**/.rvc-venv/
+**/.voice-venv/
+**/.cloud-access/
+**/__pycache__/
+**/.pytest_cache/
+*.pyc
+*.pt
+*.pth
+*.bin
+*.npy
+*.partial

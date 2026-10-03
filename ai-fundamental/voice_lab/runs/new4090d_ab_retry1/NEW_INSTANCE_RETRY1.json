@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-02T16:14:36.591249+00:00",
+  "previous_launcher_pid": 2300,
+  "previous_pipeline_status": "failed before model updates",
+  "reason": "Finite 29-frame tail falsely rejected by own arbitrary 32-frame validation; upstream bucket length rule retained",
+  "before_sha256": "768a9c799c6f78c9f6366cf5d5079703a35e0aec947cdcec7bc160dc23827b2b",
+  "after_sha256": "f4deb51b77443ee9f0871794f1a9eb2dc0526ca67f50ca674168eceeede09ec6",
+  "upstream_changed": false,
+  "remaining_hours": 1.6679467213888888,
+  "spent_protection_baseline": 25.62426016378889,
+  "actual_platform_bill": false,
+  "deadline_utc": "2026-10-02T17:54:41.199446+00:00",
+  "failure_archive": "/root/autodl-tmp/voice-self-compare-e64531a3/runs/new4090d_ab_failed_evidence.zip",
+  "new_launcher_pid": 12346
+}

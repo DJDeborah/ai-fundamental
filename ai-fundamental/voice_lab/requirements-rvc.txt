@@ -1,0 +1,14 @@
+numpy==1.26.4
+scipy==1.13.1
+soundfile==0.13.1
+librosa==0.10.2.post1
+transformers==4.49.0
+praat-parselmouth==0.4.5
+faiss-cpu==1.10.0
+ffmpeg-python==0.2.0
+av==15.1.0
+tensorboard==2.19.0
+matplotlib==3.9.4
+tqdm==4.67.1
+ipykernel==6.29.5
+pytest==8.3.5

@@ -1,0 +1,1 @@
+{"step": 2, "tokens_seen": 64, "train_loss_rank0": 5.644895553588867, "val_loss": 5.376955568790436, "train_tokens_per_s": 311.1856659862474, "elapsed_s_including_eval": 0.3584087999770418, "world_size": 1, "params": 1115264, "seed": 42, "config": "tiny"}

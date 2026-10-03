@@ -1,0 +1,2 @@
+listener_id,anonymous_sample_id,source_song,naturalness_1_to_5,user_similarity_1_to_5,target_similarity_1_to_5,lyrics_clarity_1_to_5,notes
+listener01,sampleA,heldout_songC,,,,,

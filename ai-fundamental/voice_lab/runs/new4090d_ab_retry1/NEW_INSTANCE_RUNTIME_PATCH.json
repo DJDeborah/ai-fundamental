@@ -1,0 +1,12 @@
+{
+  "files": {
+    "launch_rvc.py": "c5a60dabc06ab3976fffaa6e89ffc7a17f2f6c9a953157209bad780b0ed3a649",
+    "setup_rvc.sh": "a054a2a304a3a5c3c4af86a02047c5d9e5244a9b02a213125c8fa568f04aa042",
+    "cloud_rvc_pipeline.sh": "04b00049052a12882d9f713a48870c9d449e79cbfc441aa63f118b6b4cce5aea",
+    "preflight_rvc.py": "6494a653620c4599b8dac7d5d9c3e094fc01fdc89b6f71b3b75cbe9d62e5d855",
+    "import_rvc_assets.py": "8cf9b17b71d8d9327957fd79b033c73b95299755d83f5054707185de3e6b3ee4",
+    "voicelab/rvc_compare.py": "768a9c799c6f78c9f6366cf5d5079703a35e0aec947cdcec7bc160dc23827b2b",
+    "voicelab/rvc_assets.py": "106466e3dc275e6d0de40c418ed3db8c4feda31102d3229a7c757917863aa11d"
+  },
+  "note": "Wrapper fixes and real-recording CPU preflight; optional image Torch 2.8.0+cu128 shared by both arms; budget includes capped log/download grace."
+}

@@ -1,0 +1,15 @@
+{
+  "counts": {
+    "raw": 1455000,
+    "train": 1416623,
+    "test": 14580,
+    "val": 14396,
+    "exact_duplicate": 7769,
+    "near_duplicate": 1632
+  },
+  "allowed_licenses": [
+    "odc-by"
+  ],
+  "split": "sha256(normalized text) mod 1000: 980/10/10",
+  "min_chars": 20
+}

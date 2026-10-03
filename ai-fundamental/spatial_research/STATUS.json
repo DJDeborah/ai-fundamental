@@ -1,0 +1,23 @@
+{
+  "checked_at_local_date": "2026-10-02",
+  "reference_thread": "01a0f52a-7fb3-74b0-a182-c103509e5847",
+  "remote_root": "/root/autodl-tmp/spatial-research",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "torch": "2.8.0+cu128",
+  "torchvision": "0.23.0+cu128",
+  "cuda_runtime": "12.8",
+  "data_disk_available_at_check": "43G",
+  "queue_demo_cloud_executed": true,
+  "coral_loss_backward_smoke_passed": true,
+  "train_cli_help_passed": true,
+  "notebook_four_code_cells_executed_and_saved": true,
+  "notebook_evidence_screenshot": "jupyter_notebook_result.png",
+  "queue_demo_is_simulated": true,
+  "fcfs_mean_flow_s": 4100,
+  "spt_mean_flow_s": 1900,
+  "both_makespan_s": 4500,
+  "real_image_data_downloaded": false,
+  "real_image_model_trained": false,
+  "next_gate": "User confirmation of VisDA non-commercial research/education and no-redistribution download terms",
+  "evidence_screenshot": "jupyter_queue_result.png"
+}

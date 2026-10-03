@@ -1,0 +1,28 @@
+{
+  "source_sha256": "fce371222a2574d9d1f9449f98ded72b2a428d63469b07bdbe8667544d219e1e",
+  "output_sha256": "e02b895683e7b8338e145191a8720bebdc7387f5f9e1cd4d832d23535e55682b",
+  "estimator": "librosa.pyin",
+  "sr": 22050,
+  "hop_length": 256,
+  "source_stats": {
+    "seconds": 20.0,
+    "peak": 0.6553932428359985,
+    "rms_dbfs": -27.4769548552463,
+    "clipped_fraction": 0.0,
+    "near_silent_fraction": 0.13093197278911564
+  },
+  "converted_stats": {
+    "seconds": 19.98,
+    "peak": 0.6104971170425415,
+    "rms_dbfs": -19.042853600008137,
+    "clipped_fraction": 0.0,
+    "near_silent_fraction": 0.0348012411504475
+  },
+  "duration_ratio": 0.999,
+  "frames_compared": 1721,
+  "joint_voiced_frames": 921,
+  "voiced_unvoiced_disagreement": 0.08483439860546194,
+  "median_abs_pitch_cents": 0.0,
+  "pitch_error_over_50_cents_fraction": 0.023887079261672096,
+  "limitations": "Assumes matching time alignment and dry monophonic vocals; shared voiced frames only. F0 preservation does not measure timbre similarity or naturalness."
+}

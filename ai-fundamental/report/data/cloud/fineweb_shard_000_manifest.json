@@ -1,0 +1,20 @@
+{
+  "dataset": "HuggingFaceFW/fineweb-edu",
+  "config": "sample-10BT",
+  "license_label": "odc-by",
+  "source_url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu/resolve/main/sample/10BT/000_00000.parquet",
+  "input": "/root/autodl-tmp/corpus/fineweb_edu_000.parquet",
+  "input_bytes": 2152819114,
+  "input_sha256": "b1ba7b2ce4cb5ea6ef42dca40263eabb85f37700d01693a68e9b30a31d78e871",
+  "parquet_rows": 726000,
+  "selection": "all rows of this Parquet shard",
+  "max_docs": null,
+  "rows_read": 726000,
+  "saved_documents": 726000,
+  "empty_text_rows": 0,
+  "missing_source_rows": 0,
+  "output": "/root/autodl-tmp/corpus/raw/000.jsonl",
+  "output_bytes": 3720660093,
+  "output_sha256": "82b9972439c895c0a620d5344c5d1dddd03700e4b21d540121a3d4f61c75140e",
+  "converted_at_utc": "2026-10-01T15:58:00.548894+00:00"
+}

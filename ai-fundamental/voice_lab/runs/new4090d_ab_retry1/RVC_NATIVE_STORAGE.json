@@ -1,0 +1,5 @@
+{
+  "native_storage": "/root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/logs",
+  "volume": "new 50GiB data disk",
+  "symlink": false
+}

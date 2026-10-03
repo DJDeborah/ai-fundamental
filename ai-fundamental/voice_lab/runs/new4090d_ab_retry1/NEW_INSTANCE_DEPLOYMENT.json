@@ -1,0 +1,10 @@
+{
+  "archives": {
+    "voice_self_rvc_compare.zip": "e64531a3e6d507720afd806e2043c66fce0953227437783eecf2b837bcb9b0f3",
+    "voice_self_rvc_assets.zip": "7179eedfcbd6a1ed40791efcec5c889154162bfdf5d6380be561125384f87c18",
+    "voice_self_rvc_runtime_fixes_20261002.zip": "8034217c4c2b3feb8b07aa71afce6be451e89043932472d42c33b59142e92bbe"
+  },
+  "original_files_verified": 309,
+  "runtime_files_verified": 6,
+  "actual_training_updates_confirmed": false
+}

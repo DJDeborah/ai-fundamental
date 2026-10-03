@@ -1,0 +1,381 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>清唱模型逐步教程</title><style>
+:root{color-scheme:light;--ink:#18212c;--accent:#175f69;--muted:#53636d}
+*{box-sizing:border-box}body{margin:0;background:#f4f6f5;color:var(--ink);font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif}
+main{max-width:1040px;margin:auto;padding:28px 22px 60px}a{color:var(--accent);text-underline-offset:3px}
+nav{display:flex;gap:18px;flex-wrap:wrap;border-bottom:1px solid #ccd7d7;padding-bottom:14px;margin-bottom:30px}
+h1{font-size:clamp(27px,5vw,40px);line-height:1.25}h2{font-size:24px;margin-top:34px}h3{font-size:19px}
+.eyebrow{font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:700}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin:24px 0}
+.card,.panel{background:white;border:1px solid #d5dfdf;border-radius:14px;padding:22px}.card h2,.card h3{margin-top:0}
+audio{display:block;width:100%;margin-top:16px}.tag{font-size:12px;display:inline-block;border-radius:5px;background:#e7f0ef;padding:3px 8px}
+.button{display:inline-block;padding:9px 15px;border:1px solid #175f69;border-radius:8px;background:#175f69;color:white;text-decoration:none;margin:6px 8px 6px 0}
+.secondary{background:white;color:var(--accent)}summary{cursor:pointer;font-weight:600}details{margin-top:25px}
+table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:14px;margin:22px 0}th,td{text-align:left;border:1px solid #cbd5d5;padding:9px 12px}
+th{background:#e7efee}pre{overflow:auto;padding:16px;background:#e8eeed;border-radius:9px;font-size:13px}code{font-family:Consolas,monospace;font-size:.9em}
+img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-left:16px;color:var(--muted)}footer{margin-top:44px;border-top:1px solid #ccd7d7;padding-top:16px;font-size:13px;color:var(--muted)}
+</style></head>
+<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="_1">清唱模型：从文件到试听的深度拆解</h1>
+<p>本教程对应你这次的真实实验。训练输出最终保存到本机 <code>voice_lab/runs/new4090d_ab_retry1</code>；真实完成状态以该目录 <code>comparison.json</code> 为准。</p>
+<h2 id="1">1. 先明确输入和输出</h2>
+<p>这次模型接收一段已经唱好的人声，生成目标音色的人声。输入提供歌词、旋律、节奏。只用你的录音训练，因此第一次测试是“未见过的你 → 重建你的音色”。另一位授权歌者 → 你的音色，需要另外准备输入才能验证。</p>
+<p>它没有文字聊天界面。界面是音频播放器、评分表和转换命令。权重文件 <code>.pth</code> 不能直接双击播放；<code>.wav</code> 才是可播放的声音。</p>
+<h2 id="2">2. 术语全称与具体作用</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>全称</th>
+<th>用熟悉的话解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RVC</td>
+<td>Retrieval-based Voice Conversion</td>
+<td>基于检索的声音转换。本轮检索比例为 0，避免额外索引影响对照</td>
+</tr>
+<tr>
+<td>SVC</td>
+<td>Singing Voice Conversion</td>
+<td>歌声音色转换，保留内容与旋律，更换音色</td>
+</tr>
+<tr>
+<td>HuBERT</td>
+<td>Hidden-Unit BERT</td>
+<td>将声音压成内容特征；BERT 为 Bidirectional Encoder Representations from Transformers</td>
+</tr>
+<tr>
+<td>F0</td>
+<td>Fundamental Frequency</td>
+<td>基频，主要对应唱出的音高</td>
+</tr>
+<tr>
+<td>RMVPE</td>
+<td>Robust Model for Vocal Pitch Estimation</td>
+<td>提取人声音高的模型；与 HuBERT 一样，两组共用冻结预训练权重</td>
+</tr>
+<tr>
+<td>G / D</td>
+<td>Generator / Discriminator</td>
+<td>生成器输出声音；判别器学习区分生成片段和真实片段</td>
+</tr>
+<tr>
+<td>GAN</td>
+<td>Generative Adversarial Network</td>
+<td>生成对抗网络，G 和 D 通过各自目标共同训练</td>
+</tr>
+<tr>
+<td>scratch</td>
+<td>随机初始化训练</td>
+<td>本轮仅转换 G/D 从随机数开始，内容与音高提取器仍来自预训练</td>
+</tr>
+<tr>
+<td>fine-tuning</td>
+<td>微调</td>
+<td>从官方 G/D 已学到的权重开始，用你的录音继续更新</td>
+</tr>
+<tr>
+<td>tensor</td>
+<td>张量</td>
+<td>多维数字数组。例如内容特征是“时间帧 × 768 个数字”</td>
+</tr>
+<tr>
+<td>parameter / weight</td>
+<td>参数 / 权重</td>
+<td>模型里可学习的数字，optimizer 每步修改它们</td>
+</tr>
+<tr>
+<td>optimizer</td>
+<td>优化器</td>
+<td>根据梯度修改参数；本轮使用 AdamW</td>
+</tr>
+<tr>
+<td>AdamW</td>
+<td>Adam with decoupled Weight Decay</td>
+<td>自适应梯度优化，并把权重衰减与梯度更新分开处理</td>
+</tr>
+<tr>
+<td>batch</td>
+<td>批次</td>
+<td>一次送入模型的片段集合，这里每批 4 个</td>
+</tr>
+<tr>
+<td>step</td>
+<td>更新步</td>
+<td>一批完成一次 D 更新、一次 G 更新；两组目标各 1000 次</td>
+</tr>
+<tr>
+<td>epoch</td>
+<td>数据轮次</td>
+<td>遍历训练加载器一轮；长度分桶与补齐会造成部分片段重复</td>
+</tr>
+<tr>
+<td>checkpoint</td>
+<td>模型快照</td>
+<td>某一更新时刻保存的权重，例如 step500</td>
+</tr>
+<tr>
+<td>seed</td>
+<td>随机种子</td>
+<td>控制随机数起点；这里 1234，不代表 GPU 逐位完全一致</td>
+</tr>
+<tr>
+<td>FP32</td>
+<td>32-bit Floating Point</td>
+<td>32 位浮点数；本次两组相同精度，避免半精度跳步</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Graphics Processing Unit</td>
+<td>适合大量并行数字计算；本轮是 RTX 4090 D</td>
+</tr>
+<tr>
+<td>CUDA</td>
+<td>Compute Unified Device Architecture</td>
+<td>NVIDIA GPU 计算平台，PyTorch 通过它在显卡上计算</td>
+</tr>
+<tr>
+<td>VRAM</td>
+<td>Video Random Access Memory</td>
+<td>显存，存放模型、梯度、激活和临时数组；不同统计口径数值不同</td>
+</tr>
+<tr>
+<td>PCM</td>
+<td>Pulse-Code Modulation</td>
+<td>脉冲编码调制；PCM16 WAV 存储 16 位量化的波形样本</td>
+</tr>
+<tr>
+<td>sample rate</td>
+<td>采样率</td>
+<td>每秒记录多少波形数字；40 kHz = 40,000 个/秒</td>
+</tr>
+<tr>
+<td>frame / hop</td>
+<td>帧 / 帧移</td>
+<td>分析声音时的滑动窗口及每次前进的样本数</td>
+</tr>
+<tr>
+<td>STFT</td>
+<td>Short-Time Fourier Transform</td>
+<td>短时傅里叶变换，把每个时间窗口转为频率能量分布</td>
+</tr>
+<tr>
+<td>mel</td>
+<td>梅尔频率尺度</td>
+<td>频率的一种感知尺度；mel 重建 loss 比较生成与真实的声学特征</td>
+</tr>
+<tr>
+<td>KL</td>
+<td>Kullback–Leibler divergence</td>
+<td>KL 散度，训练中约束潜在分布之间的差异</td>
+</tr>
+<tr>
+<td>F0 cent</td>
+<td>音分</td>
+<td>100 cent 为平均律半音，1200 cent 为八度，用于比较音高误差</td>
+</tr>
+<tr>
+<td>RMS</td>
+<td>Root Mean Square</td>
+<td>均方根，描述波形幅度；匿名试听做响度近似匹配</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>Secure Shell</td>
+<td>安全远程终端，连接你的 AutoDL 云端实例</td>
+</tr>
+<tr>
+<td>CLI</td>
+<td>Command-Line Interface</td>
+<td>命令行界面，例如终端中运行转换命令</td>
+</tr>
+<tr>
+<td>GUI</td>
+<td>Graphical User Interface</td>
+<td>图形界面，例如带播放按钮的试听页面</td>
+</tr>
+<tr>
+<td>SHA256</td>
+<td>Secure Hash Algorithm 256-bit</td>
+<td>文件指纹，核对上传/下载后字节是否一致</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3">3. 数据阶段：实际做了什么，得到什么</h2>
+<h3 id="31">3.1 读取原录音</h3>
+<p>输入是你本机清唱目录里的 6 个 M4A。转成单声道、40 kHz、PCM16 WAV，原始文件不改动。</p>
+<p>结果：<code>data/self_rvc_v1</code> 中有 6 个 WAV 和 <code>manifest.json</code>。清唱训练无需主动添加伴奏或噪声。含伴奏/噪声输入是否稳健是后续单独测试，不能混进这次干净条件对照后再归因于初始化方式。</p>
+<h3 id="32">3.2 按整段录音划分</h3>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th>文件尾号</th>
+<th style="text-align: right;">时长</th>
+<th>谁可以使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>train</td>
+<td>1234、19、57、93</td>
+<td style="text-align: right;">311.38 秒</td>
+<td>参数更新使用</td>
+</tr>
+<tr>
+<td>val</td>
+<td>63</td>
+<td style="text-align: right;">33.64 秒</td>
+<td>保留；本次没有用它选择 checkpoint</td>
+</tr>
+<tr>
+<td>test</td>
+<td>92</td>
+<td style="text-align: right;">34.24 秒</td>
+<td>仅最终评估，固定前 20 秒</td>
+</tr>
+</tbody>
+</table>
+<p>先划分录音，再切片。这样不会把同一段录音相邻片段同时放到训练和测试里。</p>
+<h3 id="33">3.3 共同预处理与特征提取</h3>
+<p>仅 train 经上游高通、静音切片、归一化，一共生成 62 个切片。每个切片得到内容特征、音高数组、量化音高数组。A/B 复用同一份特征，不分别随机洗一次数据。</p>
+<p>结果：云端上游 <code>logs/..._shared/</code> 里有 <code>0_gt_wavs</code>、<code>1_16k_wavs</code>、<code>3_feature768</code>、<code>2a_f0</code>、<code>2b-f0nsf</code>。<code>features.json</code> 记录它们的 SHA256。极短尾片段可以是合法提取结果；上游长度分桶决定是否参与训练。</p>
+<h2 id="4">4. 训练阶段：一“步”里面发生什么</h2>
+<ol>
+<li>读取同一 batch 的内容特征、F0 与真实人声。</li>
+<li>G 根据内容、音高和 speaker id 生成波形片段。</li>
+<li>D 对真实/生成波形给出预测，计算判别器 loss；反向传播，更新 D。</li>
+<li>计算 G 的对抗、特征匹配、mel 重建、KL 等目标；反向传播，更新 G。</li>
+<li>确认原始 loss 和梯度有限，记录实际更新计数。</li>
+<li>固定步数保存权重；1000 次真实更新完成后停止该组。</li>
+</ol>
+<p>A/B 的区别发生在第 0 步：A 的 G/D 随机，B 的 G/D 已加载固定官方预训练。共享的 HuBERT/RMVPE 不更新。B 从公开数据学到的先验不算“你的数据”，但它属于额外预训练成本。</p>
+<p>结果：两组各自有 <code>start.json</code>（起始配置）、<code>metrics.jsonl</code>（真实步数/原始 loss/显存）、<code>summary.json</code>（实际完成状态）、<code>checkpoints/step0.pth</code>、<code>step500.pth</code>、<code>step1000.pth</code> 以及最终 <code>model.pth</code>。原生完整 G/D 与优化器 checkpoint 另保留在云端上游 <code>logs</code>；这里的 <code>.pth</code> 推理快照不是完整断点续训包。</p>
+<h2 id="5-cuda">5. “CUDA 测试通过”应该看什么</h2>
+<p><code>torch.cuda.is_available() == True</code> 只表示程序能找到 CUDA。证据强度依次为：</p>
+<table>
+<thead>
+<tr>
+<th>看到的结果</th>
+<th>实际能说明什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nvidia-smi</code> 显示 4090 D</td>
+<td>云端能识别显卡</td>
+</tr>
+<tr>
+<td><code>torch.cuda.is_available()</code> 为 True</td>
+<td>PyTorch 能调用 CUDA</td>
+</tr>
+<tr>
+<td><code>start.json</code> 的 device、torch、cuda runtime 正确</td>
+<td>训练初始化到了正确设备</td>
+</tr>
+<tr>
+<td><code>metrics.jsonl</code> 中 step=1、10、20 持续增长，loss 有限</td>
+<td>已发生真实 G/D 参数更新</td>
+</tr>
+<tr>
+<td>两组 summary 的 complete 与相同实际步数</td>
+<td>本轮更新协议完成</td>
+</tr>
+<tr>
+<td>输出 WAV 能解码、时长正确、实际听过</td>
+<td>推理与声音体验可以继续评估</td>
+</tr>
+</tbody>
+</table>
+<p>任何一项都不能单独证明音质好。看 loss 降低也不能替代试听。</p>
+<h2 id="6">6. 现在怎么实操试听，界面长什么样</h2>
+<h3 id="_2">第一步：找到本机结果</h3>
+<p>打开 <code>voice_lab/runs/new4090d_ab_retry1</code>。若还有下载进行中，等 <code>DOWNLOAD_RECEIPT.json</code> 出现，表示 ZIP 已下载、SHA256 相同并完成解压。</p>
+<p>预期结果：有 <code>LISTEN.html</code>、<code>listening</code>、<code>blind</code>、两个模型目录、报告及评分表。<code>LISTEN.html</code> 是取回后在本机生成的页面，不需要租 GPU 播放。</p>
+<h3 id="_3">第二步：打开试听页面</h3>
+<p>双击 <code>LISTEN.html</code>，用浏览器打开。界面有三个音频播放控件：测试原声、匿名 X、匿名 Y。点击三角形播放；可拖动进度条、暂停和下载 WAV。</p>
+<p>预期结果：听到固定的 20 秒测试内容及两种重建。你的音量、耳机和播放设置保持一致。</p>
+<h3 id="_4">第三步：记录评分</h3>
+<p>用 Excel 打开 <code>listening_scores.csv</code>，填写 listener 和 X/Y 的四项 1–5 分。每项备注具体问题，例如“某个字不清楚”“气声变成杂音”“高音尾音不稳”。保存时保留 CSV 格式。</p>
+<p>预期结果：得到个人盲评记录。一个人一段音频的评分只描述这次体验；没有统计推广结论。</p>
+<h3 id="_5">第四步：揭晓</h3>
+<p>完成评分后展开页面“揭晓身份与原始输出”，打开 <code>blind_key.json</code>。再听 A/B 原始 WAV；匿名版做过 RMS 匹配和峰值限制，原始版保持模型直接输出。</p>
+<p>预期结果：能把听感与初始化方式对应起来。未评分前不会宣布胜者。</p>
+<h3 id="_6">第五步：看报告与证据</h3>
+<p>打开 <code>MEASURED_REPORT.md</code> 和 <code>training_curves.png</code>。报告列出实际步数、时间、峰值显存、F0 误差、数据划分与失败史。打开 JSON/JSONL 可以逐条核对数字。</p>
+<p>预期结果：了解每个结论来自哪个文件，以及哪些问题还没有测。</p>
+<h2 id="7">7. 将另一段人声转换成你的音色</h2>
+<p>本次已经训练过；此操作使用已保存权重，<strong>无需重新训练</strong>。准备获授权、未参与本次训练的 10–20 秒干净人声 WAV。音频提供歌词/旋律；模型负责转换音色。</p>
+<p>后续在确认价格与新运行预算后，有卡开机，上传新的 WAV 到 <code>/root/autodl-tmp/another_voice.wav</code>。进入你现有项目终端，运行一次推理：</p>
+<pre><code class="language-bash">cd /root/autodl-tmp/voice-self-compare-e64531a3
+.rvc-venv/bin/python voicelab/rvc_infer_entry.py --model runs/new4090d_ab_retry1/finetune/model.pth --input /root/autodl-tmp/another_voice.wav --output /root/autodl-tmp/converted_to_me_B.wav --speaker-id 0 --pitch 0 --index-rate 0 --rms-mix-rate 1 --protect 0.33
+</code></pre>
+<p>A 的同条件对照把 <code>finetune</code> 改为 <code>scratch</code>，输出改为 <code>converted_to_me_A.wav</code>。下载两个输出 WAV 试听。模型、代码、公共特征权重仍在现有云端项目，无须再次上传原语言模型。若换机器，应复制本项目、公共资产、运行时修复及已训练的两套权重，核对哈希并恢复相同依赖。</p>
+<p>移调 <code>pitch</code> 的单位是半音；本轮为 0。先保持本次设置再单独探索变调，避免同时改多个变量。本人一个 speaker 的模型没有“两位歌者之间音色比例”滑杆；这需要新的模型与数据实验。</p>
+<h2 id="8">8. 学代码的具体顺序</h2>
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>文件 / 函数</th>
+<th>学完应该能回答</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>voicelab/rvc_data.py</code></td>
+<td>如何解码、重采样、分整录音并验证哈希</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>voicelab/rvc_assets.py</code></td>
+<td>哪些模型是公共冻结特征，哪些是 B 的起始 G/D</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>preflight_rvc.py</code></td>
+<td>为什么导入成功还要用真实 WAV 验证预处理输出</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>voicelab/rvc_compare.py</code></td>
+<td>如何保证共同特征、相同 batch/seed、固定测试输入</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>upstream/RVC/train/train.py</code></td>
+<td>一批数据如何先更新 D，再更新 G</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>voicelab/rvc_bridge.py</code></td>
+<td>怎样记录真实更新、未截断 loss，保存 0/500/1000 权重</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>voicelab/rvc_infer_entry.py</code></td>
+<td>权重如何加载，输入人声如何变成输出 WAV</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>voicelab/inference.py</code></td>
+<td>音分误差怎样计算，为什么它不代表自然度</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>launch_rvc.py</code></td>
+<td>限时退出、下载窗口、平台关机与真实账单的区别</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>fetch_rvc_results.py</code>、<code>render_rvc_report.py</code></td>
+<td>如何安全取回实测产物、生成曲线/播放器/报告</td>
+</tr>
+</tbody>
+</table>
+<p>可以边读边打开本轮 JSON 与 WAV，对照输入输出。不要在已完成的结果目录里重复启动训练；实验目录是证据，新的实验应使用新目录和独立预算。</p>
+<h2 id="9">9. 这次小数据试验能说明到哪一步</h2>
+<p>能检验：两种初始化是否能在你这批数据上完成真实更新、固定片段重建怎样、时间/显存/音高指标怎样。不能检验：任意歌者效果、实时延迟、多卡增益、商业音质、任意用户零样本音色混合。</p>
+<p>要加强对照，依次扩展跨歌者授权输入、更多音域/唱法、多个随机种子、多首测试歌曲及多听者盲评。每一步都保留固定输入、公共控制变量与真实失败证据。</p></article>
+<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>

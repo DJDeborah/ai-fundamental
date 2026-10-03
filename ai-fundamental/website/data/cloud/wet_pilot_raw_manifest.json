@@ -1,0 +1,23 @@
+{
+  "source_url": "https://data.commoncrawl.org/crawl-data/CC-MAIN-2025-43/segments/1759648357851.76/wet/CC-MAIN-20251005114239-20251005144239-00000.warc.wet.gz",
+  "source_file": "/root/autodl-tmp/corpus/CC-MAIN-2025-43-first.warc.wet.gz",
+  "source_bytes": 83976910,
+  "source_sha256": "18f02680916e11cac33ed41e89920f39c9e8eb607eb479544d35917e5bdffb7f",
+  "format": "Common Crawl WET, extracted plaintext in WARC records",
+  "license_label": "commoncrawl-access-terms (does not license individual webpage content)",
+  "selection": "first 10000 conversion records, then eng language filter",
+  "max_body_bytes": 2000000,
+  "counts": {
+    "warc_records_read": 10001,
+    "non_conversion": 1,
+    "conversion_records_read": 10000,
+    "replacement_characters": 2151,
+    "saved": 6309,
+    "language_excluded": 3687,
+    "short": 4
+  },
+  "output": "/root/autodl-tmp/corpus/wet_pilot/raw.jsonl",
+  "output_bytes": 50703482,
+  "output_sha256": "989ec3c0877b8ea4222c0ddc270b46b72216ce60badc8f60f1908f3627853b9b",
+  "converted_at_utc": "2026-10-01T16:24:42.488694+00:00"
+}

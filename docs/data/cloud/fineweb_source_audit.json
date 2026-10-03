@@ -1,0 +1,38 @@
+{
+  "shards": [
+    {
+      "path": "/root/autodl-tmp/corpus/fineweb_edu_000.parquet",
+      "rows": 726000
+    },
+    {
+      "path": "/root/autodl-tmp/corpus/fineweb_edu_001.parquet",
+      "rows": 729000
+    }
+  ],
+  "total_rows": 1455000,
+  "languages": {
+    "en": 1455000
+  },
+  "source_reported_token_count_sum": 1508672681,
+  "token_count": {
+    "count": 1455000,
+    "mean": 1036.8884405498281,
+    "p01": 105.0,
+    "p50": 631.0,
+    "p99": 7847.0
+  },
+  "language_score": {
+    "count": 1455000,
+    "mean": 0.9360962787199266,
+    "p01": 0.7603065901994706,
+    "p50": 0.9459705054759979,
+    "p99": 0.9872325074672699
+  },
+  "quality_score": {
+    "count": 1455000,
+    "mean": 3.0057671928694156,
+    "p01": 2.515625,
+    "p50": 2.90625,
+    "p99": 4.125
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "utc": "2026-10-02T16:26:58.705177+00:00",
+  "arms": {
+    "scratch": {
+      "status": "complete",
+      "stop_reason": "steps",
+      "steps": 1000,
+      "wall_s": 320.7027753200382,
+      "model": "/root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/weights/self_20261003_001500_scratch_step1000.pth",
+      "model_sha256": "814f4116777e12ae41cb13ec5f575f7892c5856fc272193a01b2939a76244486",
+      "final_train_losses": {
+        "loss_gen_all": 43.52688980102539,
+        "loss_disc": 3.5284299850463867,
+        "loss_gen": 4.492897033691406,
+        "loss_fm": 12.694780349731445,
+        "loss_mel": 25.403051376342773,
+        "loss_kl": 0.9361599683761597
+      },
+      "quality_claim": "Training losses are not perceptual quality scores; compare held-out WAVs."
+    },
+    "finetune": {
+      "status": "complete",
+      "stop_reason": "steps",
+      "steps": 1000,
+      "wall_s": 313.8330159187317,
+      "model": "/root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/weights/self_20261003_001500_finetune_step1000.pth",
+      "model_sha256": "29a6ce3a3e3a19a0fca6ad4efdb899cb1544bd410388365ac6179343a8cae25e",
+      "final_train_losses": {
+        "loss_gen_all": 32.84518051147461,
+        "loss_disc": 3.7531943321228027,
+        "loss_gen": 2.824586868286133,
+        "loss_fm": 11.78653621673584,
+        "loss_mel": 17.37866973876953,
+        "loss_kl": 0.8553873896598816
+      },
+      "quality_claim": "Training losses are not perceptual quality scores; compare held-out WAVs."
+    }
+  },
+  "equal_steps_complete": true,
+  "data_seconds": {
+    "train": 311.376025,
+    "val": 33.64135,
+    "test": 34.238675
+  },
+  "song_grouping_confirmed": true,
+  "perceptual_winner": null,
+  "limitations": [
+    "One seed and one singer; learning pilot only",
+    "Same-singer holdout reconstruction does not test conversion from another singer",
+    "No blind listening scores supplied yet"
+  ],
+  "objective_metrics": {
+    "scratch": {
+      "source_sha256": "fce371222a2574d9d1f9449f98ded72b2a428d63469b07bdbe8667544d219e1e",
+      "output_sha256": "1df4a771fab9e9fc5c93685cd5942c6557527472b684bd8833d0c496f9f9e96d",
+      "estimator": "librosa.pyin",
+      "sr": 22050,
+      "hop_length": 256,
+      "source_stats": {
+        "seconds": 20.0,
+        "peak": 0.6553932428359985,
+        "rms_dbfs": -27.4769548552463,
+        "clipped_fraction": 0.0,
+        "near_silent_fraction": 0.13093197278911564
+      },
+      "converted_stats": {
+        "seconds": 19.98,
+        "peak": 0.2508496344089508,
+        "rms_dbfs": -31.262837387383357,
+        "clipped_fraction": 0.0,
+        "near_silent_fraction": 0.04760315871426982
+      },
+      "duration_ratio": 0.999,
+      "frames_compared": 1721,
+      "joint_voiced_frames": 423,
+      "voiced_unvoiced_disagreement": 0.5037768739105172,
+      "median_abs_pitch_cents": 3050.0,
+      "pitch_error_over_50_cents_fraction": 1.0,
+      "limitations": "Assumes matching time alignment and dry monophonic vocals; shared voiced frames only. F0 preservation does not measure timbre similarity or naturalness."
+    },
+    "finetune": {
+      "source_sha256": "fce371222a2574d9d1f9449f98ded72b2a428d63469b07bdbe8667544d219e1e",
+      "output_sha256": "e02b895683e7b8338e145191a8720bebdc7387f5f9e1cd4d832d23535e55682b",
+      "estimator": "librosa.pyin",
+      "sr": 22050,
+      "hop_length": 256,
+      "source_stats": {
+        "seconds": 20.0,
+        "peak": 0.6553932428359985,
+        "rms_dbfs": -27.4769548552463,
+        "clipped_fraction": 0.0,
+        "near_silent_fraction": 0.13093197278911564
+      },
+      "converted_stats": {
+        "seconds": 19.98,
+        "peak": 0.6104971170425415,
+        "rms_dbfs": -19.042853600008137,
+        "clipped_fraction": 0.0,
+        "near_silent_fraction": 0.0348012411504475
+      },
+      "duration_ratio": 0.999,
+      "frames_compared": 1721,
+      "joint_voiced_frames": 921,
+      "voiced_unvoiced_disagreement": 0.08483439860546194,
+      "median_abs_pitch_cents": 0.0,
+      "pitch_error_over_50_cents_fraction": 0.023887079261672096,
+      "limitations": "Assumes matching time alignment and dry monophonic vocals; shared voiced frames only. F0 preservation does not measure timbre similarity or naturalness."
+    }
+  }
+}

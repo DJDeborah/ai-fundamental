@@ -1,0 +1,15 @@
+[F0 extraction] Pending: 62
+Loading RMVPE model
+[F0 extraction] Progress: 1/62 | Success: 1 | Skipped: 0 | 0_0.wav
+[F0 extraction] Progress: 6/62 | Success: 6 | Skipped: 0 | 1_13.wav
+[F0 extraction] Progress: 12/62 | Success: 12 | Skipped: 0 | 2_0.wav
+[F0 extraction] Progress: 18/62 | Success: 18 | Skipped: 0 | 2_14.wav
+[F0 extraction] Progress: 24/62 | Success: 24 | Skipped: 0 | 2_2.wav
+[F0 extraction] Progress: 30/62 | Success: 30 | Skipped: 0 | 2_5.wav
+[F0 extraction] Progress: 36/62 | Success: 36 | Skipped: 0 | 3_11.wav
+[F0 extraction] Progress: 42/62 | Success: 42 | Skipped: 0 | 3_22.wav
+[F0 extraction] Progress: 48/62 | Success: 48 | Skipped: 0 | 3_31.wav
+[F0 extraction] Progress: 54/62 | Success: 54 | Skipped: 0 | 3_43.wav
+[F0 extraction] Progress: 60/62 | Success: 60 | Skipped: 0 | 3_6.wav
+[F0 extraction] Progress: 62/62 | Success: 62 | Skipped: 0 | 3_9.wav
+[F0 extraction] Completed | Success: 62 | Skipped: 0 | Failed: 0

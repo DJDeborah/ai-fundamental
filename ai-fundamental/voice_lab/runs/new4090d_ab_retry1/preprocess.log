@@ -1,0 +1,11 @@
+[Data slicing] Started
+[Data slicing] Pending: 4 | Processes: 4
+[Data slicing] Progress: 3/4 | r003.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Progress: 1/4 | r001.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Progress: 2/4 | r002.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Progress: 4/4 | r006.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Completed

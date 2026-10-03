@@ -1,0 +1,695 @@
+{"utc_started": "2026-10-02T16:14:37.250643+00:00", "budget_yuan": 50.0, "hourly_rate_yuan": 1.88, "spent_before_launch_yuan": 25.62426016378889, "cap_seconds": 5884.608197, "reserve_yuan": 5.0, "billing_note": "Estimate from supplied rate; excludes unreported prior charges/storage/fees. Confirm platform bill and shutdown status."}
+Looking in indexes: http://mirrors.aliyun.com/pypi/simple
+Requirement already satisfied: pip in ./.rvc-venv/lib/python3.12/site-packages (26.2.1)
+Looking in indexes: https://download.pytorch.org/whl/cu128
+Requirement already satisfied: torchaudio==2.8.0 in ./.rvc-venv/lib/python3.12/site-packages (2.8.0+cu128)
+Looking in indexes: http://mirrors.aliyun.com/pypi/simple
+Requirement already satisfied: numpy==1.26.4 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 1)) (1.26.4)
+Requirement already satisfied: scipy==1.13.1 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 2)) (1.13.1)
+Requirement already satisfied: soundfile==0.13.1 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 3)) (0.13.1)
+Requirement already satisfied: librosa==0.10.2.post1 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 4)) (0.10.2.post1)
+Requirement already satisfied: transformers==4.49.0 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 5)) (4.49.0)
+Requirement already satisfied: praat-parselmouth==0.4.5 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 6)) (0.4.5)
+Requirement already satisfied: faiss-cpu==1.10.0 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 7)) (1.10.0)
+Requirement already satisfied: ffmpeg-python==0.2.0 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 8)) (0.2.0)
+Requirement already satisfied: av==15.1.0 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 9)) (15.1.0)
+Requirement already satisfied: tensorboard==2.19.0 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 10)) (2.19.0)
+Requirement already satisfied: matplotlib==3.9.4 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 11)) (3.9.4)
+Requirement already satisfied: tqdm==4.67.1 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 12)) (4.67.1)
+Requirement already satisfied: ipykernel==6.29.5 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 13)) (6.29.5)
+Requirement already satisfied: pytest==8.3.5 in ./.rvc-venv/lib/python3.12/site-packages (from -r requirements-rvc.txt (line 14)) (8.3.5)
+Requirement already satisfied: cffi>=1.0 in /root/miniconda3/lib/python3.12/site-packages (from soundfile==0.13.1->-r requirements-rvc.txt (line 3)) (1.16.0)
+Requirement already satisfied: audioread>=2.1.9 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (3.1.0)
+Requirement already satisfied: scikit-learn>=0.20.0 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (1.9.1)
+Requirement already satisfied: joblib>=0.14 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (1.6.0)
+Requirement already satisfied: decorator>=4.3.0 in /root/miniconda3/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (5.2.1)
+Requirement already satisfied: numba>=0.51.0 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (0.68.0)
+Requirement already satisfied: pooch>=1.1 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (1.9.0)
+Requirement already satisfied: soxr>=0.3.2 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (1.1.0)
+Requirement already satisfied: typing-extensions>=4.1.1 in /root/miniconda3/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (4.14.1)
+Requirement already satisfied: lazy-loader>=0.1 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (0.6)
+Requirement already satisfied: msgpack>=1.0 in ./.rvc-venv/lib/python3.12/site-packages (from librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (1.2.3)
+Requirement already satisfied: filelock in /root/miniconda3/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (3.18.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.26.0 in ./.rvc-venv/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (0.36.2)
+Requirement already satisfied: packaging>=20.0 in /root/miniconda3/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (23.2)
+Requirement already satisfied: pyyaml>=5.1 in /root/miniconda3/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./.rvc-venv/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (2026.9.29)
+Requirement already satisfied: requests in /root/miniconda3/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (2.31.0)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./.rvc-venv/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (0.21.4)
+Requirement already satisfied: safetensors>=0.4.1 in ./.rvc-venv/lib/python3.12/site-packages (from transformers==4.49.0->-r requirements-rvc.txt (line 5)) (0.8.0)
+Requirement already satisfied: future in ./.rvc-venv/lib/python3.12/site-packages (from ffmpeg-python==0.2.0->-r requirements-rvc.txt (line 8)) (1.0.0)
+Requirement already satisfied: absl-py>=0.4 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (2.3.1)
+Requirement already satisfied: grpcio>=1.48.2 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (1.74.0)
+Requirement already satisfied: markdown>=2.6.8 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (3.8.2)
+Requirement already satisfied: protobuf!=4.24.0,>=3.19.6 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (6.31.1)
+Requirement already satisfied: setuptools>=41.0.0 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (69.5.1)
+Requirement already satisfied: six>1.9 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (1.17.0)
+Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (0.7.2)
+Requirement already satisfied: werkzeug>=1.0.1 in /root/miniconda3/lib/python3.12/site-packages (from tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (3.1.3)
+Requirement already satisfied: contourpy>=1.0.1 in /root/miniconda3/lib/python3.12/site-packages (from matplotlib==3.9.4->-r requirements-rvc.txt (line 11)) (1.3.3)
+Requirement already satisfied: cycler>=0.10 in /root/miniconda3/lib/python3.12/site-packages (from matplotlib==3.9.4->-r requirements-rvc.txt (line 11)) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in /root/miniconda3/lib/python3.12/site-packages (from matplotlib==3.9.4->-r requirements-rvc.txt (line 11)) (4.59.0)
+Requirement already satisfied: kiwisolver>=1.3.1 in /root/miniconda3/lib/python3.12/site-packages (from matplotlib==3.9.4->-r requirements-rvc.txt (line 11)) (1.4.8)
+Requirement already satisfied: pillow>=8 in /root/miniconda3/lib/python3.12/site-packages (from matplotlib==3.9.4->-r requirements-rvc.txt (line 11)) (11.3.0)
+Requirement already satisfied: pyparsing>=2.3.1 in /root/miniconda3/lib/python3.12/site-packages (from matplotlib==3.9.4->-r requirements-rvc.txt (line 11)) (3.2.3)
+Requirement already satisfied: python-dateutil>=2.7 in /root/miniconda3/lib/python3.12/site-packages (from matplotlib==3.9.4->-r requirements-rvc.txt (line 11)) (2.9.0.post0)
+Requirement already satisfied: comm>=0.1.1 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.2.3)
+Requirement already satisfied: debugpy>=1.6.5 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (1.8.16)
+Requirement already satisfied: ipython>=7.23.1 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (9.4.0)
+Requirement already satisfied: jupyter-client>=6.1.12 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (8.6.3)
+Requirement already satisfied: jupyter-core!=5.0.*,>=4.12 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (5.8.1)
+Requirement already satisfied: matplotlib-inline>=0.1 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.1.7)
+Requirement already satisfied: nest-asyncio in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (1.6.0)
+Requirement already satisfied: psutil in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (7.0.0)
+Requirement already satisfied: pyzmq>=24 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (27.0.1)
+Requirement already satisfied: tornado>=6.1 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (6.5.1)
+Requirement already satisfied: traitlets>=5.4.0 in /root/miniconda3/lib/python3.12/site-packages (from ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (5.14.3)
+Requirement already satisfied: iniconfig in ./.rvc-venv/lib/python3.12/site-packages (from pytest==8.3.5->-r requirements-rvc.txt (line 14)) (2.3.0)
+Requirement already satisfied: pluggy<2,>=1.5 in ./.rvc-venv/lib/python3.12/site-packages (from pytest==8.3.5->-r requirements-rvc.txt (line 14)) (1.6.0)
+Requirement already satisfied: fsspec>=2023.5.0 in /root/miniconda3/lib/python3.12/site-packages (from huggingface-hub<1.0,>=0.26.0->transformers==4.49.0->-r requirements-rvc.txt (line 5)) (2025.7.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in ./.rvc-venv/lib/python3.12/site-packages (from huggingface-hub<1.0,>=0.26.0->transformers==4.49.0->-r requirements-rvc.txt (line 5)) (1.6.0)
+Requirement already satisfied: pycparser in /root/miniconda3/lib/python3.12/site-packages (from cffi>=1.0->soundfile==0.13.1->-r requirements-rvc.txt (line 3)) (2.21)
+Requirement already satisfied: ipython-pygments-lexers in /root/miniconda3/lib/python3.12/site-packages (from ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (1.1.1)
+Requirement already satisfied: jedi>=0.16 in /root/miniconda3/lib/python3.12/site-packages (from ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.19.2)
+Requirement already satisfied: pexpect>4.3 in /root/miniconda3/lib/python3.12/site-packages (from ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (4.9.0)
+Requirement already satisfied: prompt_toolkit<3.1.0,>=3.0.41 in /root/miniconda3/lib/python3.12/site-packages (from ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (3.0.51)
+Requirement already satisfied: pygments>=2.4.0 in /root/miniconda3/lib/python3.12/site-packages (from ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (2.19.2)
+Requirement already satisfied: stack_data in /root/miniconda3/lib/python3.12/site-packages (from ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.6.3)
+Requirement already satisfied: wcwidth in /root/miniconda3/lib/python3.12/site-packages (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.2.13)
+Requirement already satisfied: parso<0.9.0,>=0.8.4 in /root/miniconda3/lib/python3.12/site-packages (from jedi>=0.16->ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.8.4)
+Requirement already satisfied: cloudpickle>=3.0 in ./.rvc-venv/lib/python3.12/site-packages (from joblib>=0.14->librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (3.1.2)
+Requirement already satisfied: platformdirs>=2.5 in /root/miniconda3/lib/python3.12/site-packages (from jupyter-core!=5.0.*,>=4.12->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (3.10.0)
+Requirement already satisfied: llvmlite<0.51,>=0.50.0dev0 in ./.rvc-venv/lib/python3.12/site-packages (from numba>=0.51.0->librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (0.50.0)
+Requirement already satisfied: ptyprocess>=0.5 in /root/miniconda3/lib/python3.12/site-packages (from pexpect>4.3->ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.7.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in /root/miniconda3/lib/python3.12/site-packages (from requests->transformers==4.49.0->-r requirements-rvc.txt (line 5)) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /root/miniconda3/lib/python3.12/site-packages (from requests->transformers==4.49.0->-r requirements-rvc.txt (line 5)) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /root/miniconda3/lib/python3.12/site-packages (from requests->transformers==4.49.0->-r requirements-rvc.txt (line 5)) (2.1.0)
+Requirement already satisfied: certifi>=2017.4.17 in /root/miniconda3/lib/python3.12/site-packages (from requests->transformers==4.49.0->-r requirements-rvc.txt (line 5)) (2024.2.2)
+Requirement already satisfied: narwhals>=2.0.1 in ./.rvc-venv/lib/python3.12/site-packages (from scikit-learn>=0.20.0->librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (2.26.0)
+Requirement already satisfied: threadpoolctl>=3.5.0 in ./.rvc-venv/lib/python3.12/site-packages (from scikit-learn>=0.20.0->librosa==0.10.2.post1->-r requirements-rvc.txt (line 4)) (3.7.0)
+Requirement already satisfied: MarkupSafe>=2.1.1 in /root/miniconda3/lib/python3.12/site-packages (from werkzeug>=1.0.1->tensorboard==2.19.0->-r requirements-rvc.txt (line 10)) (3.0.2)
+Requirement already satisfied: executing>=1.2.0 in /root/miniconda3/lib/python3.12/site-packages (from stack_data->ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (2.2.0)
+Requirement already satisfied: asttokens>=2.1.0 in /root/miniconda3/lib/python3.12/site-packages (from stack_data->ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (3.0.0)
+Requirement already satisfied: pure-eval in /root/miniconda3/lib/python3.12/site-packages (from stack_data->ipython>=7.23.1->ipykernel==6.29.5->-r requirements-rvc.txt (line 13)) (0.2.3)
+Installed kernelspec rvc-lab in /root/.local/share/jupyter/kernels/rvc-lab
+DEBUG:numba.core.byteflow:bytecode dump:
+>          0	NOP(arg=None, lineno=1039)
+           2	RESUME(arg=0, lineno=1039)
+           4	LOAD_FAST(arg=0, lineno=1042)
+           6	LOAD_CONST(arg=1, lineno=1042)
+           8	BINARY_SUBSCR(arg=None, lineno=1042)
+          12	LOAD_FAST(arg=0, lineno=1042)
+          14	LOAD_CONST(arg=2, lineno=1042)
+          16	BINARY_SUBSCR(arg=None, lineno=1042)
+          20	COMPARE_OP(arg=68, lineno=1042)
+          24	LOAD_FAST(arg=0, lineno=1042)
+          26	LOAD_CONST(arg=1, lineno=1042)
+          28	BINARY_SUBSCR(arg=None, lineno=1042)
+          32	LOAD_FAST(arg=0, lineno=1042)
+          34	LOAD_CONST(arg=3, lineno=1042)
+          36	BINARY_SUBSCR(arg=None, lineno=1042)
+          40	COMPARE_OP(arg=92, lineno=1042)
+          44	BINARY_OP(arg=1, lineno=1042)
+          48	RETURN_VALUE(arg=None, lineno=1042)
+DEBUG:numba.core.byteflow:pending: deque([State(pc_initial=0 nstack_initial=0)])
+DEBUG:numba.core.byteflow:stack: []
+DEBUG:numba.core.byteflow:state.pc_initial: State(pc_initial=0 nstack_initial=0)
+DEBUG:numba.core.byteflow:dispatch pc=0, inst=NOP(arg=None, lineno=1039)
+DEBUG:numba.core.byteflow:stack []
+DEBUG:numba.core.byteflow:dispatch pc=2, inst=RESUME(arg=0, lineno=1039)
+DEBUG:numba.core.byteflow:stack []
+DEBUG:numba.core.byteflow:dispatch pc=4, inst=LOAD_FAST(arg=0, lineno=1042)
+DEBUG:numba.core.byteflow:stack []
+DEBUG:numba.core.byteflow:dispatch pc=6, inst=LOAD_CONST(arg=1, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$x4.0']
+DEBUG:numba.core.byteflow:dispatch pc=8, inst=BINARY_SUBSCR(arg=None, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$x4.0', '$const6.1.1']
+DEBUG:numba.core.byteflow:dispatch pc=12, inst=LOAD_FAST(arg=0, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2']
+DEBUG:numba.core.byteflow:dispatch pc=14, inst=LOAD_CONST(arg=2, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2', '$x12.3']
+DEBUG:numba.core.byteflow:dispatch pc=16, inst=BINARY_SUBSCR(arg=None, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2', '$x12.3', '$const14.4.2']
+DEBUG:numba.core.byteflow:dispatch pc=20, inst=COMPARE_OP(arg=68, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2', '$16binary_subscr.5']
+DEBUG:numba.core.byteflow:dispatch pc=24, inst=LOAD_FAST(arg=0, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6']
+DEBUG:numba.core.byteflow:dispatch pc=26, inst=LOAD_CONST(arg=1, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$x24.7']
+DEBUG:numba.core.byteflow:dispatch pc=28, inst=BINARY_SUBSCR(arg=None, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$x24.7', '$const26.8.1']
+DEBUG:numba.core.byteflow:dispatch pc=32, inst=LOAD_FAST(arg=0, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9']
+DEBUG:numba.core.byteflow:dispatch pc=34, inst=LOAD_CONST(arg=3, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9', '$x32.10']
+DEBUG:numba.core.byteflow:dispatch pc=36, inst=BINARY_SUBSCR(arg=None, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9', '$x32.10', '$const34.11.3']
+DEBUG:numba.core.byteflow:dispatch pc=40, inst=COMPARE_OP(arg=92, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9', '$36binary_subscr.12']
+DEBUG:numba.core.byteflow:dispatch pc=44, inst=BINARY_OP(arg=1, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$40compare_op.13']
+DEBUG:numba.core.byteflow:dispatch pc=48, inst=RETURN_VALUE(arg=None, lineno=1042)
+DEBUG:numba.core.byteflow:stack ['$binop_and_44.14']
+DEBUG:numba.core.byteflow:end state. edges=[]
+DEBUG:numba.core.byteflow:-------------------------Prune PHIs-------------------------
+DEBUG:numba.core.byteflow:Used_phis: defaultdict(<class 'set'>, {State(pc_initial=0 nstack_initial=0): set()})
+DEBUG:numba.core.byteflow:defmap: {}
+DEBUG:numba.core.byteflow:phismap: defaultdict(<class 'set'>, {})
+DEBUG:numba.core.byteflow:changing phismap: defaultdict(<class 'set'>, {})
+DEBUG:numba.core.byteflow:keep phismap: {}
+DEBUG:numba.core.byteflow:new_out: defaultdict(<class 'dict'>, {})
+DEBUG:numba.core.byteflow:----------------------DONE Prune PHIs-----------------------
+DEBUG:numba.core.byteflow:block_infos State(pc_initial=0 nstack_initial=0):
+AdaptBlockInfo(insts=((0, {}), (2, {}), (4, {'res': '$x4.0'}), (6, {'res': '$const6.1.1'}), (8, {'index': '$const6.1.1', 'target': '$x4.0', 'res': '$8binary_subscr.2'}), (12, {'res': '$x12.3'}), (14, {'res': '$const14.4.2'}), (16, {'index': '$const14.4.2', 'target': '$x12.3', 'res': '$16binary_subscr.5'}), (20, {'lhs': '$8binary_subscr.2', 'rhs': '$16binary_subscr.5', 'res': '$20compare_op.6'}), (24, {'res': '$x24.7'}), (26, {'res': '$const26.8.1'}), (28, {'index': '$const26.8.1', 'target': '$x24.7', 'res': '$28binary_subscr.9'}), (32, {'res': '$x32.10'}), (34, {'res': '$const34.11.3'}), (36, {'index': '$const34.11.3', 'target': '$x32.10', 'res': '$36binary_subscr.12'}), (40, {'lhs': '$28binary_subscr.9', 'rhs': '$36binary_subscr.12', 'res': '$40compare_op.13'}), (44, {'op': '&', 'lhs': '$20compare_op.6', 'rhs': '$40compare_op.13', 'res': '$binop_and_44.14'}), (48, {'retval': '$binop_and_44.14', 'castval': '$48return_value.15'})), outgoing_phis={}, blockstack=(), active_try_block=None, outgoing_edgepushed={})
+DEBUG:numba.core.interpreter:label 0:
+    x = arg(0, name=x)                       ['x']
+    $const6.1.1 = const(int, 0)              ['$const6.1.1']
+    $8binary_subscr.2 = getitem(value=x, index=$const6.1.1, fn=<built-in function getitem>) ['$8binary_subscr.2', '$const6.1.1', 'x']
+    $const14.4.2 = const(int, -1)            ['$const14.4.2']
+    $16binary_subscr.5 = getitem(value=x, index=$const14.4.2, fn=<built-in function getitem>) ['$16binary_subscr.5', '$const14.4.2', 'x']
+    $20compare_op.6 = $8binary_subscr.2 > $16binary_subscr.5 ['$16binary_subscr.5', '$20compare_op.6', '$8binary_subscr.2']
+    $const26.8.1 = const(int, 0)             ['$const26.8.1']
+    $28binary_subscr.9 = getitem(value=x, index=$const26.8.1, fn=<built-in function getitem>) ['$28binary_subscr.9', '$const26.8.1', 'x']
+    $const34.11.3 = const(int, 1)            ['$const34.11.3']
+    $36binary_subscr.12 = getitem(value=x, index=$const34.11.3, fn=<built-in function getitem>) ['$36binary_subscr.12', '$const34.11.3', 'x']
+    $40compare_op.13 = $28binary_subscr.9 >= $36binary_subscr.12 ['$28binary_subscr.9', '$36binary_subscr.12', '$40compare_op.13']
+    $binop_and_44.14 = $20compare_op.6 & $40compare_op.13 ['$20compare_op.6', '$40compare_op.13', '$binop_and_44.14']
+    $48return_value.15 = cast(value=$binop_and_44.14) ['$48return_value.15', '$binop_and_44.14']
+    return $48return_value.15                ['$48return_value.15']
+
+DEBUG:numba.core.byteflow:bytecode dump:
+>          0	NOP(arg=None, lineno=1045)
+           2	RESUME(arg=0, lineno=1045)
+           4	LOAD_FAST(arg=0, lineno=1048)
+           6	LOAD_CONST(arg=1, lineno=1048)
+           8	BINARY_SUBSCR(arg=None, lineno=1048)
+          12	LOAD_FAST(arg=0, lineno=1048)
+          14	LOAD_CONST(arg=2, lineno=1048)
+          16	BINARY_SUBSCR(arg=None, lineno=1048)
+          20	COMPARE_OP(arg=2, lineno=1048)
+          24	LOAD_FAST(arg=0, lineno=1048)
+          26	LOAD_CONST(arg=1, lineno=1048)
+          28	BINARY_SUBSCR(arg=None, lineno=1048)
+          32	LOAD_FAST(arg=0, lineno=1048)
+          34	LOAD_CONST(arg=3, lineno=1048)
+          36	BINARY_SUBSCR(arg=None, lineno=1048)
+          40	COMPARE_OP(arg=26, lineno=1048)
+          44	BINARY_OP(arg=1, lineno=1048)
+          48	RETURN_VALUE(arg=None, lineno=1048)
+DEBUG:numba.core.byteflow:pending: deque([State(pc_initial=0 nstack_initial=0)])
+DEBUG:numba.core.byteflow:stack: []
+DEBUG:numba.core.byteflow:state.pc_initial: State(pc_initial=0 nstack_initial=0)
+DEBUG:numba.core.byteflow:dispatch pc=0, inst=NOP(arg=None, lineno=1045)
+DEBUG:numba.core.byteflow:stack []
+DEBUG:numba.core.byteflow:dispatch pc=2, inst=RESUME(arg=0, lineno=1045)
+DEBUG:numba.core.byteflow:stack []
+DEBUG:numba.core.byteflow:dispatch pc=4, inst=LOAD_FAST(arg=0, lineno=1048)
+DEBUG:numba.core.byteflow:stack []
+DEBUG:numba.core.byteflow:dispatch pc=6, inst=LOAD_CONST(arg=1, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$x4.0']
+DEBUG:numba.core.byteflow:dispatch pc=8, inst=BINARY_SUBSCR(arg=None, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$x4.0', '$const6.1.1']
+DEBUG:numba.core.byteflow:dispatch pc=12, inst=LOAD_FAST(arg=0, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2']
+DEBUG:numba.core.byteflow:dispatch pc=14, inst=LOAD_CONST(arg=2, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2', '$x12.3']
+DEBUG:numba.core.byteflow:dispatch pc=16, inst=BINARY_SUBSCR(arg=None, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2', '$x12.3', '$const14.4.2']
+DEBUG:numba.core.byteflow:dispatch pc=20, inst=COMPARE_OP(arg=2, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$8binary_subscr.2', '$16binary_subscr.5']
+DEBUG:numba.core.byteflow:dispatch pc=24, inst=LOAD_FAST(arg=0, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6']
+DEBUG:numba.core.byteflow:dispatch pc=26, inst=LOAD_CONST(arg=1, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$x24.7']
+DEBUG:numba.core.byteflow:dispatch pc=28, inst=BINARY_SUBSCR(arg=None, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$x24.7', '$const26.8.1']
+DEBUG:numba.core.byteflow:dispatch pc=32, inst=LOAD_FAST(arg=0, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9']
+DEBUG:numba.core.byteflow:dispatch pc=34, inst=LOAD_CONST(arg=3, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9', '$x32.10']
+DEBUG:numba.core.byteflow:dispatch pc=36, inst=BINARY_SUBSCR(arg=None, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9', '$x32.10', '$const34.11.3']
+DEBUG:numba.core.byteflow:dispatch pc=40, inst=COMPARE_OP(arg=26, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$28binary_subscr.9', '$36binary_subscr.12']
+DEBUG:numba.core.byteflow:dispatch pc=44, inst=BINARY_OP(arg=1, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$20compare_op.6', '$40compare_op.13']
+DEBUG:numba.core.byteflow:dispatch pc=48, inst=RETURN_VALUE(arg=None, lineno=1048)
+DEBUG:numba.core.byteflow:stack ['$binop_and_44.14']
+DEBUG:numba.core.byteflow:end state. edges=[]
+DEBUG:numba.core.byteflow:-------------------------Prune PHIs-------------------------
+DEBUG:numba.core.byteflow:Used_phis: defaultdict(<class 'set'>, {State(pc_initial=0 nstack_initial=0): set()})
+DEBUG:numba.core.byteflow:defmap: {}
+DEBUG:numba.core.byteflow:phismap: defaultdict(<class 'set'>, {})
+DEBUG:numba.core.byteflow:changing phismap: defaultdict(<class 'set'>, {})
+DEBUG:numba.core.byteflow:keep phismap: {}
+DEBUG:numba.core.byteflow:new_out: defaultdict(<class 'dict'>, {})
+DEBUG:numba.core.byteflow:----------------------DONE Prune PHIs-----------------------
+DEBUG:numba.core.byteflow:block_infos State(pc_initial=0 nstack_initial=0):
+AdaptBlockInfo(insts=((0, {}), (2, {}), (4, {'res': '$x4.0'}), (6, {'res': '$const6.1.1'}), (8, {'index': '$const6.1.1', 'target': '$x4.0', 'res': '$8binary_subscr.2'}), (12, {'res': '$x12.3'}), (14, {'res': '$const14.4.2'}), (16, {'index': '$const14.4.2', 'target': '$x12.3', 'res': '$16binary_subscr.5'}), (20, {'lhs': '$8binary_subscr.2', 'rhs': '$16binary_subscr.5', 'res': '$20compare_op.6'}), (24, {'res': '$x24.7'}), (26, {'res': '$const26.8.1'}), (28, {'index': '$const26.8.1', 'target': '$x24.7', 'res': '$28binary_subscr.9'}), (32, {'res': '$x32.10'}), (34, {'res': '$const34.11.3'}), (36, {'index': '$const34.11.3', 'target': '$x32.10', 'res': '$36binary_subscr.12'}), (40, {'lhs': '$28binary_subscr.9', 'rhs': '$36binary_subscr.12', 'res': '$40compare_op.13'}), (44, {'op': '&', 'lhs': '$20compare_op.6', 'rhs': '$40compare_op.13', 'res': '$binop_and_44.14'}), (48, {'retval': '$binop_and_44.14', 'castval': '$48return_value.15'})), outgoing_phis={}, blockstack=(), active_try_block=None, outgoing_edgepushed={})
+DEBUG:numba.core.interpreter:label 0:
+    x = arg(0, name=x)                       ['x']
+    $const6.1.1 = const(int, 0)              ['$const6.1.1']
+    $8binary_subscr.2 = getitem(value=x, index=$const6.1.1, fn=<built-in function getitem>) ['$8binary_subscr.2', '$const6.1.1', 'x']
+    $const14.4.2 = const(int, -1)            ['$const14.4.2']
+    $16binary_subscr.5 = getitem(value=x, index=$const14.4.2, fn=<built-in function getitem>) ['$16binary_subscr.5', '$const14.4.2', 'x']
+    $20compare_op.6 = $8binary_subscr.2 < $16binary_subscr.5 ['$16binary_subscr.5', '$20compare_op.6', '$8binary_subscr.2']
+    $const26.8.1 = const(int, 0)             ['$const26.8.1']
+    $28binary_subscr.9 = getitem(value=x, index=$const26.8.1, fn=<built-in function getitem>) ['$28binary_subscr.9', '$const26.8.1', 'x']
+    $const34.11.3 = const(int, 1)            ['$const34.11.3']
+    $36binary_subscr.12 = getitem(value=x, index=$const34.11.3, fn=<built-in function getitem>) ['$36binary_subscr.12', '$const34.11.3', 'x']
+    $40compare_op.13 = $28binary_subscr.9 <= $36binary_subscr.12 ['$28binary_subscr.9', '$36binary_subscr.12', '$40compare_op.13']
+    $binop_and_44.14 = $20compare_op.6 & $40compare_op.13 ['$20compare_op.6', '$40compare_op.13', '$binop_and_44.14']
+    $48return_value.15 = cast(value=$binop_and_44.14) ['$48return_value.15', '$binop_and_44.14']
+    return $48return_value.15                ['$48return_value.15']
+
+[Data slicing] Started
+[Data slicing] Pending: 1 | Processes: 1
+[Data slicing] Progress: 1/1 | sample.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Completed
+{"status": "preflight_passed", "source_verified": 276, "assets_verified": 6, "real_recording_wav_chunks": 2, "training_updates": 0}
+[Data slicing] Started
+[Data slicing] Pending: 4 | Processes: 4
+[Data slicing] Progress: 3/4 | r003.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Progress: 1/4 | r001.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Progress: 2/4 | r002.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Progress: 4/4 | r006.wav
+[Data slicing] Worker completed | Success: 1 | Failed: 0
+[Data slicing] Completed
+[F0 extraction] Pending: 62
+Loading RMVPE model
+[F0 extraction] Progress: 1/62 | Success: 1 | Skipped: 0 | 0_0.wav
+[F0 extraction] Progress: 6/62 | Success: 6 | Skipped: 0 | 1_13.wav
+[F0 extraction] Progress: 12/62 | Success: 12 | Skipped: 0 | 2_0.wav
+[F0 extraction] Progress: 18/62 | Success: 18 | Skipped: 0 | 2_14.wav
+[F0 extraction] Progress: 24/62 | Success: 24 | Skipped: 0 | 2_2.wav
+[F0 extraction] Progress: 30/62 | Success: 30 | Skipped: 0 | 2_5.wav
+[F0 extraction] Progress: 36/62 | Success: 36 | Skipped: 0 | 3_11.wav
+[F0 extraction] Progress: 42/62 | Success: 42 | Skipped: 0 | 3_22.wav
+[F0 extraction] Progress: 48/62 | Success: 48 | Skipped: 0 | 3_31.wav
+[F0 extraction] Progress: 54/62 | Success: 54 | Skipped: 0 | 3_43.wav
+[F0 extraction] Progress: 60/62 | Success: 60 | Skipped: 0 | 3_6.wav
+[F0 extraction] Progress: 62/62 | Success: 62 | Skipped: 0 | 3_9.wav
+[F0 extraction] Completed | Success: 62 | Skipped: 0 | Failed: 0
+[HuBERT features] Loading model: /root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/hubert_base
+[HuBERT features] Device: cuda:0 | Pending: 62 | Skipped: 0
+[HuBERT features] Progress: 1/62 | Success: 1 | Failed: 0 | 0_0.wav | (184, 768)
+[HuBERT features] Progress: 6/62 | Success: 6 | Failed: 0 | 1_13.wav | (184, 768)
+[HuBERT features] Progress: 12/62 | Success: 12 | Failed: 0 | 2_0.wav | (184, 768)
+[HuBERT features] Progress: 18/62 | Success: 18 | Failed: 0 | 2_14.wav | (184, 768)
+[HuBERT features] Progress: 24/62 | Success: 24 | Failed: 0 | 2_2.wav | (184, 768)
+[HuBERT features] Progress: 30/62 | Success: 30 | Failed: 0 | 2_5.wav | (184, 768)
+[HuBERT features] Progress: 36/62 | Success: 36 | Failed: 0 | 3_11.wav | (184, 768)
+[HuBERT features] Progress: 42/62 | Success: 42 | Failed: 0 | 3_22.wav | (184, 768)
+[HuBERT features] Progress: 48/62 | Success: 48 | Failed: 0 | 3_31.wav | (184, 768)
+[HuBERT features] Progress: 54/62 | Success: 54 | Failed: 0 | 3_43.wav | (184, 768)
+[HuBERT features] Progress: 60/62 | Success: 60 | Failed: 0 | 3_6.wav | (184, 768)
+[HuBERT features] Progress: 62/62 | Success: 62 | Failed: 0 | 3_9.wav | (184, 768)
+[HuBERT features] Completed | Success: 62 | Skipped: 0 | Failed: 0
+INFO:self_20261003_001500_scratch:Training precision selected by device rules: torch.float32
+INFO:self_20261003_001500_scratch:{'train': {'log_interval': 200, 'seed': 1234, 'epochs': 1200, 'learning_rate': 0.0001, 'betas': [0.8, 0.99], 'eps': 1e-09, 'batch_size': 4, 'lr_decay': 0.999875, 'segment_size': 12800, 'init_lr_ratio': 1, 'warmup_epochs': 0, 'c_mel': 45, 'c_kl': 1.0}, 'data': {'max_wav_value': 32768.0, 'sampling_rate': 40000, 'filter_length': 2048, 'hop_length': 400, 'win_length': 2048, 'n_mel_channels': 125, 'mel_fmin': 0.0, 'mel_fmax': None, 'training_files': './logs/self_20261003_001500_scratch/filelist.txt'}, 'model': {'inter_channels': 192, 'hidden_channels': 192, 'filter_channels': 768, 'n_heads': 2, 'n_layers': 6, 'kernel_size': 3, 'p_dropout': 0, 'resblock': '1', 'resblock_kernel_sizes': [3, 7, 11], 'resblock_dilation_sizes': [[1, 3, 5], [1, 3, 5], [1, 3, 5]], 'upsample_rates': [10, 10, 2, 2], 'upsample_initial_channel': 512, 'upsample_kernel_sizes': [16, 16, 4, 4], 'use_spectral_norm': False, 'gin_channels': 256, 'spk_embed_dim': 109}, 'model_dir': './logs/self_20261003_001500_scratch', 'experiment_dir': './logs/self_20261003_001500_scratch', 'save_every_epoch': 1200, 'name': 'self_20261003_001500_scratch', 'total_epoch': 1200, 'pretrainG': '', 'pretrainD': '', 'version': 'v2', 'gpus': '0', 'sample_rate': '40k', 'if_f0': 1, 'if_latest': 1, 'save_every_weights': '0', 'if_cache_data_in_gpu': 0}
+DEBUG:infer.module.models:gin_channels: 256, self.spk_embed_dim: 109
+INFO:self_20261003_001500_scratch:Training epoch: 1 [0%]
+INFO:self_20261003_001500_scratch:[0, 0.0001]
+INFO:self_20261003_001500_scratch:loss_disc=9.030, loss_gen=7.903, loss_fm=2.215,loss_mel=75.000, loss_kl=9.000
+{'step': 1, 'epoch': 1, 'loss_gen_all': 491.14923095703125, 'loss_disc': 9.029808044433594, 'loss_gen': 7.903420448303223, 'loss_fm': 2.2148935794830322, 'loss_mel': 109.68833923339844, 'loss_kl': 371.34259033203125, 'wall_s': 9.313383286818862, 'learning_rate': 0.0001, 'peak_gpu_allocated_bytes': 4002249216, 'raw_losses_before_upstream_display_caps': True}
+{'step': 10, 'epoch': 1, 'loss_gen_all': 120.38026428222656, 'loss_disc': 4.360841751098633, 'loss_gen': 2.7746405601501465, 'loss_fm': 2.4029417037963867, 'loss_mel': 51.76642608642578, 'loss_kl': 63.43625259399414, 'wall_s': 12.326923621818423, 'learning_rate': 0.0001, 'peak_gpu_allocated_bytes': 5327622144, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 1 [2026-10-03 00:15:39] | (0:00:10.995642)
+{'step': 20, 'epoch': 2, 'loss_gen_all': 108.91827392578125, 'loss_disc': 5.015786170959473, 'loss_gen': 2.4311537742614746, 'loss_fm': 1.5230412483215332, 'loss_mel': 92.25251007080078, 'loss_kl': 12.711566925048828, 'wall_s': 15.502250956371427, 'learning_rate': 9.99875e-05, 'peak_gpu_allocated_bytes': 5327622144, 'raw_losses_before_upstream_display_caps': True}
+{'step': 30, 'epoch': 2, 'loss_gen_all': 69.50822448730469, 'loss_disc': 4.312211036682129, 'loss_gen': 2.787363290786743, 'loss_fm': 2.320784568786621, 'loss_mel': 50.751487731933594, 'loss_kl': 13.64859390258789, 'wall_s': 18.53196146711707, 'learning_rate': 9.99875e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 2 [2026-10-03 00:15:45] | (0:00:05.266405)
+{'step': 40, 'epoch': 3, 'loss_gen_all': 117.03564453125, 'loss_disc': 2.3220555782318115, 'loss_gen': 4.213274955749512, 'loss_fm': 10.263969421386719, 'loss_mel': 82.30591583251953, 'loss_kl': 20.252490997314453, 'wall_s': 21.67916831932962, 'learning_rate': 9.99750015625e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 50, 'epoch': 3, 'loss_gen_all': 62.22697448730469, 'loss_disc': 4.878808975219727, 'loss_gen': 2.781597375869751, 'loss_fm': 4.261657238006592, 'loss_mel': 46.670963287353516, 'loss_kl': 8.51275634765625, 'wall_s': 24.6929325517267, 'learning_rate': 9.99750015625e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 3 [2026-10-03 00:15:50] | (0:00:05.242634)
+{'step': 60, 'epoch': 4, 'loss_gen_all': 77.65333557128906, 'loss_disc': 2.7841238975524902, 'loss_gen': 4.48563289642334, 'loss_fm': 9.630134582519531, 'loss_mel': 57.13968276977539, 'loss_kl': 6.397887706756592, 'wall_s': 27.822413470596075, 'learning_rate': 9.996250468730469e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 4 [2026-10-03 00:15:55] | (0:00:05.247848)
+{'step': 70, 'epoch': 5, 'loss_gen_all': 72.5448989868164, 'loss_disc': 3.641779899597168, 'loss_gen': 3.8150999546051025, 'loss_fm': 8.962441444396973, 'loss_mel': 54.27510070800781, 'loss_kl': 5.492255210876465, 'wall_s': 30.962994230911136, 'learning_rate': 9.995000937421877e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 80, 'epoch': 5, 'loss_gen_all': 61.50920867919922, 'loss_disc': 3.15156888961792, 'loss_gen': 3.8307955265045166, 'loss_fm': 7.389555931091309, 'loss_mel': 44.283302307128906, 'loss_kl': 6.005555629730225, 'wall_s': 33.959311325103045, 'learning_rate': 9.995000937421877e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 5 [2026-10-03 00:16:00] | (0:00:05.185187)
+{'step': 90, 'epoch': 6, 'loss_gen_all': 73.59441375732422, 'loss_disc': 2.633089303970337, 'loss_gen': 5.2774176597595215, 'loss_fm': 14.151918411254883, 'loss_mel': 48.8626823425293, 'loss_kl': 5.302392482757568, 'wall_s': 37.0312759205699, 'learning_rate': 9.993751562304699e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 100, 'epoch': 6, 'loss_gen_all': 57.348052978515625, 'loss_disc': 3.7930333614349365, 'loss_gen': 5.6507487297058105, 'loss_fm': 6.304238796234131, 'loss_mel': 39.87105178833008, 'loss_kl': 5.522015571594238, 'wall_s': 40.02642682380974, 'learning_rate': 9.993751562304699e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 6 [2026-10-03 00:16:05] | (0:00:05.170277)
+{'step': 110, 'epoch': 7, 'loss_gen_all': 58.38251876831055, 'loss_disc': 2.783200740814209, 'loss_gen': 4.100028991699219, 'loss_fm': 10.683929443359375, 'loss_mel': 39.06368637084961, 'loss_kl': 4.534873008728027, 'wall_s': 43.12639487721026, 'learning_rate': 9.99250234335941e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 7 [2026-10-03 00:16:11] | (0:00:05.247303)
+{'step': 120, 'epoch': 8, 'loss_gen_all': 53.29899978637695, 'loss_disc': 1.7246538400650024, 'loss_gen': 5.548678874969482, 'loss_fm': 11.897440910339355, 'loss_mel': 31.895681381225586, 'loss_kl': 3.9571990966796875, 'wall_s': 46.28932926431298, 'learning_rate': 9.991253280566489e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 130, 'epoch': 8, 'loss_gen_all': 59.844459533691406, 'loss_disc': 3.0484015941619873, 'loss_gen': 3.7833948135375977, 'loss_fm': 7.168116569519043, 'loss_mel': 44.24224090576172, 'loss_kl': 4.650708198547363, 'wall_s': 49.27174802310765, 'learning_rate': 9.991253280566489e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 8 [2026-10-03 00:16:16] | (0:00:05.182643)
+{'step': 140, 'epoch': 9, 'loss_gen_all': 60.60677719116211, 'loss_disc': 2.7064616680145264, 'loss_gen': 4.128664493560791, 'loss_fm': 8.521509170532227, 'loss_mel': 43.51409149169922, 'loss_kl': 4.442512035369873, 'wall_s': 52.38132913969457, 'learning_rate': 9.990004373906418e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 150, 'epoch': 9, 'loss_gen_all': 60.3194694519043, 'loss_disc': 5.230478763580322, 'loss_gen': 4.008984088897705, 'loss_fm': 1.4748295545578003, 'loss_mel': 51.611961364746094, 'loss_kl': 3.2236952781677246, 'wall_s': 55.381224079057574, 'learning_rate': 9.990004373906418e-05, 'peak_gpu_allocated_bytes': 5327683072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 9 [2026-10-03 00:16:21] | (0:00:05.207678)
+{'step': 160, 'epoch': 10, 'loss_gen_all': 52.134132385253906, 'loss_disc': 2.5485997200012207, 'loss_gen': 4.021617889404297, 'loss_fm': 10.446508407592773, 'loss_mel': 34.185462951660156, 'loss_kl': 3.480546712875366, 'wall_s': 58.5038961134851, 'learning_rate': 9.98875562335968e-05, 'peak_gpu_allocated_bytes': 5328096768, 'raw_losses_before_upstream_display_caps': True}
+{'step': 170, 'epoch': 10, 'loss_gen_all': 51.23362731933594, 'loss_disc': 2.2930824756622314, 'loss_gen': 4.563462257385254, 'loss_fm': 8.708476066589355, 'loss_mel': 34.75060272216797, 'loss_kl': 3.2110867500305176, 'wall_s': 61.4864265024662, 'learning_rate': 9.98875562335968e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 10 [2026-10-03 00:16:26] | (0:00:05.195581)
+{'step': 180, 'epoch': 11, 'loss_gen_all': 56.38135528564453, 'loss_disc': 2.314451217651367, 'loss_gen': 4.329438209533691, 'loss_fm': 9.360239028930664, 'loss_mel': 39.566314697265625, 'loss_kl': 3.125361204147339, 'wall_s': 64.55154174752533, 'learning_rate': 9.987507028906759e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 11 [2026-10-03 00:16:31] | (0:00:05.138952)
+{'step': 190, 'epoch': 12, 'loss_gen_all': 46.510841369628906, 'loss_disc': 2.6803605556488037, 'loss_gen': 4.092065334320068, 'loss_fm': 8.531078338623047, 'loss_mel': 30.881229400634766, 'loss_kl': 3.0064687728881836, 'wall_s': 67.64964096434414, 'learning_rate': 9.986258590528146e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+{'step': 200, 'epoch': 12, 'loss_gen_all': 56.762794494628906, 'loss_disc': 3.4206080436706543, 'loss_gen': 3.429076910018921, 'loss_fm': 6.49407434463501, 'loss_mel': 43.46458053588867, 'loss_kl': 3.375060796737671, 'wall_s': 70.60276576690376, 'learning_rate': 9.986258590528146e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:Training epoch: 12 [76%]
+INFO:self_20261003_001500_scratch:[200, 9.986258590528146e-05]
+INFO:self_20261003_001500_scratch:loss_disc=3.574, loss_gen=3.392, loss_fm=4.747,loss_mel=40.434, loss_kl=2.638
+INFO:self_20261003_001500_scratch:====> Epoch: 12 [2026-10-03 00:16:37] | (0:00:05.641496)
+{'step': 210, 'epoch': 13, 'loss_gen_all': 52.4329948425293, 'loss_disc': 3.0258123874664307, 'loss_gen': 4.774534225463867, 'loss_fm': 6.626559257507324, 'loss_mel': 38.72184371948242, 'loss_kl': 2.3100602626800537, 'wall_s': 74.19683848321438, 'learning_rate': 9.98501030820433e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+{'step': 220, 'epoch': 13, 'loss_gen_all': 51.308956146240234, 'loss_disc': 4.011629581451416, 'loss_gen': 2.730782985687256, 'loss_fm': 5.090496063232422, 'loss_mel': 41.023048400878906, 'loss_kl': 2.464629888534546, 'wall_s': 77.34091174043715, 'learning_rate': 9.98501030820433e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 13 [2026-10-03 00:16:42] | (0:00:05.341785)
+{'step': 230, 'epoch': 14, 'loss_gen_all': 44.3309440612793, 'loss_disc': 3.0112996101379395, 'loss_gen': 3.354391574859619, 'loss_fm': 5.922769069671631, 'loss_mel': 31.496074676513672, 'loss_kl': 3.5577073097229004, 'wall_s': 80.44922653213143, 'learning_rate': 9.983762181915804e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 14 [2026-10-03 00:16:48] | (0:00:05.195275)
+{'step': 240, 'epoch': 15, 'loss_gen_all': 50.85903549194336, 'loss_disc': 2.740586042404175, 'loss_gen': 4.5926971435546875, 'loss_fm': 8.817593574523926, 'loss_mel': 35.145484924316406, 'loss_kl': 2.3032615184783936, 'wall_s': 83.5647822804749, 'learning_rate': 9.982514211643064e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+{'step': 250, 'epoch': 15, 'loss_gen_all': 73.47383117675781, 'loss_disc': 5.481642723083496, 'loss_gen': 2.804466962814331, 'loss_fm': 6.44058895111084, 'loss_mel': 58.37282180786133, 'loss_kl': 5.855959415435791, 'wall_s': 86.62066929228604, 'learning_rate': 9.982514211643064e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 15 [2026-10-03 00:16:53] | (0:00:05.299878)
+{'step': 260, 'epoch': 16, 'loss_gen_all': 50.843326568603516, 'loss_disc': 2.7081024646759033, 'loss_gen': 4.711899757385254, 'loss_fm': 7.855815887451172, 'loss_mel': 35.600852966308594, 'loss_kl': 2.674757242202759, 'wall_s': 89.73711069487035, 'learning_rate': 9.981266397366609e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+{'step': 270, 'epoch': 16, 'loss_gen_all': 44.67442321777344, 'loss_disc': 3.562976837158203, 'loss_gen': 3.0018136501312256, 'loss_fm': 5.526087284088135, 'loss_mel': 34.11016082763672, 'loss_kl': 2.0363619327545166, 'wall_s': 92.69975597970188, 'learning_rate': 9.981266397366609e-05, 'peak_gpu_allocated_bytes': 5328346112, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 16 [2026-10-03 00:16:58] | (0:00:05.143258)
+{'step': 280, 'epoch': 17, 'loss_gen_all': 57.69382095336914, 'loss_disc': 4.447997093200684, 'loss_gen': 4.631412982940674, 'loss_fm': 4.251880645751953, 'loss_mel': 46.87068557739258, 'loss_kl': 1.9398438930511475, 'wall_s': 95.77713755890727, 'learning_rate': 9.980018739066937e-05, 'peak_gpu_allocated_bytes': 5328517632, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 17 [2026-10-03 00:17:03] | (0:00:05.165709)
+{'step': 290, 'epoch': 18, 'loss_gen_all': 53.817527770996094, 'loss_disc': 3.4620919227600098, 'loss_gen': 3.867946147918701, 'loss_fm': 5.3124680519104, 'loss_mel': 42.5519905090332, 'loss_kl': 2.085120439529419, 'wall_s': 98.97097679786384, 'learning_rate': 9.978771236724554e-05, 'peak_gpu_allocated_bytes': 5328517632, 'raw_losses_before_upstream_display_caps': True}
+{'step': 300, 'epoch': 18, 'loss_gen_all': 48.68568801879883, 'loss_disc': 3.8192198276519775, 'loss_gen': 3.989279270172119, 'loss_fm': 5.546483516693115, 'loss_mel': 37.07676696777344, 'loss_kl': 2.0731582641601562, 'wall_s': 101.93349133245647, 'learning_rate': 9.978771236724554e-05, 'peak_gpu_allocated_bytes': 5332701696, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 18 [2026-10-03 00:17:09] | (0:00:05.293770)
+{'step': 310, 'epoch': 19, 'loss_gen_all': 49.46053695678711, 'loss_disc': 3.769821882247925, 'loss_gen': 4.652310848236084, 'loss_fm': 4.9116082191467285, 'loss_mel': 38.0121955871582, 'loss_kl': 1.8844209909439087, 'wall_s': 105.10305109992623, 'learning_rate': 9.977523890319963e-05, 'peak_gpu_allocated_bytes': 5332701696, 'raw_losses_before_upstream_display_caps': True}
+{'step': 320, 'epoch': 19, 'loss_gen_all': 68.5904769897461, 'loss_disc': 6.264760494232178, 'loss_gen': 4.8970112800598145, 'loss_fm': 0.7657073140144348, 'loss_mel': 59.71642303466797, 'loss_kl': 3.2113358974456787, 'wall_s': 108.0924011953175, 'learning_rate': 9.977523890319963e-05, 'peak_gpu_allocated_bytes': 5332701696, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 19 [2026-10-03 00:17:14] | (0:00:05.202776)
+{'step': 330, 'epoch': 20, 'loss_gen_all': 53.26992416381836, 'loss_disc': 4.540905952453613, 'loss_gen': 3.2946410179138184, 'loss_fm': 2.405752182006836, 'loss_mel': 45.39356231689453, 'loss_kl': 2.17596697807312, 'wall_s': 111.21853034757078, 'learning_rate': 9.976276699833672e-05, 'peak_gpu_allocated_bytes': 5332701696, 'raw_losses_before_upstream_display_caps': True}
+{'step': 340, 'epoch': 20, 'loss_gen_all': 59.39838790893555, 'loss_disc': 1.8169646263122559, 'loss_gen': 5.272449493408203, 'loss_fm': 13.438840866088867, 'loss_mel': 38.617462158203125, 'loss_kl': 2.069636821746826, 'wall_s': 114.20890267565846, 'learning_rate': 9.976276699833672e-05, 'peak_gpu_allocated_bytes': 5332701696, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 20 [2026-10-03 00:17:19] | (0:00:05.217705)
+{'step': 350, 'epoch': 21, 'loss_gen_all': 53.50712585449219, 'loss_disc': 3.0368523597717285, 'loss_gen': 5.033639907836914, 'loss_fm': 7.597497940063477, 'loss_mel': 39.576812744140625, 'loss_kl': 1.299173355102539, 'wall_s': 117.12664722837508, 'learning_rate': 9.975029665246193e-05, 'peak_gpu_allocated_bytes': 5332701696, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 21 [2026-10-03 00:17:24] | (0:00:05.005694)
+{'step': 360, 'epoch': 22, 'loss_gen_all': 51.45511245727539, 'loss_disc': 2.372542142868042, 'loss_gen': 5.297278881072998, 'loss_fm': 8.588050842285156, 'loss_mel': 35.69321060180664, 'loss_kl': 1.876570701599121, 'wall_s': 120.26173397153616, 'learning_rate': 9.973782786538036e-05, 'peak_gpu_allocated_bytes': 5332701696, 'raw_losses_before_upstream_display_caps': True}
+{'step': 370, 'epoch': 22, 'loss_gen_all': 55.526268005371094, 'loss_disc': 3.295461416244507, 'loss_gen': 5.0922746658325195, 'loss_fm': 7.947118282318115, 'loss_mel': 40.06488037109375, 'loss_kl': 2.421998977661133, 'wall_s': 123.29744121991098, 'learning_rate': 9.973782786538036e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 22 [2026-10-03 00:17:29] | (0:00:05.326848)
+{'step': 380, 'epoch': 23, 'loss_gen_all': 51.58772659301758, 'loss_disc': 3.042976140975952, 'loss_gen': 4.7257256507873535, 'loss_fm': 8.910326957702637, 'loss_mel': 36.12150955200195, 'loss_kl': 1.8301658630371094, 'wall_s': 126.45753291249275, 'learning_rate': 9.972536063689719e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+{'step': 390, 'epoch': 23, 'loss_gen_all': 47.48978042602539, 'loss_disc': 3.3462483882904053, 'loss_gen': 3.537888526916504, 'loss_fm': 7.021242618560791, 'loss_mel': 34.7840576171875, 'loss_kl': 2.1465911865234375, 'wall_s': 129.4879629574716, 'learning_rate': 9.972536063689719e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 23 [2026-10-03 00:17:35] | (0:00:05.226364)
+{'step': 400, 'epoch': 24, 'loss_gen_all': 62.16850662231445, 'loss_disc': 3.1443653106689453, 'loss_gen': 2.529391288757324, 'loss_fm': 7.753917217254639, 'loss_mel': 49.57167053222656, 'loss_kl': 2.3135268688201904, 'wall_s': 132.6282678041607, 'learning_rate': 9.971289496681757e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:Training epoch: 24 [53%]
+INFO:self_20261003_001500_scratch:[400, 9.971289496681757e-05]
+INFO:self_20261003_001500_scratch:loss_disc=2.676, loss_gen=3.419, loss_fm=8.008,loss_mel=33.242, loss_kl=1.702
+INFO:self_20261003_001500_scratch:====> Epoch: 24 [2026-10-03 00:17:40] | (0:00:05.658981)
+{'step': 410, 'epoch': 25, 'loss_gen_all': 43.49864959716797, 'loss_disc': 3.5118494033813477, 'loss_gen': 3.217906951904297, 'loss_fm': 5.2098917961120605, 'loss_mel': 32.722267150878906, 'loss_kl': 2.3485846519470215, 'wall_s': 136.20105116814375, 'learning_rate': 9.970043085494672e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+{'step': 420, 'epoch': 25, 'loss_gen_all': 45.236698150634766, 'loss_disc': 3.4093432426452637, 'loss_gen': 3.3196444511413574, 'loss_fm': 6.123204708099365, 'loss_mel': 34.1573371887207, 'loss_kl': 1.6365134716033936, 'wall_s': 139.38299765251577, 'learning_rate': 9.970043085494672e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 25 [2026-10-03 00:17:46] | (0:00:05.419478)
+{'step': 430, 'epoch': 26, 'loss_gen_all': 50.103946685791016, 'loss_disc': 3.6292686462402344, 'loss_gen': 2.955421209335327, 'loss_fm': 5.114098072052002, 'loss_mel': 40.23100280761719, 'loss_kl': 1.8034263849258423, 'wall_s': 142.54184935241938, 'learning_rate': 9.968796830108985e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+{'step': 440, 'epoch': 26, 'loss_gen_all': 54.91947555541992, 'loss_disc': 3.0311074256896973, 'loss_gen': 4.35856294631958, 'loss_fm': 8.113722801208496, 'loss_mel': 40.77803421020508, 'loss_kl': 1.6691555976867676, 'wall_s': 145.5489737521857, 'learning_rate': 9.968796830108985e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 26 [2026-10-03 00:17:51] | (0:00:05.258807)
+{'step': 450, 'epoch': 27, 'loss_gen_all': 42.58984375, 'loss_disc': 4.3064069747924805, 'loss_gen': 2.678025484085083, 'loss_fm': 5.84768009185791, 'loss_mel': 32.151329040527344, 'loss_kl': 1.9128124713897705, 'wall_s': 148.7003556676209, 'learning_rate': 9.967550730505221e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 27 [2026-10-03 00:17:56] | (0:00:05.244200)
+{'step': 460, 'epoch': 28, 'loss_gen_all': 41.510169982910156, 'loss_disc': 4.001574993133545, 'loss_gen': 3.0544028282165527, 'loss_fm': 4.363065242767334, 'loss_mel': 32.032901763916016, 'loss_kl': 2.0597989559173584, 'wall_s': 151.8182675205171, 'learning_rate': 9.966304786663908e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+{'step': 470, 'epoch': 28, 'loss_gen_all': 52.51642608642578, 'loss_disc': 3.2655234336853027, 'loss_gen': 3.709082841873169, 'loss_fm': 7.250235080718994, 'loss_mel': 39.4058723449707, 'loss_kl': 2.151235580444336, 'wall_s': 154.88851422816515, 'learning_rate': 9.966304786663908e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 28 [2026-10-03 00:18:02] | (0:00:05.304499)
+{'step': 480, 'epoch': 29, 'loss_gen_all': 49.238983154296875, 'loss_disc': 3.1601924896240234, 'loss_gen': 4.654233455657959, 'loss_fm': 8.199307441711426, 'loss_mel': 34.39077377319336, 'loss_kl': 1.9946657419204712, 'wall_s': 158.0264532994479, 'learning_rate': 9.965058998565574e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+{'step': 490, 'epoch': 29, 'loss_gen_all': 46.23219299316406, 'loss_disc': 3.214844226837158, 'loss_gen': 4.595931053161621, 'loss_fm': 7.560539722442627, 'loss_mel': 32.3438720703125, 'loss_kl': 1.7318487167358398, 'wall_s': 161.04858082719147, 'learning_rate': 9.965058998565574e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 29 [2026-10-03 00:18:07] | (0:00:05.224811)
+{'step': 500, 'epoch': 30, 'loss_gen_all': 50.484901428222656, 'loss_disc': 3.4836935997009277, 'loss_gen': 4.789384841918945, 'loss_fm': 5.735719203948975, 'loss_mel': 38.33698654174805, 'loss_kl': 1.6228116750717163, 'wall_s': 164.1964091602713, 'learning_rate': 9.963813366190753e-05, 'peak_gpu_allocated_bytes': 5338806272, 'raw_losses_before_upstream_display_caps': True}
+{'step': 510, 'epoch': 30, 'loss_gen_all': 42.118736267089844, 'loss_disc': 3.517210006713867, 'loss_gen': 4.509861946105957, 'loss_fm': 4.87989616394043, 'loss_mel': 31.140695571899414, 'loss_kl': 1.5882843732833862, 'wall_s': 167.43094096332788, 'learning_rate': 9.963813366190753e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 30 [2026-10-03 00:18:12] | (0:00:05.471287)
+{'step': 520, 'epoch': 31, 'loss_gen_all': 47.34537887573242, 'loss_disc': 2.554940700531006, 'loss_gen': 4.496036529541016, 'loss_fm': 8.650124549865723, 'loss_mel': 32.37134552001953, 'loss_kl': 1.8278722763061523, 'wall_s': 170.57905450463295, 'learning_rate': 9.962567889519979e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 31 [2026-10-03 00:18:17] | (0:00:05.238321)
+{'step': 530, 'epoch': 32, 'loss_gen_all': 55.026390075683594, 'loss_disc': 2.908996820449829, 'loss_gen': 5.1500935554504395, 'loss_fm': 7.521622180938721, 'loss_mel': 40.45378494262695, 'loss_kl': 1.9008891582489014, 'wall_s': 173.64791644364595, 'learning_rate': 9.961322568533789e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 540, 'epoch': 32, 'loss_gen_all': 49.01964569091797, 'loss_disc': 2.753767490386963, 'loss_gen': 3.2632205486297607, 'loss_fm': 7.5762529373168945, 'loss_mel': 36.795570373535156, 'loss_kl': 1.3846009969711304, 'wall_s': 176.62135320715606, 'learning_rate': 9.961322568533789e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 32 [2026-10-03 00:18:23] | (0:00:05.125261)
+{'step': 550, 'epoch': 33, 'loss_gen_all': 43.75892639160156, 'loss_disc': 3.4819347858428955, 'loss_gen': 4.284051895141602, 'loss_fm': 6.615969657897949, 'loss_mel': 30.911161422729492, 'loss_kl': 1.9477429389953613, 'wall_s': 179.73880067653954, 'learning_rate': 9.960077403212722e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 560, 'epoch': 33, 'loss_gen_all': 48.45487594604492, 'loss_disc': 3.51855731010437, 'loss_gen': 3.3748507499694824, 'loss_fm': 4.352958679199219, 'loss_mel': 38.9616813659668, 'loss_kl': 1.7653847932815552, 'wall_s': 182.7152120359242, 'learning_rate': 9.960077403212722e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 33 [2026-10-03 00:18:28] | (0:00:05.193984)
+{'step': 570, 'epoch': 34, 'loss_gen_all': 48.90455627441406, 'loss_disc': 4.695398330688477, 'loss_gen': 4.122920513153076, 'loss_fm': 3.198483943939209, 'loss_mel': 39.69535827636719, 'loss_kl': 1.887793779373169, 'wall_s': 185.83911426737905, 'learning_rate': 9.95883239353732e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 34 [2026-10-03 00:18:33] | (0:00:05.214525)
+{'step': 580, 'epoch': 35, 'loss_gen_all': 39.286136627197266, 'loss_disc': 3.5699291229248047, 'loss_gen': 2.731154203414917, 'loss_fm': 5.4512505531311035, 'loss_mel': 29.738393783569336, 'loss_kl': 1.3653364181518555, 'wall_s': 188.9195852521807, 'learning_rate': 9.957587539488128e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 590, 'epoch': 35, 'loss_gen_all': 45.7758674621582, 'loss_disc': 3.1136295795440674, 'loss_gen': 3.2075581550598145, 'loss_fm': 6.4626994132995605, 'loss_mel': 34.64712905883789, 'loss_kl': 1.4584801197052002, 'wall_s': 191.75864645652473, 'learning_rate': 9.957587539488128e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 35 [2026-10-03 00:18:38] | (0:00:04.930810)
+{'step': 600, 'epoch': 36, 'loss_gen_all': 35.81742477416992, 'loss_disc': 3.711538553237915, 'loss_gen': 3.1417810916900635, 'loss_fm': 4.8936333656311035, 'loss_mel': 26.332763671875, 'loss_kl': 1.4492441415786743, 'wall_s': 194.71698859520257, 'learning_rate': 9.956342841045691e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:Training epoch: 36 [29%]
+INFO:self_20261003_001500_scratch:[600, 9.956342841045691e-05]
+INFO:self_20261003_001500_scratch:loss_disc=2.336, loss_gen=4.182, loss_fm=10.218,loss_mel=29.626, loss_kl=1.865
+{'step': 610, 'epoch': 36, 'loss_gen_all': 58.450931549072266, 'loss_disc': 2.7108190059661865, 'loss_gen': 5.3658037185668945, 'loss_fm': 9.921651840209961, 'loss_mel': 39.53981018066406, 'loss_kl': 3.623664617538452, 'wall_s': 198.15793664380908, 'learning_rate': 9.956342841045691e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 36 [2026-10-03 00:18:44] | (0:00:05.582130)
+{'step': 620, 'epoch': 37, 'loss_gen_all': 54.5639533996582, 'loss_disc': 2.520927667617798, 'loss_gen': 4.078547954559326, 'loss_fm': 10.189387321472168, 'loss_mel': 38.75794982910156, 'loss_kl': 1.538068413734436, 'wall_s': 201.28479971550405, 'learning_rate': 9.95509829819056e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 37 [2026-10-03 00:18:49] | (0:00:05.354724)
+{'step': 630, 'epoch': 38, 'loss_gen_all': 42.086090087890625, 'loss_disc': 3.864872932434082, 'loss_gen': 3.667266845703125, 'loss_fm': 5.354056358337402, 'loss_mel': 31.714696884155273, 'loss_kl': 1.3500721454620361, 'wall_s': 204.54830498062074, 'learning_rate': 9.953853910903285e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 640, 'epoch': 38, 'loss_gen_all': 39.357364654541016, 'loss_disc': 3.243654727935791, 'loss_gen': 3.2139925956726074, 'loss_fm': 5.882018566131592, 'loss_mel': 28.651466369628906, 'loss_kl': 1.60988450050354, 'wall_s': 207.53333543613553, 'learning_rate': 9.953853910903285e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 38 [2026-10-03 00:18:54] | (0:00:05.207203)
+{'step': 650, 'epoch': 39, 'loss_gen_all': 42.10350799560547, 'loss_disc': 3.2555160522460938, 'loss_gen': 2.8324551582336426, 'loss_fm': 8.610055923461914, 'loss_mel': 29.31260108947754, 'loss_kl': 1.3483953475952148, 'wall_s': 210.6673334389925, 'learning_rate': 9.952609679164422e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 660, 'epoch': 39, 'loss_gen_all': 47.4527587890625, 'loss_disc': 2.6583664417266846, 'loss_gen': 3.6265087127685547, 'loss_fm': 9.623260498046875, 'loss_mel': 32.857215881347656, 'loss_kl': 1.345770239830017, 'wall_s': 213.6399657484144, 'learning_rate': 9.952609679164422e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 39 [2026-10-03 00:18:59] | (0:00:05.221807)
+{'step': 670, 'epoch': 40, 'loss_gen_all': 42.48893356323242, 'loss_disc': 2.805694103240967, 'loss_gen': 3.9491968154907227, 'loss_fm': 8.39929485321045, 'loss_mel': 28.38849449157715, 'loss_kl': 1.7519508600234985, 'wall_s': 216.80738415196538, 'learning_rate': 9.951365602954526e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 680, 'epoch': 40, 'loss_gen_all': 43.073455810546875, 'loss_disc': 2.978450059890747, 'loss_gen': 4.8876261711120605, 'loss_fm': 8.039104461669922, 'loss_mel': 28.13046646118164, 'loss_kl': 2.016256332397461, 'wall_s': 219.84499129839242, 'learning_rate': 9.951365602954526e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 40 [2026-10-03 00:19:05] | (0:00:05.267078)
+{'step': 690, 'epoch': 41, 'loss_gen_all': 42.97798156738281, 'loss_disc': 2.7072558403015137, 'loss_gen': 4.220417499542236, 'loss_fm': 11.027582168579102, 'loss_mel': 26.44083023071289, 'loss_kl': 1.2891528606414795, 'wall_s': 222.95871581695974, 'learning_rate': 9.950121682254156e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 41 [2026-10-03 00:19:10] | (0:00:05.223386)
+{'step': 700, 'epoch': 42, 'loss_gen_all': 49.61567306518555, 'loss_disc': 2.4307472705841064, 'loss_gen': 3.1290431022644043, 'loss_fm': 9.654214859008789, 'loss_mel': 35.52176284790039, 'loss_kl': 1.3106480836868286, 'wall_s': 226.08594871498644, 'learning_rate': 9.948877917043875e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 710, 'epoch': 42, 'loss_gen_all': 43.61924743652344, 'loss_disc': 2.4126622676849365, 'loss_gen': 3.855281114578247, 'loss_fm': 10.15694522857666, 'loss_mel': 28.21611213684082, 'loss_kl': 1.3909069299697876, 'wall_s': 229.06360580027103, 'learning_rate': 9.948877917043875e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 42 [2026-10-03 00:19:15] | (0:00:05.154339)
+{'step': 720, 'epoch': 43, 'loss_gen_all': 50.00557327270508, 'loss_disc': 3.3198704719543457, 'loss_gen': 4.9269700050354, 'loss_fm': 5.772119998931885, 'loss_mel': 37.76445770263672, 'loss_kl': 1.542027235031128, 'wall_s': 232.1462891343981, 'learning_rate': 9.947634307304244e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 730, 'epoch': 43, 'loss_gen_all': 44.07406234741211, 'loss_disc': 2.995899200439453, 'loss_gen': 3.1107280254364014, 'loss_fm': 7.80634880065918, 'loss_mel': 31.238998413085938, 'loss_kl': 1.9179883003234863, 'wall_s': 235.14204655215144, 'learning_rate': 9.947634307304244e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 43 [2026-10-03 00:19:20] | (0:00:05.197685)
+{'step': 740, 'epoch': 44, 'loss_gen_all': 43.734375, 'loss_disc': 4.859223365783691, 'loss_gen': 2.8263158798217773, 'loss_fm': 1.5022952556610107, 'loss_mel': 36.37320327758789, 'loss_kl': 3.032562255859375, 'wall_s': 238.2208718843758, 'learning_rate': 9.94639085301583e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 44 [2026-10-03 00:19:25] | (0:00:05.151612)
+{'step': 750, 'epoch': 45, 'loss_gen_all': 47.80168533325195, 'loss_disc': 3.8086233139038086, 'loss_gen': 2.047663688659668, 'loss_fm': 5.792532920837402, 'loss_mel': 37.383872985839844, 'loss_kl': 2.577615976333618, 'wall_s': 241.28805562853813, 'learning_rate': 9.945147554159202e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 760, 'epoch': 45, 'loss_gen_all': 35.08729934692383, 'loss_disc': 2.9425902366638184, 'loss_gen': 3.602616310119629, 'loss_fm': 7.20956563949585, 'loss_mel': 22.856582641601562, 'loss_kl': 1.4185376167297363, 'wall_s': 244.34211480244994, 'learning_rate': 9.945147554159202e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 45 [2026-10-03 00:19:31] | (0:00:05.234531)
+{'step': 770, 'epoch': 46, 'loss_gen_all': 43.23230743408203, 'loss_disc': 3.7070422172546387, 'loss_gen': 3.9273388385772705, 'loss_fm': 6.752250671386719, 'loss_mel': 30.977310180664062, 'loss_kl': 1.5754098892211914, 'wall_s': 247.4470024909824, 'learning_rate': 9.943904410714931e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 780, 'epoch': 46, 'loss_gen_all': 42.330169677734375, 'loss_disc': 3.060839891433716, 'loss_gen': 3.5676398277282715, 'loss_fm': 7.271755695343018, 'loss_mel': 30.031517028808594, 'loss_kl': 1.4592598676681519, 'wall_s': 250.4487436376512, 'learning_rate': 9.943904410714931e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 46 [2026-10-03 00:19:36] | (0:00:05.199721)
+{'step': 790, 'epoch': 47, 'loss_gen_all': 40.73358154296875, 'loss_disc': 3.2528157234191895, 'loss_gen': 4.849669456481934, 'loss_fm': 6.517183303833008, 'loss_mel': 27.68385887145996, 'loss_kl': 1.6828696727752686, 'wall_s': 253.56414951756597, 'learning_rate': 9.942661422663591e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 47 [2026-10-03 00:19:41] | (0:00:05.191734)
+{'step': 800, 'epoch': 48, 'loss_gen_all': 40.44723129272461, 'loss_disc': 3.5251924991607666, 'loss_gen': 3.518425703048706, 'loss_fm': 5.67840051651001, 'loss_mel': 30.27049446105957, 'loss_kl': 0.9799132943153381, 'wall_s': 256.66894076764584, 'learning_rate': 9.941418589985758e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:Training epoch: 48 [6%]
+INFO:self_20261003_001500_scratch:[800, 9.941418589985758e-05]
+INFO:self_20261003_001500_scratch:loss_disc=2.942, loss_gen=3.644, loss_fm=8.491,loss_mel=31.045, loss_kl=1.543
+{'step': 810, 'epoch': 48, 'loss_gen_all': 42.57118606567383, 'loss_disc': 2.333597421646118, 'loss_gen': 5.467480659484863, 'loss_fm': 9.884076118469238, 'loss_mel': 26.43728256225586, 'loss_kl': 0.7823445796966553, 'wall_s': 260.0689885355532, 'learning_rate': 9.941418589985758e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 48 [2026-10-03 00:19:47] | (0:00:05.613683)
+{'step': 820, 'epoch': 49, 'loss_gen_all': 46.98447036743164, 'loss_disc': 2.669450283050537, 'loss_gen': 6.003846168518066, 'loss_fm': 8.667037010192871, 'loss_mel': 31.010786056518555, 'loss_kl': 1.302799940109253, 'wall_s': 263.23241844028234, 'learning_rate': 9.940175912662009e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 830, 'epoch': 49, 'loss_gen_all': 47.99513244628906, 'loss_disc': 2.443948984146118, 'loss_gen': 4.5107598304748535, 'loss_fm': 13.080251693725586, 'loss_mel': 29.24509620666504, 'loss_kl': 1.1590265035629272, 'wall_s': 266.36553232744336, 'learning_rate': 9.940175912662009e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 49 [2026-10-03 00:19:52] | (0:00:05.385446)
+{'step': 840, 'epoch': 50, 'loss_gen_all': 45.38129806518555, 'loss_disc': 3.590057611465454, 'loss_gen': 3.325967311859131, 'loss_fm': 4.533502101898193, 'loss_mel': 35.8796272277832, 'loss_kl': 1.6421996355056763, 'wall_s': 269.4786781165749, 'learning_rate': 9.938933390672926e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 850, 'epoch': 50, 'loss_gen_all': 54.25492858886719, 'loss_disc': 2.169827938079834, 'loss_gen': 5.851480007171631, 'loss_fm': 12.049145698547363, 'loss_mel': 34.089622497558594, 'loss_kl': 2.2646801471710205, 'wall_s': 272.50733794644475, 'learning_rate': 9.938933390672926e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 50 [2026-10-03 00:19:57] | (0:00:05.235202)
+{'step': 860, 'epoch': 51, 'loss_gen_all': 45.090003967285156, 'loss_disc': 2.5037903785705566, 'loss_gen': 4.803011894226074, 'loss_fm': 9.299927711486816, 'loss_mel': 29.21515655517578, 'loss_kl': 1.7719062566757202, 'wall_s': 275.6602439954877, 'learning_rate': 9.937691023999092e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 51 [2026-10-03 00:20:03] | (0:00:05.224077)
+{'step': 870, 'epoch': 52, 'loss_gen_all': 42.915103912353516, 'loss_disc': 3.2033796310424805, 'loss_gen': 3.6217589378356934, 'loss_fm': 7.509980201721191, 'loss_mel': 30.349201202392578, 'loss_kl': 1.43416166305542, 'wall_s': 278.78132762759924, 'learning_rate': 9.936448812621091e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 880, 'epoch': 52, 'loss_gen_all': 50.367008209228516, 'loss_disc': 2.1370697021484375, 'loss_gen': 5.160245895385742, 'loss_fm': 9.674532890319824, 'loss_mel': 33.944278717041016, 'loss_kl': 1.587950348854065, 'wall_s': 281.767271803692, 'learning_rate': 9.936448812621091e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 52 [2026-10-03 00:20:08] | (0:00:05.203207)
+{'step': 890, 'epoch': 53, 'loss_gen_all': 49.13394546508789, 'loss_disc': 2.2041492462158203, 'loss_gen': 5.682077407836914, 'loss_fm': 10.345277786254883, 'loss_mel': 31.750423431396484, 'loss_kl': 1.3561681509017944, 'wall_s': 284.8876867555082, 'learning_rate': 9.935206756519513e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 900, 'epoch': 53, 'loss_gen_all': 47.121002197265625, 'loss_disc': 5.690459251403809, 'loss_gen': 5.279006004333496, 'loss_fm': 1.9899665117263794, 'loss_mel': 37.95844268798828, 'loss_kl': 1.8935856819152832, 'wall_s': 287.900208780542, 'learning_rate': 9.935206756519513e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 53 [2026-10-03 00:20:13] | (0:00:05.238363)
+{'step': 910, 'epoch': 54, 'loss_gen_all': 31.585613250732422, 'loss_disc': 4.3225998878479, 'loss_gen': 3.1314857006073, 'loss_fm': 3.981135368347168, 'loss_mel': 24.144874572753906, 'loss_kl': 0.32811641693115234, 'wall_s': 290.97028131596744, 'learning_rate': 9.933964855674948e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 54 [2026-10-03 00:20:18] | (0:00:05.188370)
+{'step': 920, 'epoch': 55, 'loss_gen_all': 60.31707000732422, 'loss_disc': 0.7429484724998474, 'loss_gen': 6.6427202224731445, 'loss_fm': 16.793901443481445, 'loss_mel': 35.4146614074707, 'loss_kl': 1.4657864570617676, 'wall_s': 294.1451451238245, 'learning_rate': 9.932723110067987e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 930, 'epoch': 55, 'loss_gen_all': 48.123565673828125, 'loss_disc': 2.9781014919281006, 'loss_gen': 5.213078498840332, 'loss_fm': 8.452153205871582, 'loss_mel': 33.195465087890625, 'loss_kl': 1.262869954109192, 'wall_s': 297.18483603931963, 'learning_rate': 9.932723110067987e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 55 [2026-10-03 00:20:24] | (0:00:05.375138)
+{'step': 940, 'epoch': 56, 'loss_gen_all': 46.60905838012695, 'loss_disc': 3.2865419387817383, 'loss_gen': 3.7250547409057617, 'loss_fm': 6.741644382476807, 'loss_mel': 35.0809440612793, 'loss_kl': 1.06141197681427, 'wall_s': 300.4470005556941, 'learning_rate': 9.931481519679228e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 950, 'epoch': 56, 'loss_gen_all': 44.72877883911133, 'loss_disc': 2.511516809463501, 'loss_gen': 3.653132438659668, 'loss_fm': 10.50301456451416, 'loss_mel': 29.06578826904297, 'loss_kl': 1.5068447589874268, 'wall_s': 303.49152803234756, 'learning_rate': 9.931481519679228e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 56 [2026-10-03 00:20:29] | (0:00:05.314813)
+{'step': 960, 'epoch': 57, 'loss_gen_all': 46.72871780395508, 'loss_disc': 4.304611682891846, 'loss_gen': 3.7375197410583496, 'loss_fm': 5.732599258422852, 'loss_mel': 34.534080505371094, 'loss_kl': 2.7245187759399414, 'wall_s': 306.6057141497731, 'learning_rate': 9.930240084489267e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 57 [2026-10-03 00:20:34] | (0:00:05.217973)
+{'step': 970, 'epoch': 58, 'loss_gen_all': 42.55714416503906, 'loss_disc': 3.1031064987182617, 'loss_gen': 2.8232102394104004, 'loss_fm': 9.030102729797363, 'loss_mel': 29.681577682495117, 'loss_kl': 1.0222537517547607, 'wall_s': 309.77060065604746, 'learning_rate': 9.928998804478705e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 980, 'epoch': 58, 'loss_gen_all': 38.444801330566406, 'loss_disc': 3.6971628665924072, 'loss_gen': 2.614508628845215, 'loss_fm': 8.038553237915039, 'loss_mel': 26.61509132385254, 'loss_kl': 1.1766481399536133, 'wall_s': 312.8462840151042, 'learning_rate': 9.928998804478705e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:====> Epoch: 58 [2026-10-03 00:20:39] | (0:00:05.300416)
+{'step': 990, 'epoch': 59, 'loss_gen_all': 48.554649353027344, 'loss_disc': 2.3871357440948486, 'loss_gen': 4.632425785064697, 'loss_fm': 10.637877464294434, 'loss_mel': 32.52041244506836, 'loss_kl': 0.7639294266700745, 'wall_s': 315.94483710825443, 'learning_rate': 9.927757679628145e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+{'step': 1000, 'epoch': 59, 'loss_gen_all': 43.52688980102539, 'loss_disc': 3.5284299850463867, 'loss_gen': 4.492897033691406, 'loss_fm': 12.694780349731445, 'loss_mel': 25.403051376342773, 'loss_kl': 0.9361599683761597, 'wall_s': 318.9592821393162, 'learning_rate': 9.927757679628145e-05, 'peak_gpu_allocated_bytes': 5380864000, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_scratch:Saving model and optimizer state at epoch 59 to logs/self_20261003_001500_scratch/G_1000.pth
+INFO:self_20261003_001500_scratch:Saving model and optimizer state at epoch 59 to logs/self_20261003_001500_scratch/D_1000.pth
+INFO:self_20261003_001500_finetune:Training precision selected by device rules: torch.float32
+INFO:self_20261003_001500_finetune:{'train': {'log_interval': 200, 'seed': 1234, 'epochs': 1200, 'learning_rate': 0.0001, 'betas': [0.8, 0.99], 'eps': 1e-09, 'batch_size': 4, 'lr_decay': 0.999875, 'segment_size': 12800, 'init_lr_ratio': 1, 'warmup_epochs': 0, 'c_mel': 45, 'c_kl': 1.0}, 'data': {'max_wav_value': 32768.0, 'sampling_rate': 40000, 'filter_length': 2048, 'hop_length': 400, 'win_length': 2048, 'n_mel_channels': 125, 'mel_fmin': 0.0, 'mel_fmax': None, 'training_files': './logs/self_20261003_001500_finetune/filelist.txt'}, 'model': {'inter_channels': 192, 'hidden_channels': 192, 'filter_channels': 768, 'n_heads': 2, 'n_layers': 6, 'kernel_size': 3, 'p_dropout': 0, 'resblock': '1', 'resblock_kernel_sizes': [3, 7, 11], 'resblock_dilation_sizes': [[1, 3, 5], [1, 3, 5], [1, 3, 5]], 'upsample_rates': [10, 10, 2, 2], 'upsample_initial_channel': 512, 'upsample_kernel_sizes': [16, 16, 4, 4], 'use_spectral_norm': False, 'gin_channels': 256, 'spk_embed_dim': 109}, 'model_dir': './logs/self_20261003_001500_finetune', 'experiment_dir': './logs/self_20261003_001500_finetune', 'save_every_epoch': 1200, 'name': 'self_20261003_001500_finetune', 'total_epoch': 1200, 'pretrainG': '/root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/pretrained_v2/f0G40k.pth', 'pretrainD': '/root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/pretrained_v2/f0D40k.pth', 'version': 'v2', 'gpus': '0', 'sample_rate': '40k', 'if_f0': 1, 'if_latest': 1, 'save_every_weights': '0', 'if_cache_data_in_gpu': 0}
+DEBUG:infer.module.models:gin_channels: 256, self.spk_embed_dim: 109
+INFO:self_20261003_001500_finetune:Loaded generator pretrained model: /root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/pretrained_v2/f0G40k.pth
+INFO:self_20261003_001500_finetune:<All keys matched successfully>
+INFO:self_20261003_001500_finetune:Loaded discriminator pretrained model: /root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/pretrained_v2/f0D40k.pth
+INFO:self_20261003_001500_finetune:<All keys matched successfully>
+INFO:self_20261003_001500_finetune:Training epoch: 1 [0%]
+INFO:self_20261003_001500_finetune:[0, 0.0001]
+INFO:self_20261003_001500_finetune:loss_disc=4.717, loss_gen=4.236, loss_fm=13.621,loss_mel=31.927, loss_kl=9.000
+{'step': 1, 'epoch': 1, 'loss_gen_all': 60.159061431884766, 'loss_disc': 4.717214584350586, 'loss_gen': 4.235675811767578, 'loss_fm': 13.62104320526123, 'loss_mel': 31.927043914794922, 'loss_kl': 10.375298500061035, 'wall_s': 9.05145258270204, 'learning_rate': 0.0001, 'peak_gpu_allocated_bytes': 4060129792, 'raw_losses_before_upstream_display_caps': True}
+{'step': 10, 'epoch': 1, 'loss_gen_all': 51.861488342285156, 'loss_disc': 3.208822727203369, 'loss_gen': 4.148341655731201, 'loss_fm': 16.795934677124023, 'loss_mel': 26.753902435302734, 'loss_kl': 4.163308143615723, 'wall_s': 11.790603963658214, 'learning_rate': 0.0001, 'peak_gpu_allocated_bytes': 5330568704, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 1 [2026-10-03 00:21:04] | (0:00:09.937391)
+{'step': 20, 'epoch': 2, 'loss_gen_all': 36.20742416381836, 'loss_disc': 4.794895172119141, 'loss_gen': 3.5315356254577637, 'loss_fm': 6.207540035247803, 'loss_mel': 22.448047637939453, 'loss_kl': 4.020302772521973, 'wall_s': 15.049414718523622, 'learning_rate': 9.99875e-05, 'peak_gpu_allocated_bytes': 5336387072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 30, 'epoch': 2, 'loss_gen_all': 42.39976119995117, 'loss_disc': 4.402965068817139, 'loss_gen': 3.5428524017333984, 'loss_fm': 12.03820514678955, 'loss_mel': 24.86559295654297, 'loss_kl': 1.953108787536621, 'wall_s': 18.019124820828438, 'learning_rate': 9.99875e-05, 'peak_gpu_allocated_bytes': 5336387072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 2 [2026-10-03 00:21:09] | (0:00:05.117707)
+{'step': 40, 'epoch': 3, 'loss_gen_all': 54.5989875793457, 'loss_disc': 6.025853157043457, 'loss_gen': 3.9683339595794678, 'loss_fm': 19.413345336914062, 'loss_mel': 26.423503875732422, 'loss_kl': 4.79380464553833, 'wall_s': 21.143744848668575, 'learning_rate': 9.99750015625e-05, 'peak_gpu_allocated_bytes': 5336387072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 50, 'epoch': 3, 'loss_gen_all': 42.543243408203125, 'loss_disc': 3.9949402809143066, 'loss_gen': 3.7829933166503906, 'loss_fm': 13.53795051574707, 'loss_mel': 23.63103675842285, 'loss_kl': 1.591264009475708, 'wall_s': 24.098064271733165, 'learning_rate': 9.99750015625e-05, 'peak_gpu_allocated_bytes': 5336387072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 3 [2026-10-03 00:21:14] | (0:00:05.183780)
+{'step': 60, 'epoch': 4, 'loss_gen_all': 40.44430923461914, 'loss_disc': 4.395125389099121, 'loss_gen': 3.160499334335327, 'loss_fm': 10.60293960571289, 'loss_mel': 24.80915069580078, 'loss_kl': 1.8717209100723267, 'wall_s': 27.12386090680957, 'learning_rate': 9.996250468730469e-05, 'peak_gpu_allocated_bytes': 5336387072, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 4 [2026-10-03 00:21:19] | (0:00:05.487441)
+{'step': 70, 'epoch': 5, 'loss_gen_all': 42.19495391845703, 'loss_disc': 3.497497081756592, 'loss_gen': 3.324070930480957, 'loss_fm': 12.635987281799316, 'loss_mel': 24.308012008666992, 'loss_kl': 1.9268853664398193, 'wall_s': 30.647251496091485, 'learning_rate': 9.995000937421877e-05, 'peak_gpu_allocated_bytes': 5336387072, 'raw_losses_before_upstream_display_caps': True}
+{'step': 80, 'epoch': 5, 'loss_gen_all': 40.450225830078125, 'loss_disc': 3.5642268657684326, 'loss_gen': 3.911545753479004, 'loss_fm': 12.224409103393555, 'loss_mel': 22.334794998168945, 'loss_kl': 1.979477047920227, 'wall_s': 33.548621429130435, 'learning_rate': 9.995000937421877e-05, 'peak_gpu_allocated_bytes': 5339127808, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 5 [2026-10-03 00:21:24] | (0:00:05.095233)
+{'step': 90, 'epoch': 6, 'loss_gen_all': 40.23014831542969, 'loss_disc': 4.009348392486572, 'loss_gen': 2.803374767303467, 'loss_fm': 12.123260498046875, 'loss_mel': 23.29681968688965, 'loss_kl': 2.00669264793396, 'wall_s': 36.57501569390297, 'learning_rate': 9.993751562304699e-05, 'peak_gpu_allocated_bytes': 5339127808, 'raw_losses_before_upstream_display_caps': True}
+{'step': 100, 'epoch': 6, 'loss_gen_all': 36.84511184692383, 'loss_disc': 4.100226402282715, 'loss_gen': 3.2015531063079834, 'loss_fm': 11.781996726989746, 'loss_mel': 20.684268951416016, 'loss_kl': 1.1772913932800293, 'wall_s': 39.455828910693526, 'learning_rate': 9.993751562304699e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 6 [2026-10-03 00:21:29] | (0:00:05.035584)
+{'step': 110, 'epoch': 7, 'loss_gen_all': 36.74501419067383, 'loss_disc': 3.8765578269958496, 'loss_gen': 3.384714126586914, 'loss_fm': 11.265912055969238, 'loss_mel': 20.676050186157227, 'loss_kl': 1.4183379411697388, 'wall_s': 42.48413687944412, 'learning_rate': 9.99250234335941e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 7 [2026-10-03 00:21:35] | (0:00:05.097367)
+{'step': 120, 'epoch': 8, 'loss_gen_all': 31.312788009643555, 'loss_disc': 4.234652996063232, 'loss_gen': 3.2884387969970703, 'loss_fm': 10.892500877380371, 'loss_mel': 15.840009689331055, 'loss_kl': 1.2918380498886108, 'wall_s': 45.548993431031704, 'learning_rate': 9.991253280566489e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 130, 'epoch': 8, 'loss_gen_all': 38.2808952331543, 'loss_disc': 3.7453086376190186, 'loss_gen': 3.8558263778686523, 'loss_fm': 10.689845085144043, 'loss_mel': 21.89141273498535, 'loss_kl': 1.8438119888305664, 'wall_s': 48.56802175566554, 'learning_rate': 9.991253280566489e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 8 [2026-10-03 00:21:40] | (0:00:05.360031)
+{'step': 140, 'epoch': 9, 'loss_gen_all': 36.92086410522461, 'loss_disc': 3.983915090560913, 'loss_gen': 3.4890060424804688, 'loss_fm': 9.39406967163086, 'loss_mel': 22.14815902709961, 'loss_kl': 1.8896292448043823, 'wall_s': 51.91068966500461, 'learning_rate': 9.990004373906418e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 150, 'epoch': 9, 'loss_gen_all': 31.352815628051758, 'loss_disc': 4.102950096130371, 'loss_gen': 3.315368413925171, 'loss_fm': 5.7663798332214355, 'loss_mel': 19.93901252746582, 'loss_kl': 2.3320553302764893, 'wall_s': 54.295606307685375, 'learning_rate': 9.990004373906418e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 9 [2026-10-03 00:21:44] | (0:00:04.494449)
+{'step': 160, 'epoch': 10, 'loss_gen_all': 37.149078369140625, 'loss_disc': 3.8287315368652344, 'loss_gen': 3.9489359855651855, 'loss_fm': 13.4083251953125, 'loss_mel': 18.823328018188477, 'loss_kl': 0.968489944934845, 'wall_s': 57.06748535297811, 'learning_rate': 9.98875562335968e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 170, 'epoch': 10, 'loss_gen_all': 34.58028793334961, 'loss_disc': 3.589459180831909, 'loss_gen': 3.26082444190979, 'loss_fm': 11.863642692565918, 'loss_mel': 18.061264038085938, 'loss_kl': 1.394558072090149, 'wall_s': 59.42250340245664, 'learning_rate': 9.98875562335968e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 10 [2026-10-03 00:21:49] | (0:00:04.407152)
+{'step': 180, 'epoch': 11, 'loss_gen_all': 36.12324523925781, 'loss_disc': 3.6989035606384277, 'loss_gen': 3.397052764892578, 'loss_fm': 9.326227188110352, 'loss_mel': 21.98518180847168, 'loss_kl': 1.4147844314575195, 'wall_s': 62.41701945103705, 'learning_rate': 9.987507028906759e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 11 [2026-10-03 00:21:54] | (0:00:04.989225)
+{'step': 190, 'epoch': 12, 'loss_gen_all': 32.62148666381836, 'loss_disc': 4.241479873657227, 'loss_gen': 2.7884018421173096, 'loss_fm': 9.908602714538574, 'loss_mel': 18.17948341369629, 'loss_kl': 1.7449992895126343, 'wall_s': 65.40047962777317, 'learning_rate': 9.986258590528146e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 200, 'epoch': 12, 'loss_gen_all': 42.15301513671875, 'loss_disc': 3.9373466968536377, 'loss_gen': 3.0823135375976562, 'loss_fm': 12.782462120056152, 'loss_mel': 24.86358070373535, 'loss_kl': 1.4246606826782227, 'wall_s': 68.27453886345029, 'learning_rate': 9.986258590528146e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:Training epoch: 12 [76%]
+INFO:self_20261003_001500_finetune:[200, 9.986258590528146e-05]
+INFO:self_20261003_001500_finetune:loss_disc=4.591, loss_gen=3.018, loss_fm=9.887,loss_mel=20.489, loss_kl=1.588
+INFO:self_20261003_001500_finetune:====> Epoch: 12 [2026-10-03 00:21:59] | (0:00:05.460211)
+{'step': 210, 'epoch': 13, 'loss_gen_all': 35.7020263671875, 'loss_disc': 3.8278515338897705, 'loss_gen': 3.309957265853882, 'loss_fm': 10.84301471710205, 'loss_mel': 20.29408073425293, 'loss_kl': 1.2549731731414795, 'wall_s': 71.71479552425444, 'learning_rate': 9.98501030820433e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 220, 'epoch': 13, 'loss_gen_all': 36.502052307128906, 'loss_disc': 3.823962926864624, 'loss_gen': 3.633007526397705, 'loss_fm': 10.569951057434082, 'loss_mel': 21.042774200439453, 'loss_kl': 1.2563154697418213, 'wall_s': 74.50216618739069, 'learning_rate': 9.98501030820433e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 13 [2026-10-03 00:22:04] | (0:00:04.881790)
+{'step': 230, 'epoch': 14, 'loss_gen_all': 32.324859619140625, 'loss_disc': 4.450911998748779, 'loss_gen': 3.0283703804016113, 'loss_fm': 8.916954040527344, 'loss_mel': 18.644054412841797, 'loss_kl': 1.7354819774627686, 'wall_s': 77.437650391832, 'learning_rate': 9.983762181915804e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 14 [2026-10-03 00:22:09] | (0:00:05.145784)
+{'step': 240, 'epoch': 15, 'loss_gen_all': 35.61794662475586, 'loss_disc': 4.092154502868652, 'loss_gen': 3.262312650680542, 'loss_fm': 11.414750099182129, 'loss_mel': 19.648956298828125, 'loss_kl': 1.2919281721115112, 'wall_s': 80.63522266969085, 'learning_rate': 9.982514211643064e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 250, 'epoch': 15, 'loss_gen_all': 48.17677307128906, 'loss_disc': 4.223763465881348, 'loss_gen': 3.1099801063537598, 'loss_fm': 19.17156982421875, 'loss_mel': 23.99782943725586, 'loss_kl': 1.897394061088562, 'wall_s': 83.52507967501879, 'learning_rate': 9.982514211643064e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 15 [2026-10-03 00:22:14] | (0:00:05.032691)
+{'step': 260, 'epoch': 16, 'loss_gen_all': 36.451908111572266, 'loss_disc': 3.9070677757263184, 'loss_gen': 3.314755916595459, 'loss_fm': 11.058314323425293, 'loss_mel': 20.920394897460938, 'loss_kl': 1.1584452390670776, 'wall_s': 86.50388239137828, 'learning_rate': 9.981266397366609e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 270, 'epoch': 16, 'loss_gen_all': 34.97966766357422, 'loss_disc': 4.090096950531006, 'loss_gen': 3.7529008388519287, 'loss_fm': 11.410768508911133, 'loss_mel': 18.770872116088867, 'loss_kl': 1.045127034187317, 'wall_s': 89.37083745934069, 'learning_rate': 9.981266397366609e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 16 [2026-10-03 00:22:20] | (0:00:05.150451)
+{'step': 280, 'epoch': 17, 'loss_gen_all': 37.108360290527344, 'loss_disc': 3.9269232749938965, 'loss_gen': 2.756051540374756, 'loss_fm': 10.131736755371094, 'loss_mel': 23.046794891357422, 'loss_kl': 1.1737756729125977, 'wall_s': 93.00084659829736, 'learning_rate': 9.980018739066937e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 17 [2026-10-03 00:22:25] | (0:00:05.489290)
+{'step': 290, 'epoch': 18, 'loss_gen_all': 35.374019622802734, 'loss_disc': 4.459540367126465, 'loss_gen': 3.446246385574341, 'loss_fm': 10.322800636291504, 'loss_mel': 20.226123809814453, 'loss_kl': 1.3788487911224365, 'wall_s': 96.05126420408487, 'learning_rate': 9.978771236724554e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 300, 'epoch': 18, 'loss_gen_all': 33.32462692260742, 'loss_disc': 4.217227935791016, 'loss_gen': 3.603822946548462, 'loss_fm': 9.612916946411133, 'loss_mel': 19.057537078857422, 'loss_kl': 1.050351858139038, 'wall_s': 98.93488503433764, 'learning_rate': 9.978771236724554e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 18 [2026-10-03 00:22:30] | (0:00:05.001297)
+{'step': 310, 'epoch': 19, 'loss_gen_all': 33.10303497314453, 'loss_disc': 3.6919233798980713, 'loss_gen': 3.3523216247558594, 'loss_fm': 9.809110641479492, 'loss_mel': 18.962251663208008, 'loss_kl': 0.9793505668640137, 'wall_s': 101.89326260238886, 'learning_rate': 9.977523890319963e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 320, 'epoch': 19, 'loss_gen_all': 32.110450744628906, 'loss_disc': 5.287716865539551, 'loss_gen': 3.754631519317627, 'loss_fm': 5.811318874359131, 'loss_mel': 20.54090118408203, 'loss_kl': 2.0036001205444336, 'wall_s': 104.79090418666601, 'learning_rate': 9.977523890319963e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 19 [2026-10-03 00:22:35] | (0:00:04.992108)
+{'step': 330, 'epoch': 20, 'loss_gen_all': 27.547937393188477, 'loss_disc': 4.517155170440674, 'loss_gen': 2.4742512702941895, 'loss_fm': 4.781299114227295, 'loss_mel': 18.532529830932617, 'loss_kl': 1.759857177734375, 'wall_s': 107.82743344269693, 'learning_rate': 9.976276699833672e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 340, 'epoch': 20, 'loss_gen_all': 41.538848876953125, 'loss_disc': 4.111402988433838, 'loss_gen': 3.7996604442596436, 'loss_fm': 14.055343627929688, 'loss_mel': 22.02096176147461, 'loss_kl': 1.66288423538208, 'wall_s': 110.73623095452785, 'learning_rate': 9.976276699833672e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 20 [2026-10-03 00:22:40] | (0:00:05.084172)
+{'step': 350, 'epoch': 21, 'loss_gen_all': 34.50044631958008, 'loss_disc': 4.199770927429199, 'loss_gen': 3.0504562854766846, 'loss_fm': 10.421110153198242, 'loss_mel': 19.98114776611328, 'loss_kl': 1.047734022140503, 'wall_s': 113.7157917264849, 'learning_rate': 9.975029665246193e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 21 [2026-10-03 00:22:45] | (0:00:05.003240)
+{'step': 360, 'epoch': 22, 'loss_gen_all': 37.269962310791016, 'loss_disc': 3.9950366020202637, 'loss_gen': 3.141132354736328, 'loss_fm': 12.197466850280762, 'loss_mel': 20.932222366333008, 'loss_kl': 0.9991425275802612, 'wall_s': 116.71357723139226, 'learning_rate': 9.973782786538036e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 370, 'epoch': 22, 'loss_gen_all': 38.38259506225586, 'loss_disc': 4.063929557800293, 'loss_gen': 3.597501516342163, 'loss_fm': 11.742170333862305, 'loss_mel': 21.63330841064453, 'loss_kl': 1.4096137285232544, 'wall_s': 119.60750662907958, 'learning_rate': 9.973782786538036e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 22 [2026-10-03 00:22:50] | (0:00:04.989892)
+{'step': 380, 'epoch': 23, 'loss_gen_all': 37.045814514160156, 'loss_disc': 3.69673490524292, 'loss_gen': 3.2566919326782227, 'loss_fm': 12.929454803466797, 'loss_mel': 19.66016387939453, 'loss_kl': 1.1995044946670532, 'wall_s': 122.6004535574466, 'learning_rate': 9.972536063689719e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 390, 'epoch': 23, 'loss_gen_all': 37.83387756347656, 'loss_disc': 3.8727447986602783, 'loss_gen': 3.182300567626953, 'loss_fm': 13.393853187561035, 'loss_mel': 20.29499626159668, 'loss_kl': 0.9627304673194885, 'wall_s': 126.11429048329592, 'learning_rate': 9.972536063689719e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 23 [2026-10-03 00:22:56] | (0:00:05.678268)
+{'step': 400, 'epoch': 24, 'loss_gen_all': 43.85495376586914, 'loss_disc': 4.077498435974121, 'loss_gen': 3.3632702827453613, 'loss_fm': 14.231385231018066, 'loss_mel': 24.965091705322266, 'loss_kl': 1.2952083349227905, 'wall_s': 129.1762787234038, 'learning_rate': 9.971289496681757e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:Training epoch: 24 [53%]
+INFO:self_20261003_001500_finetune:[400, 9.971289496681757e-05]
+INFO:self_20261003_001500_finetune:loss_disc=3.912, loss_gen=3.453, loss_fm=10.161,loss_mel=19.719, loss_kl=1.329
+INFO:self_20261003_001500_finetune:====> Epoch: 24 [2026-10-03 00:23:01] | (0:00:05.528934)
+{'step': 410, 'epoch': 25, 'loss_gen_all': 34.45045471191406, 'loss_disc': 4.026628494262695, 'loss_gen': 3.4246785640716553, 'loss_fm': 10.427474975585938, 'loss_mel': 19.472267150878906, 'loss_kl': 1.1260346174240112, 'wall_s': 132.7124524153769, 'learning_rate': 9.970043085494672e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 420, 'epoch': 25, 'loss_gen_all': 31.955657958984375, 'loss_disc': 4.343350410461426, 'loss_gen': 2.9614787101745605, 'loss_fm': 7.737725257873535, 'loss_mel': 20.218217849731445, 'loss_kl': 1.0382362604141235, 'wall_s': 135.59626382403076, 'learning_rate': 9.970043085494672e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 25 [2026-10-03 00:23:06] | (0:00:05.065106)
+{'step': 430, 'epoch': 26, 'loss_gen_all': 33.28472900390625, 'loss_disc': 4.131411552429199, 'loss_gen': 3.0142269134521484, 'loss_fm': 9.265700340270996, 'loss_mel': 20.2601318359375, 'loss_kl': 0.7446693778038025, 'wall_s': 138.58627156540751, 'learning_rate': 9.968796830108985e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 440, 'epoch': 26, 'loss_gen_all': 35.83939743041992, 'loss_disc': 3.9268789291381836, 'loss_gen': 3.489861488342285, 'loss_fm': 10.665321350097656, 'loss_mel': 20.963850021362305, 'loss_kl': 0.7203651070594788, 'wall_s': 141.63131310977042, 'learning_rate': 9.968796830108985e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 26 [2026-10-03 00:23:12] | (0:00:05.157026)
+{'step': 450, 'epoch': 27, 'loss_gen_all': 31.394437789916992, 'loss_disc': 4.0692925453186035, 'loss_gen': 3.1591625213623047, 'loss_fm': 10.346088409423828, 'loss_mel': 17.258529663085938, 'loss_kl': 0.6306572556495667, 'wall_s': 144.5927479956299, 'learning_rate': 9.967550730505221e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 27 [2026-10-03 00:23:17] | (0:00:04.930388)
+{'step': 460, 'epoch': 28, 'loss_gen_all': 33.86347961425781, 'loss_disc': 4.340435981750488, 'loss_gen': 3.025864839553833, 'loss_fm': 10.388069152832031, 'loss_mel': 19.1309757232666, 'loss_kl': 1.3185707330703735, 'wall_s': 147.55741654708982, 'learning_rate': 9.966304786663908e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 470, 'epoch': 28, 'loss_gen_all': 36.769622802734375, 'loss_disc': 3.8109796047210693, 'loss_gen': 3.242459297180176, 'loss_fm': 10.684276580810547, 'loss_mel': 21.41681480407715, 'loss_kl': 1.4260729551315308, 'wall_s': 150.41230513900518, 'learning_rate': 9.966304786663908e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 28 [2026-10-03 00:23:22] | (0:00:04.971229)
+{'step': 480, 'epoch': 29, 'loss_gen_all': 34.549564361572266, 'loss_disc': 3.8522720336914062, 'loss_gen': 3.3557708263397217, 'loss_fm': 10.167566299438477, 'loss_mel': 19.632286071777344, 'loss_kl': 1.39393949508667, 'wall_s': 153.41368671506643, 'learning_rate': 9.965058998565574e-05, 'peak_gpu_allocated_bytes': 5342310400, 'raw_losses_before_upstream_display_caps': True}
+{'step': 490, 'epoch': 29, 'loss_gen_all': 34.41872787475586, 'loss_disc': 4.05064058303833, 'loss_gen': 3.853884220123291, 'loss_fm': 10.643972396850586, 'loss_mel': 19.113338470458984, 'loss_kl': 0.8075340986251831, 'wall_s': 156.33594362810254, 'learning_rate': 9.965058998565574e-05, 'peak_gpu_allocated_bytes': 5345953280, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 29 [2026-10-03 00:23:27] | (0:00:05.084927)
+{'step': 500, 'epoch': 30, 'loss_gen_all': 35.048553466796875, 'loss_disc': 3.6459529399871826, 'loss_gen': 3.9080371856689453, 'loss_fm': 9.483257293701172, 'loss_mel': 20.532001495361328, 'loss_kl': 1.1252578496932983, 'wall_s': 159.35743269138038, 'learning_rate': 9.963813366190753e-05, 'peak_gpu_allocated_bytes': 5345953280, 'raw_losses_before_upstream_display_caps': True}
+{'step': 510, 'epoch': 30, 'loss_gen_all': 31.31963539123535, 'loss_disc': 3.8805012702941895, 'loss_gen': 3.442275047302246, 'loss_fm': 8.173062324523926, 'loss_mel': 18.726221084594727, 'loss_kl': 0.9780760407447815, 'wall_s': 163.10968759469688, 'learning_rate': 9.963813366190753e-05, 'peak_gpu_allocated_bytes': 5388895232, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 30 [2026-10-03 00:23:33] | (0:00:05.887011)
+{'step': 520, 'epoch': 31, 'loss_gen_all': 35.573997497558594, 'loss_disc': 3.944981813430786, 'loss_gen': 3.943244457244873, 'loss_fm': 11.468785285949707, 'loss_mel': 18.873414993286133, 'loss_kl': 1.2885518074035645, 'wall_s': 166.23579939827323, 'learning_rate': 9.962567889519979e-05, 'peak_gpu_allocated_bytes': 5388895232, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 31 [2026-10-03 00:23:38] | (0:00:05.148039)
+{'step': 530, 'epoch': 32, 'loss_gen_all': 33.986995697021484, 'loss_disc': 4.193778038024902, 'loss_gen': 3.1488277912139893, 'loss_fm': 10.986528396606445, 'loss_mel': 18.719892501831055, 'loss_kl': 1.1317472457885742, 'wall_s': 169.18098624236882, 'learning_rate': 9.961322568533789e-05, 'peak_gpu_allocated_bytes': 5391901184, 'raw_losses_before_upstream_display_caps': True}
+{'step': 540, 'epoch': 32, 'loss_gen_all': 38.152809143066406, 'loss_disc': 3.8140015602111816, 'loss_gen': 3.357283592224121, 'loss_fm': 13.450262069702148, 'loss_mel': 20.852052688598633, 'loss_kl': 0.4932096004486084, 'wall_s': 172.1082537546754, 'learning_rate': 9.961322568533789e-05, 'peak_gpu_allocated_bytes': 5391901184, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 32 [2026-10-03 00:23:43] | (0:00:05.013368)
+{'step': 550, 'epoch': 33, 'loss_gen_all': 34.94284439086914, 'loss_disc': 3.6940019130706787, 'loss_gen': 3.192971706390381, 'loss_fm': 11.170283317565918, 'loss_mel': 19.343637466430664, 'loss_kl': 1.2359509468078613, 'wall_s': 175.17068623937666, 'learning_rate': 9.960077403212722e-05, 'peak_gpu_allocated_bytes': 5391901184, 'raw_losses_before_upstream_display_caps': True}
+{'step': 560, 'epoch': 33, 'loss_gen_all': 36.99441146850586, 'loss_disc': 4.046412467956543, 'loss_gen': 3.8954148292541504, 'loss_fm': 11.011486053466797, 'loss_mel': 21.12070083618164, 'loss_kl': 0.9668093919754028, 'wall_s': 178.17322923988104, 'learning_rate': 9.960077403212722e-05, 'peak_gpu_allocated_bytes': 5391901184, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 33 [2026-10-03 00:23:48] | (0:00:05.170612)
+{'step': 570, 'epoch': 34, 'loss_gen_all': 35.552310943603516, 'loss_disc': 4.005334377288818, 'loss_gen': 3.20112681388855, 'loss_fm': 10.254972457885742, 'loss_mel': 21.144088745117188, 'loss_kl': 0.952120304107666, 'wall_s': 181.22066402807832, 'learning_rate': 9.95883239353732e-05, 'peak_gpu_allocated_bytes': 5391901184, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 34 [2026-10-03 00:23:53] | (0:00:05.096295)
+{'step': 580, 'epoch': 35, 'loss_gen_all': 30.43842887878418, 'loss_disc': 4.155229091644287, 'loss_gen': 3.4886550903320312, 'loss_fm': 8.305447578430176, 'loss_mel': 17.70241928100586, 'loss_kl': 0.9419084787368774, 'wall_s': 184.25027585588396, 'learning_rate': 9.957587539488128e-05, 'peak_gpu_allocated_bytes': 5394717184, 'raw_losses_before_upstream_display_caps': True}
+{'step': 590, 'epoch': 35, 'loss_gen_all': 37.389549255371094, 'loss_disc': 4.129525661468506, 'loss_gen': 3.720442771911621, 'loss_fm': 11.499666213989258, 'loss_mel': 21.08357810974121, 'loss_kl': 1.085862159729004, 'wall_s': 187.29423271119595, 'learning_rate': 9.957587539488128e-05, 'peak_gpu_allocated_bytes': 5394717184, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 35 [2026-10-03 00:23:58] | (0:00:05.145115)
+{'step': 600, 'epoch': 36, 'loss_gen_all': 34.73060989379883, 'loss_disc': 3.840778112411499, 'loss_gen': 3.23344087600708, 'loss_fm': 12.18635082244873, 'loss_mel': 18.56821060180664, 'loss_kl': 0.7426087856292725, 'wall_s': 190.26852882280946, 'learning_rate': 9.956342841045691e-05, 'peak_gpu_allocated_bytes': 5394717184, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:Training epoch: 36 [29%]
+INFO:self_20261003_001500_finetune:[600, 9.956342841045691e-05]
+INFO:self_20261003_001500_finetune:loss_disc=4.005, loss_gen=2.781, loss_fm=12.238,loss_mel=19.376, loss_kl=1.120
+{'step': 610, 'epoch': 36, 'loss_gen_all': 50.38800048828125, 'loss_disc': 4.160985469818115, 'loss_gen': 2.766439437866211, 'loss_fm': 22.195716857910156, 'loss_mel': 23.513744354248047, 'loss_kl': 1.912103533744812, 'wall_s': 193.66174554266036, 'learning_rate': 9.956342841045691e-05, 'peak_gpu_allocated_bytes': 5394717184, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 36 [2026-10-03 00:24:04] | (0:00:05.525895)
+{'step': 620, 'epoch': 37, 'loss_gen_all': 37.38036346435547, 'loss_disc': 3.755338668823242, 'loss_gen': 3.3422276973724365, 'loss_fm': 12.330822944641113, 'loss_mel': 20.732929229736328, 'loss_kl': 0.9743824601173401, 'wall_s': 197.38934905827045, 'learning_rate': 9.95509829819056e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 37 [2026-10-03 00:24:09] | (0:00:05.722220)
+{'step': 630, 'epoch': 38, 'loss_gen_all': 35.36357879638672, 'loss_disc': 4.672548770904541, 'loss_gen': 3.600956439971924, 'loss_fm': 11.828503608703613, 'loss_mel': 19.300416946411133, 'loss_kl': 0.6336996555328369, 'wall_s': 200.39119806699455, 'learning_rate': 9.953853910903285e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 640, 'epoch': 38, 'loss_gen_all': 34.46331024169922, 'loss_disc': 3.7890641689300537, 'loss_gen': 3.231557607650757, 'loss_fm': 10.922245025634766, 'loss_mel': 19.545547485351562, 'loss_kl': 0.7639618515968323, 'wall_s': 203.26456218771636, 'learning_rate': 9.953853910903285e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 38 [2026-10-03 00:24:14] | (0:00:04.973752)
+{'step': 650, 'epoch': 39, 'loss_gen_all': 32.282249450683594, 'loss_disc': 3.646550416946411, 'loss_gen': 2.9301161766052246, 'loss_fm': 10.693502426147461, 'loss_mel': 17.802629470825195, 'loss_kl': 0.8560004234313965, 'wall_s': 206.2270789463073, 'learning_rate': 9.952609679164422e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 660, 'epoch': 39, 'loss_gen_all': 36.74440383911133, 'loss_disc': 3.6056911945343018, 'loss_gen': 3.2932472229003906, 'loss_fm': 12.531261444091797, 'loss_mel': 19.978870391845703, 'loss_kl': 0.9410255551338196, 'wall_s': 209.13541891984642, 'learning_rate': 9.952609679164422e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 39 [2026-10-03 00:24:19] | (0:00:05.062764)
+{'step': 670, 'epoch': 40, 'loss_gen_all': 32.690128326416016, 'loss_disc': 3.933626890182495, 'loss_gen': 3.7997982501983643, 'loss_fm': 10.32129192352295, 'loss_mel': 17.665803909301758, 'loss_kl': 0.9032360315322876, 'wall_s': 212.15330139547586, 'learning_rate': 9.951365602954526e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 680, 'epoch': 40, 'loss_gen_all': 34.32523727416992, 'loss_disc': 4.332403182983398, 'loss_gen': 3.5171306133270264, 'loss_fm': 10.926204681396484, 'loss_mel': 18.529916763305664, 'loss_kl': 1.3519861698150635, 'wall_s': 215.03320876322687, 'learning_rate': 9.951365602954526e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 40 [2026-10-03 00:24:24] | (0:00:04.975868)
+{'step': 690, 'epoch': 41, 'loss_gen_all': 33.2526969909668, 'loss_disc': 3.9907760620117188, 'loss_gen': 3.230689525604248, 'loss_fm': 11.479767799377441, 'loss_mel': 17.725210189819336, 'loss_kl': 0.8170261979103088, 'wall_s': 218.04686849191785, 'learning_rate': 9.950121682254156e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 41 [2026-10-03 00:24:30] | (0:00:05.031883)
+{'step': 700, 'epoch': 42, 'loss_gen_all': 36.13679504394531, 'loss_disc': 3.9815995693206787, 'loss_gen': 3.770357370376587, 'loss_fm': 10.303718566894531, 'loss_mel': 21.17818832397461, 'loss_kl': 0.8845305442810059, 'wall_s': 221.0500712003559, 'learning_rate': 9.948877917043875e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 710, 'epoch': 42, 'loss_gen_all': 35.562652587890625, 'loss_disc': 4.013016223907471, 'loss_gen': 3.169857978820801, 'loss_fm': 13.223546028137207, 'loss_mel': 18.37767791748047, 'loss_kl': 0.7915734648704529, 'wall_s': 223.9323303438723, 'learning_rate': 9.948877917043875e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 42 [2026-10-03 00:24:35] | (0:00:05.010316)
+{'step': 720, 'epoch': 43, 'loss_gen_all': 33.22533416748047, 'loss_disc': 3.8812448978424072, 'loss_gen': 3.2336320877075195, 'loss_fm': 8.628114700317383, 'loss_mel': 20.291706085205078, 'loss_kl': 1.071881890296936, 'wall_s': 226.93372282385826, 'learning_rate': 9.947634307304244e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 730, 'epoch': 43, 'loss_gen_all': 38.8312873840332, 'loss_disc': 4.357773780822754, 'loss_gen': 4.830012321472168, 'loss_fm': 13.280895233154297, 'loss_mel': 19.60504150390625, 'loss_kl': 1.1153372526168823, 'wall_s': 230.36505757831037, 'learning_rate': 9.947634307304244e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 43 [2026-10-03 00:24:40] | (0:00:05.605521)
+{'step': 740, 'epoch': 44, 'loss_gen_all': 28.50621795654297, 'loss_disc': 4.225109100341797, 'loss_gen': 3.7020368576049805, 'loss_fm': 5.613826274871826, 'loss_mel': 17.39317512512207, 'loss_kl': 1.7971806526184082, 'wall_s': 233.3673319518566, 'learning_rate': 9.94639085301583e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 44 [2026-10-03 00:24:45] | (0:00:04.935848)
+{'step': 750, 'epoch': 45, 'loss_gen_all': 45.51847839355469, 'loss_disc': 3.9953277111053467, 'loss_gen': 3.401813507080078, 'loss_fm': 18.84033966064453, 'loss_mel': 21.82660675048828, 'loss_kl': 1.449718952178955, 'wall_s': 236.30064227059484, 'learning_rate': 9.945147554159202e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 760, 'epoch': 45, 'loss_gen_all': 33.13070297241211, 'loss_disc': 3.852910280227661, 'loss_gen': 3.2313530445098877, 'loss_fm': 11.65575885772705, 'loss_mel': 17.44913673400879, 'loss_kl': 0.7944509983062744, 'wall_s': 239.10850120708346, 'learning_rate': 9.945147554159202e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 45 [2026-10-03 00:24:50] | (0:00:04.859430)
+{'step': 770, 'epoch': 46, 'loss_gen_all': 32.702945709228516, 'loss_disc': 3.9556894302368164, 'loss_gen': 3.1779744625091553, 'loss_fm': 10.919090270996094, 'loss_mel': 17.507375717163086, 'loss_kl': 1.0985032320022583, 'wall_s': 242.06438044272363, 'learning_rate': 9.943904410714931e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 780, 'epoch': 46, 'loss_gen_all': 34.27488327026367, 'loss_disc': 3.675201892852783, 'loss_gen': 3.7945146560668945, 'loss_fm': 10.58193302154541, 'loss_mel': 18.837825775146484, 'loss_kl': 1.0606106519699097, 'wall_s': 244.9785524699837, 'learning_rate': 9.943904410714931e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 46 [2026-10-03 00:24:55] | (0:00:05.041633)
+{'step': 790, 'epoch': 47, 'loss_gen_all': 32.31560516357422, 'loss_disc': 4.1296796798706055, 'loss_gen': 3.3889124393463135, 'loss_fm': 9.100007057189941, 'loss_mel': 18.7970027923584, 'loss_kl': 1.0296825170516968, 'wall_s': 247.9844421427697, 'learning_rate': 9.942661422663591e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 47 [2026-10-03 00:25:00] | (0:00:05.023061)
+{'step': 800, 'epoch': 48, 'loss_gen_all': 34.07814407348633, 'loss_disc': 3.6580982208251953, 'loss_gen': 3.513228416442871, 'loss_fm': 11.344345092773438, 'loss_mel': 18.930770874023438, 'loss_kl': 0.2898004353046417, 'wall_s': 250.98950337432325, 'learning_rate': 9.941418589985758e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:Training epoch: 48 [6%]
+INFO:self_20261003_001500_finetune:[800, 9.941418589985758e-05]
+INFO:self_20261003_001500_finetune:loss_disc=3.586, loss_gen=3.329, loss_fm=12.246,loss_mel=19.066, loss_kl=1.037
+{'step': 810, 'epoch': 48, 'loss_gen_all': 30.47873306274414, 'loss_disc': 3.8162901401519775, 'loss_gen': 3.4196653366088867, 'loss_fm': 10.152765274047852, 'loss_mel': 16.47248077392578, 'loss_kl': 0.4338216781616211, 'wall_s': 254.36813102290034, 'learning_rate': 9.941418589985758e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 48 [2026-10-03 00:25:06] | (0:00:05.495782)
+{'step': 820, 'epoch': 49, 'loss_gen_all': 35.91818618774414, 'loss_disc': 3.6047728061676025, 'loss_gen': 3.2720112800598145, 'loss_fm': 12.039987564086914, 'loss_mel': 19.56816291809082, 'loss_kl': 1.0380252599716187, 'wall_s': 257.3512284103781, 'learning_rate': 9.940175912662009e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 830, 'epoch': 49, 'loss_gen_all': 35.05322265625, 'loss_disc': 4.5465006828308105, 'loss_gen': 2.93438720703125, 'loss_fm': 13.22769546508789, 'loss_mel': 18.055429458618164, 'loss_kl': 0.8357082009315491, 'wall_s': 260.3790023587644, 'learning_rate': 9.940175912662009e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 49 [2026-10-03 00:25:11] | (0:00:05.143123)
+{'step': 840, 'epoch': 50, 'loss_gen_all': 33.0837287902832, 'loss_disc': 3.9200336933135986, 'loss_gen': 3.0074779987335205, 'loss_fm': 9.219752311706543, 'loss_mel': 19.732839584350586, 'loss_kl': 1.1236603260040283, 'wall_s': 263.33854766376317, 'learning_rate': 9.938933390672926e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 850, 'epoch': 50, 'loss_gen_all': 37.83626937866211, 'loss_disc': 3.5717709064483643, 'loss_gen': 3.404107093811035, 'loss_fm': 11.657190322875977, 'loss_mel': 21.251123428344727, 'loss_kl': 1.5238498449325562, 'wall_s': 266.84353244304657, 'learning_rate': 9.938933390672926e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 50 [2026-10-03 00:25:16] | (0:00:05.586801)
+{'step': 860, 'epoch': 51, 'loss_gen_all': 35.628257751464844, 'loss_disc': 3.6370961666107178, 'loss_gen': 3.7202835083007812, 'loss_fm': 11.485860824584961, 'loss_mel': 19.339649200439453, 'loss_kl': 1.082465648651123, 'wall_s': 269.8747487515211, 'learning_rate': 9.937691023999092e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 51 [2026-10-03 00:25:21] | (0:00:05.060338)
+{'step': 870, 'epoch': 52, 'loss_gen_all': 34.39200973510742, 'loss_disc': 3.6750845909118652, 'loss_gen': 3.226503372192383, 'loss_fm': 10.783735275268555, 'loss_mel': 19.580909729003906, 'loss_kl': 0.8008596301078796, 'wall_s': 272.91075683385134, 'learning_rate': 9.936448812621091e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 880, 'epoch': 52, 'loss_gen_all': 37.40922164916992, 'loss_disc': 3.8835010528564453, 'loss_gen': 3.697481155395508, 'loss_fm': 13.520057678222656, 'loss_mel': 19.523557662963867, 'loss_kl': 0.6681261658668518, 'wall_s': 275.81736828386784, 'learning_rate': 9.936448812621091e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 52 [2026-10-03 00:25:26] | (0:00:05.045234)
+{'step': 890, 'epoch': 53, 'loss_gen_all': 34.76910400390625, 'loss_disc': 4.024718284606934, 'loss_gen': 3.838230609893799, 'loss_fm': 11.781837463378906, 'loss_mel': 18.62323760986328, 'loss_kl': 0.5257986187934875, 'wall_s': 278.83229266293347, 'learning_rate': 9.935206756519513e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 900, 'epoch': 53, 'loss_gen_all': 26.535018920898438, 'loss_disc': 4.713807106018066, 'loss_gen': 3.557849407196045, 'loss_fm': 5.602601528167725, 'loss_mel': 17.372722625732422, 'loss_kl': 0.0018472671508789062, 'wall_s': 281.7255157791078, 'learning_rate': 9.935206756519513e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 53 [2026-10-03 00:25:31] | (0:00:05.038725)
+{'step': 910, 'epoch': 54, 'loss_gen_all': 31.531021118164062, 'loss_disc': 3.876072406768799, 'loss_gen': 3.59169340133667, 'loss_fm': 10.507838249206543, 'loss_mel': 17.186479568481445, 'loss_kl': 0.24501089751720428, 'wall_s': 284.6675060670823, 'learning_rate': 9.933964855674948e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 54 [2026-10-03 00:25:36] | (0:00:04.954950)
+{'step': 920, 'epoch': 55, 'loss_gen_all': 37.42794418334961, 'loss_disc': 3.629850149154663, 'loss_gen': 3.2633838653564453, 'loss_fm': 12.714651107788086, 'loss_mel': 20.3067684173584, 'loss_kl': 1.1431385278701782, 'wall_s': 287.6850688587874, 'learning_rate': 9.932723110067987e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 930, 'epoch': 55, 'loss_gen_all': 36.46056365966797, 'loss_disc': 3.7724709510803223, 'loss_gen': 3.4081974029541016, 'loss_fm': 12.63972282409668, 'loss_mel': 19.66402244567871, 'loss_kl': 0.74861741065979, 'wall_s': 290.58503124676645, 'learning_rate': 9.932723110067987e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 55 [2026-10-03 00:25:42] | (0:00:05.166405)
+{'step': 940, 'epoch': 56, 'loss_gen_all': 36.8660774230957, 'loss_disc': 3.426234483718872, 'loss_gen': 3.7706878185272217, 'loss_fm': 12.07932186126709, 'loss_mel': 20.216693878173828, 'loss_kl': 0.7993740439414978, 'wall_s': 294.0208720397204, 'learning_rate': 9.931481519679228e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 950, 'epoch': 56, 'loss_gen_all': 37.494205474853516, 'loss_disc': 3.767043113708496, 'loss_gen': 3.6283981800079346, 'loss_fm': 13.786211013793945, 'loss_mel': 18.913705825805664, 'loss_kl': 1.1658880710601807, 'wall_s': 296.9835429545492, 'learning_rate': 9.931481519679228e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 56 [2026-10-03 00:25:47] | (0:00:05.414840)
+{'step': 960, 'epoch': 57, 'loss_gen_all': 41.95513153076172, 'loss_disc': 3.865107297897339, 'loss_gen': 3.546025514602661, 'loss_fm': 15.918644905090332, 'loss_mel': 21.225200653076172, 'loss_kl': 1.2652589082717896, 'wall_s': 300.0150147229433, 'learning_rate': 9.930240084489267e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 57 [2026-10-03 00:25:52] | (0:00:05.026672)
+{'step': 970, 'epoch': 58, 'loss_gen_all': 35.697845458984375, 'loss_disc': 3.8085134029388428, 'loss_gen': 3.2445261478424072, 'loss_fm': 13.322199821472168, 'loss_mel': 18.534854888916016, 'loss_kl': 0.5962653756141663, 'wall_s': 303.0070324316621, 'learning_rate': 9.928998804478705e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 980, 'epoch': 58, 'loss_gen_all': 35.065216064453125, 'loss_disc': 4.449804306030273, 'loss_gen': 3.7753140926361084, 'loss_fm': 13.050679206848145, 'loss_mel': 17.372968673706055, 'loss_kl': 0.8662554025650024, 'wall_s': 305.8906452022493, 'learning_rate': 9.928998804478705e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:====> Epoch: 58 [2026-10-03 00:25:57] | (0:00:05.030264)
+{'step': 990, 'epoch': 59, 'loss_gen_all': 34.992164611816406, 'loss_disc': 3.653407335281372, 'loss_gen': 3.5804200172424316, 'loss_fm': 11.060243606567383, 'loss_mel': 19.832056045532227, 'loss_kl': 0.5194478631019592, 'wall_s': 308.8873986527324, 'learning_rate': 9.927757679628145e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+{'step': 1000, 'epoch': 59, 'loss_gen_all': 32.84518051147461, 'loss_disc': 3.7531943321228027, 'loss_gen': 2.824586868286133, 'loss_fm': 11.78653621673584, 'loss_mel': 17.37866973876953, 'loss_kl': 0.8553873896598816, 'wall_s': 311.8812416419387, 'learning_rate': 9.927757679628145e-05, 'peak_gpu_allocated_bytes': 5401867776, 'raw_losses_before_upstream_display_caps': True}
+INFO:self_20261003_001500_finetune:Saving model and optimizer state at epoch 59 to logs/self_20261003_001500_finetune/G_1000.pth
+INFO:self_20261003_001500_finetune:Saving model and optimizer state at epoch 59 to logs/self_20261003_001500_finetune/D_1000.pth
+Current device: cuda:0 | Inference precision: torch.float16
+Select model: model.pth
+Speaker ID (0-109): 0
+Select index: Not used
+【Single Inference】
+Status：Success
+
+Index：Not used
+Elapsed time：Features 0.11s | F0 2.92s | Synthesis 0.42s
+/root/autodl-tmp/voice-self-compare-e64531a3/runs/new4090d_ab_retry1/listening/scratch.wav
+Current device: cuda:0 | Inference precision: torch.float16
+Select model: model.pth
+Speaker ID (0-109): 0
+Select index: Not used
+【Single Inference】
+Status：Success
+
+Index：Not used
+Elapsed time：Features 0.08s | F0 2.16s | Synthesis 0.29s
+/root/autodl-tmp/voice-self-compare-e64531a3/runs/new4090d_ab_retry1/listening/finetune.wav
+Download /root/autodl-tmp/voice-self-compare-e64531a3/runs/new4090d_ab_retry1/results.zip
+RESULTS_READY /root/autodl-tmp/voice-self-compare-e64531a3/runs/new4090d_ab_retry1/results.zip; download window 120s within existing cap.

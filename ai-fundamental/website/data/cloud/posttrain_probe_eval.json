@@ -1,0 +1,1254 @@
+[
+  {
+    "checkpoint": "/root/autodl-tmp/runs/fineweb100m_target_probe/base.pt",
+    "stage": "base",
+    "n": 50,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.07135003417431873
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 2. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 3. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 4. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 5. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 6. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 7. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 8. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 9. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 0. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 1. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 2. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 3. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 4. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 5. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 6. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 7. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 8. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 9. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 0. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 1. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 2. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 3. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 4. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 5. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 6. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 7. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 8. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 9. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 0. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 1. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 2. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 3. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 4. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 5. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 6. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 7. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 8. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 9. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 0. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 1. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 2. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 3. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 4. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 5. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 6. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 7. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 8. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 9. Answer: ",
+        "expected": "38",
+        "output": "the the the the ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "checkpoint": "/root/autodl-tmp/runs/sft_probe.pt",
+    "stage": "sft",
+    "n": 50,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.07135003417431873
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 2. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 3. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 4. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 5. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 6. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 7. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 8. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 9. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 0. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 1. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 2. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 3. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 4. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 5. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 6. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 7. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 8. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 9. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 0. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 1. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 2. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 3. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 4. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 5. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 6. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 7. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 8. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 9. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 0. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 1. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 2. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 3. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 4. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 5. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 6. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 7. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 8. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 9. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 0. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 1. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 2. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 3. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 4. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 5. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 6. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 7. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 8. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 9. Answer: ",
+        "expected": "38",
+        "output": "the the the the ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "checkpoint": "/root/autodl-tmp/runs/dpo_probe.pt",
+    "stage": "dpo",
+    "n": 50,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.07135003417431873
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 2. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 3. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 4. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 5. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 6. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 7. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 8. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 9. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 0. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 1. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 2. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 3. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 4. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 5. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 6. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 7. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 8. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 9. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 0. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 1. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 2. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 3. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 4. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 5. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 6. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 7. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 8. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 9. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 0. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 1. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 2. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 3. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 4. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 5. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 6. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 7. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 8. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 9. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 0. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 1. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 2. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 3. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 4. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 5. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 6. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 7. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 8. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 9. Answer: ",
+        "expected": "38",
+        "output": "the the the the ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "checkpoint": "/root/autodl-tmp/runs/rlvr_probe.pt",
+    "stage": "rlvr",
+    "n": 50,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.07135003417431873
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 2. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 3. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 4. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 5. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 6. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 7. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 8. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 9. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 0. Answer: ",
+        "expected": "26",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 1. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 2. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 3. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 4. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 5. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 6. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 7. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 8. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 26 + 9. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 0. Answer: ",
+        "expected": "27",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 1. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 2. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 3. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 4. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 5. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 6. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 7. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 8. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 27 + 9. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 0. Answer: ",
+        "expected": "28",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 1. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 2. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 3. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 4. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 5. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 6. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 7. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 8. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 28 + 9. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 0. Answer: ",
+        "expected": "29",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 1. Answer: ",
+        "expected": "30",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 2. Answer: ",
+        "expected": "31",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 3. Answer: ",
+        "expected": "32",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 4. Answer: ",
+        "expected": "33",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 5. Answer: ",
+        "expected": "34",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 6. Answer: ",
+        "expected": "35",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 7. Answer: ",
+        "expected": "36",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 8. Answer: ",
+        "expected": "37",
+        "output": "the the the the ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 29 + 9. Answer: ",
+        "expected": "38",
+        "output": "the the the the ",
+        "correct": false
+      }
+    ]
+  }
+]

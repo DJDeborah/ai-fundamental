@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "raw": 1500,
+    "train": 1467,
+    "test": 15,
+    "val": 18
+  },
+  "allowed_licenses": [
+    "CC0"
+  ],
+  "split": "sha256(normalized text) mod 1000: 980/10/10",
+  "min_chars": 20
+}

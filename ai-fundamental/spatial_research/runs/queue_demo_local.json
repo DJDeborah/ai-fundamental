@@ -1,0 +1,89 @@
+[
+  {
+    "policy": "fcfs",
+    "jobs": [
+      {
+        "id": "A",
+        "start_s": 0.0,
+        "finish_s": 3600.0,
+        "wait_s": 0.0,
+        "flow_s": 3600.0
+      },
+      {
+        "id": "B",
+        "start_s": 3600.0,
+        "finish_s": 4200.0,
+        "wait_s": 3600.0,
+        "flow_s": 4200.0
+      },
+      {
+        "id": "C",
+        "start_s": 4200.0,
+        "finish_s": 4500.0,
+        "wait_s": 4200.0,
+        "flow_s": 4500.0
+      }
+    ],
+    "mean_wait_s": 2600.0,
+    "mean_flow_s": 4100.0,
+    "makespan_s": 4500.0
+  },
+  {
+    "policy": "oracle_spt",
+    "jobs": [
+      {
+        "id": "C",
+        "start_s": 0.0,
+        "finish_s": 300.0,
+        "wait_s": 0.0,
+        "flow_s": 300.0
+      },
+      {
+        "id": "B",
+        "start_s": 300.0,
+        "finish_s": 900.0,
+        "wait_s": 300.0,
+        "flow_s": 900.0
+      },
+      {
+        "id": "A",
+        "start_s": 900.0,
+        "finish_s": 4500.0,
+        "wait_s": 900.0,
+        "flow_s": 4500.0
+      }
+    ],
+    "mean_wait_s": 400.0,
+    "mean_flow_s": 1900.0,
+    "makespan_s": 4500.0
+  },
+  {
+    "policy": "predicted_spt",
+    "jobs": [
+      {
+        "id": "C",
+        "start_s": 0.0,
+        "finish_s": 300.0,
+        "wait_s": 0.0,
+        "flow_s": 300.0
+      },
+      {
+        "id": "B",
+        "start_s": 300.0,
+        "finish_s": 900.0,
+        "wait_s": 300.0,
+        "flow_s": 900.0
+      },
+      {
+        "id": "A",
+        "start_s": 900.0,
+        "finish_s": 4500.0,
+        "wait_s": 900.0,
+        "flow_s": 4500.0
+      }
+    ],
+    "mean_wait_s": 400.0,
+    "mean_flow_s": 1900.0,
+    "makespan_s": 4500.0
+  }
+]

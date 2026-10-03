@@ -1,0 +1,11 @@
+{
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "memory_total_mib": 24564,
+  "driver": "580.76.05",
+  "power_limit_w": 450,
+  "torch": "2.8.0+cu128",
+  "torch_cuda_runtime": "12.8",
+  "triton": "3.4.0",
+  "source": "AutoDL instance terminal: nvidia-smi --query-gpu and python import version output",
+  "recorded_utc": "2026-10-01"
+}

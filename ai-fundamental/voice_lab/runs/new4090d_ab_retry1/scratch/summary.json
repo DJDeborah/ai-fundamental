@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "stop_reason": "steps",
+  "steps": 1000,
+  "wall_s": 320.7027753200382,
+  "model": "/root/autodl-tmp/voice-self-compare-e64531a3/upstream/RVC/assets/weights/self_20261003_001500_scratch_step1000.pth",
+  "model_sha256": "814f4116777e12ae41cb13ec5f575f7892c5856fc272193a01b2939a76244486",
+  "final_train_losses": {
+    "loss_gen_all": 43.52688980102539,
+    "loss_disc": 3.5284299850463867,
+    "loss_gen": 4.492897033691406,
+    "loss_fm": 12.694780349731445,
+    "loss_mel": 25.403051376342773,
+    "loss_kl": 0.9361599683761597
+  },
+  "quality_claim": "Training losses are not perceptual quality scores; compare held-out WAVs."
+}

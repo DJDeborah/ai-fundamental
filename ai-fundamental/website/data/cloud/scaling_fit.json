@@ -1,0 +1,169 @@
+{
+  "E": 1.9694509173489239,
+  "A": 0.8341094073454323,
+  "B": 6.331101910547232,
+  "alpha": 0.6,
+  "beta": 0.625,
+  "fit_rmse": 0.007675444476124052,
+  "train_points": 8,
+  "holdout": {
+    "params": 100679424,
+    "tokens": 299999232,
+    "actual_loss": 2.1698577602704368,
+    "predicted_loss": 2.201042022309598,
+    "absolute_error": 0.031184262039161137
+  },
+  "observations": [
+    {
+      "params": 8391936,
+      "tokens": 19996672,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 3.1796211351950965,
+      "sd_val_loss": 0.016497735762327468
+    },
+    {
+      "params": 8391936,
+      "tokens": 80003072,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 2.5989983106652894,
+      "sd_val_loss": 0.0056622891908304895
+    },
+    {
+      "params": 8391936,
+      "tokens": 299999232,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 2.390049738188585,
+      "sd_val_loss": 0.002940760020231786
+    },
+    {
+      "params": 37757440,
+      "tokens": 19996672,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 3.0325280874967575,
+      "sd_val_loss": 0.012000935188136694
+    },
+    {
+      "params": 37757440,
+      "tokens": 80003072,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 2.485209494829178,
+      "sd_val_loss": 0.010046899647787162
+    },
+    {
+      "params": 37757440,
+      "tokens": 299999232,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 2.236055314540863,
+      "sd_val_loss": 0.0026998866934506796
+    },
+    {
+      "params": 100679424,
+      "tokens": 19996672,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 2.9972753996650376,
+      "sd_val_loss": 0.0248992948224151
+    },
+    {
+      "params": 100679424,
+      "tokens": 80003072,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 2.4292496095101037,
+      "sd_val_loss": 0.013656493053435102
+    },
+    {
+      "params": 100679424,
+      "tokens": 299999232,
+      "seeds": [
+        "42",
+        "43",
+        "44"
+      ],
+      "replicates": 3,
+      "mean_val_loss": 2.1698577602704368,
+      "sd_val_loss": 0.008765568841059106
+    }
+  ],
+  "extrapolation": {
+    "params": 100679424,
+    "tokens": 2000000000,
+    "predicted_loss": 2.0766101566566357,
+    "caution": "prediction uncertainty grows outside measured N,D range"
+  },
+  "bootstrap": {
+    "requested": 200,
+    "successful": 200,
+    "failed": 0,
+    "scheme": "paired_seed_trajectories_by_model",
+    "holdout_prediction_95pct": [
+      2.1865888703592296,
+      2.2221657161015815
+    ],
+    "target_prediction_95pct": [
+      2.0576903488684333,
+      2.104535525729284
+    ]
+  },
+  "provenance": {
+    "grid_manifest_sha256": "499aaa5db472a7693a47cd193b310964a4bc225c2185e70d813e7eaad2403515",
+    "data_manifest_sha256": "8e389b93aabbb3ea22064ed2823791c2c50d7c316c0bc45a743189fb76b1af94",
+    "tokenizer_sha256": "104fbc43dfa88b2da61b7bbbef87d126a720eac12dfcef876dc23bcb2ad28e7a",
+    "validation_tokens_per_point": 262144,
+    "metric_files": [
+      "/root/autodl-tmp/runs/scaling_grid_v2/small_seed42/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/small_seed43/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/small_seed44/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/medium_seed42/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/medium_seed43/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/medium_seed44/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/base100m_seed42/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/base100m_seed43/metrics.jsonl",
+      "/root/autodl-tmp/runs/scaling_grid_v2/base100m_seed44/metrics.jsonl"
+    ],
+    "raw_observations": 27,
+    "model_sizes": {
+      "small": 8391936,
+      "medium": 37757440,
+      "base100m": 100679424
+    }
+  }
+}
