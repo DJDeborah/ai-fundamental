@@ -2,7 +2,7 @@
 
 这是可运行的 **OpenVoice V2 预训练模型 CPU 原型**。支持录音/上传、参考音色、模型内部 LERP/SLERP 插值、本人重建诊断和运行收据。没有叠加两条输出波形。
 
-**当前目标参考是 Linda Johnson 的公共领域 LJ Speech，不是 Adele。** Adele 混合还需要实际目标参考。OpenVoice 以讲话为主；用已有清唱试转是未验收的研究实验。这里只做停止录音后的转换，没有实现连续流式变声，也没有新增训练。
+**开放默认参考是 Linda Johnson 的公共领域 LJ Speech，不是 Adele。** 本机另已准备四条有原始来源的 Adele 候选：NPR 连续访谈 **20.000 秒 / 19.270 秒**，Vogue 讲话约 **8.245 秒**及现场短清唱 **6.316 秒**。它们属于公开访谈的版权参考，尚未验收，并非开放授权音库；只保存在忽略上传的本机 `assets/`。OpenVoice 以讲话为主；清唱试转仍是未验收的研究实验。这里只做停止录音后的转换，没有实现连续流式变声，也没有新增训练。
 
 ## 在这台电脑立即体验
 
@@ -17,7 +17,7 @@ cd 'I:\sideprojects\ai fundamental\voice_lab\voice_workbench'
 
 1. 先试听“已生成的小样”，比较原声、模型本人重建及四档插值。一次只播放一个播放器。
 2. 点击“开始录音”，允许浏览器使用麦克风，说 5–15 秒；停止后先试听。也可上传 WAV、MP3、M4A、WebM 等。
-3. 勾选“使用开放参考 Linda Johnson”，或上传自己的真实目标参考。建议干净单人声，少伴奏、少混响；每个文件最多 30 秒/20 MB。
+3. 在“本机内置候选”中选择 Adele / NPR 连续访谈、Vogue 讲话或现场短清唱，先听参考并查看真实来源；或勾选 Linda Johnson 开放默认参考、上传自己的目标参考。建议干净单人声，少伴奏、少混响；每个文件最多 30 秒/20 MB。上传目标文件优先于内置候选。
 4. 将 α 设为 100%，先检查完整目标转换。点击“生成并试听”，等真实输出出现。
 5. 再试 25/50/75%。α 是音色向量的实验权重，不能当成人耳感知的身份百分比。
 6. 勾选“本人重建诊断”，检查模型本身是否引入噪声/双声部。该模式忽略目标与 α，始终运行模型。
@@ -43,6 +43,41 @@ py -3.10 -m venv .venv
 
 本机已有五档样本；新的 Git checkout 不含私人样例、模型缓存或录音。用麦克风/上传产生你自己的输入。
 
+## 重建本机的四条 Adele 候选参考
+
+| 来源与候选 | 实际参考时长 | 本机菜单 ID |
+|---|---:|---|
+| NPR：音乐与听众情绪回答 | 20.000 秒 | `adele_npr_emotion` |
+| NPR：母亲身份回答 | 19.270 秒 | `adele_npr_parenthood` |
+| Vogue：讲话回答 | 8.245 秒 | `adele_vogue_speech` |
+| Vogue：现场短清唱 | 6.316 秒 | `adele_vogue_live_singing` |
+
+### NPR 连续访谈
+
+来源为 [NPR 原始访谈的公开发布页](https://www.nprillinois.org/2015-11-24/you-cant-prepare-yourself-a-conversation-with-adele)。已定位的两段以完整 MP3 解码波形的样本时间裁剪；复现脚本不重新运行 ASR（Automatic Speech Recognition，自动语音识别），需要前面环境中已有的 NumPy、SoundFile 和 FFmpeg。
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 prepare_npr_adele_reference.py
+```
+
+脚本取得原发布方公开 MP3，核验固定源文件后重建这两条候选并登记到本机菜单。不是开放授权音库，也不因为识别定位或裁剪成功就宣称纯人声。原文件与参考只用于本机实验，不加入公开静态展示。
+
+### Vogue 讲话与现场清唱
+
+源页面是 [Vogue：73 Questions With Adele](https://www.vogue.com/video/watch/73-questions-with-adele)。以下命令使用本机已经验证的固定下载器版本 **yt-dlp 2026.8.19**，从出版方公开媒体裁剪，不使用浏览器 cookies 或登录凭据。需要前面的 Python 环境与 FFmpeg。出版方未来可能更改媒体；失败时保留错误，不绕过认证。
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install yt-dlp==2026.8.19
+
+.\.venv\Scripts\python.exe -X utf8 prepare_adele_reference.py --kind speech --start 380.071 --duration 8.245 --name adele_vogue_speech_candidate --catalog-id adele_vogue_speech
+
+.\.venv\Scripts\python.exe -X utf8 prepare_adele_reference.py --kind singing --start 637.234 --duration 6.316 --name adele_vogue_live_singing_candidate --catalog-id adele_vogue_live_singing
+```
+
+成功后，WAV 和来源/时长/SHA256 收据保存在 `assets/adele_private_reference/`；`--catalog-id` 验证现有 `assets/reference_catalog.json`，仅替换同 ID 条目并保留其他条目，原子写入登记。工作台点击“刷新”即可重新读取候选。没有 `--catalog-id` 时只准备文件，不登记到菜单。
+
+现场清唱默认时间段 10:37.234–10:43.550 来自出版方定时字幕，位于手机变声回放之前。其它 `--start` / `--duration` 都按用户选择的候选裁剪时间记录，需重新试听确认说话人、连续性及背景；不能沿用默认时间段的字幕结论。脚本始终登记 `quality_approved=false`，不会因为下载或裁剪成功就宣称纯人声、相似度或音质达标。本轮未做 BGM 分离；短清唱仅 6.316 秒，不是 30 秒录音或完整训练数据。
+
 ## 怎样理解这条链
 
 ```text
@@ -65,7 +100,9 @@ py -3.10 -m venv .venv
 
 同一 8 秒、统一 22050 Hz、原声安静帧代理比较：旧 A/RVC 为 −32.18 dBFS，旧 B 为 −40.48，新模型本人重建为 −60.06。对照还保留“安静能量/整体能量”比，避免只因整体音量较低就称降噪成功。这只说明此代理上的停顿残留更低；**未证明自然度、Adele 相似度或歌声更好。** 详见本机 `benchmarks/BENCHMARK_RECEIPT.json`、`SAME_CLIP_COMPARISON.json` 和 `UI_API_VERIFICATION.json`。
 
-本机服务已经实际验证上传→FFmpeg→真实模型→WAV 下载及收据。麦克风硬件录制仍需要你亲自试一次。新讲话输入和 Adele 参考尚待提供；SoulX-Singer-SVC/Seed-VC 的歌声对照未在本轮运行。
+本机服务已经实际验证上传→FFmpeg→真实模型→WAV 下载及收据；Adele 四条候选可在本机菜单试听并选择。以这些真实参考做的五次新试转均已产出 WAV：首次包含重新启动后的加载，约 **74.93 秒**，后四次约 **7.44–7.72 秒**。同一 8 秒清唱输入、输出约 7.999 秒；没有新增训练或微调，也没有用原声/换声波形叠加。加载条件不同，不能把这些耗时当严格的速度对照。
+
+获取与运行证据见 [Adele 参考获取与试转报告](ADELE_REFERENCE_REPORT.md)。[公开生成小样的静态展示入口](https://djdeborah.github.io/sideproject/adele-exploration/)随网站部署启用，只播放预生成 WAV，不执行推理或提供原始访谈参考。**这批听感未验收，不能宣称已解决多声部、电流声或达到 Adele 相似度。** 麦克风硬件录制仍需要你亲自试一次；SoulX-Singer-SVC/Seed-VC 的歌声对照未在本轮运行。
 
 ## 文件与接口
 
@@ -76,9 +113,13 @@ py -3.10 -m venv .venv
 | `engine.py` | 固定官方 OpenVoice 模型与真实 latent 插值 |
 | `prepare_openvoice.py` | 固定版本与模型校验下载 |
 | `prepare_reference.py` | 下载一条有来源的公共领域讲话参考 |
+| `prepare_adele_reference.py` | 裁剪 Vogue 实际版权候选；可选登记到本机参考菜单 |
+| `prepare_npr_adele_reference.py` | 校验公开源 MP3、按固定样本时间重建两条 NPR 版权候选并登记；无需重跑 ASR |
 | `run_benchmark.py` | 本机固定轻唱小样与五档收据；需准备相应输入 |
 | `GET /api/status` | 模型是否就绪、设备、参考、FFmpeg 状态 |
-| `POST /api/convert` | multipart 源音频、参考、alpha、mode、method、diagnostic_self |
+| `GET /api/references` | 仅列出内置目录中真实存在、有来源的候选与实际时长 |
+| `GET /api/references/{id}.wav` | 仅发送内置白名单候选，不列出私人会话录音 |
+| `POST /api/convert` | multipart 源音频、上传参考或 reference_id、alpha、mode、method、diagnostic_self |
 | `GET /outputs/{id}.wav` | 实际输出，不能把未完成请求当成功 |
 | `GET /api/receipts/{id}` | 本次参数/输入/结果/失败证据 |
 

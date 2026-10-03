@@ -168,3 +168,19 @@ A/B 的 summary 都为 complete，实际更新各 1000；A 320.7028 秒，B 313.
 固定官方OpenVoiceV2 converter131320490字节，代码74a1d147、模型f36e7ed，SHA校验通过。新的隔离venv复用CPU Torch2.4.1，未改全局或旧RVC。直接extract_se、模型内部LERP/SLERP条件插值，官方encoder/flow/decoder；关闭额外watermark模型的薄子类初始化原因和代码哈希已记metadata，上游未改。实际本人8秒清唱→本人参考重建及LJ目标25/50/75/100共五条输出，7.99927秒、finite、无数字削波，预热后总耗时5.76–8.07秒；不是Adele，不是新的训练，轻唱自然度/身份尚未验收。
 
 本机API实际上传/转码/推理/下载/收据全部通过；浏览器点击载入样例、生成按钮产生真实WAV，播放器readyState4且无错误；正常点击验证同时只播一个。麦克风硬件待用户实录。工作台localhost:8872；GitHub静态新小样仅展示现有WAV。源码/教程和五档证据分别为voice_workbench、VOICE_NEXT_EXPERIMENT.md、benchmarks/BENCHMARK_RECEIPT.json。本轮未启GPU任务；新的租赁预算与Adele参考仍待回答。
+
+
+### 2026-10-03 新路线上线与本机交互交付
+
+GitHub 更新提交 `0600876ff72da7b1ec33c21fd020580ea87ce2c7`；41个变更文件、30个唯一Git blob经API上传后核验，整棵Git tree与本机预备提交完全一致，没有强制更新。正常Git传输遇到连接重置/连接失败，改用同一账户已登记凭据的Git Data API，凭据只在内存，未保存在文件。发布网址 https://djdeborah.github.io/sideproject/next-voice/ 。六条公网WAV均HTTP200且SHA256与本机真实推理产物一致。浏览器六个控件controls=true、readyState=4、error=null，实际页面截图已查看。额外公网原生互斥点击复验遇到Browser传输超时/运行时重置，因此不记为通过；本机此前的实际互斥点击已通过，同一页面播放监听代码已公开。
+
+本机真实模型服务地址 http://127.0.0.1:8872/ ，保留运行供用户录音体验。当前目标是Linda Johnson，不是Adele；没有新云端安装/训练/推理。旧定时任务已删除。后续所缺为本人新讲话验收、实际Adele参考、新云端预算与歌声底座对照；不得把此次机制与数值通过当成歌手混合质量验收。
+
+
+### 2026-10-03 Adele 来源参考与五次真实 CPU 试转
+
+用户没有参考并授权自行检索。已从 Vogue 原始公开播放器取得官方定时字幕定位的讲话 8.245 秒及现场清唱 6.316 秒，从 NPR 原始发布音频经实际分块 CPU ASR/官方角色匹配取得 20 秒和 19.27 秒连续回答。字幕、ASR 与有限波形不是无 BGM 的听评证据；未做人声分离。采访、完整转写和参考文件留在 assets 私有目录，未上传公开仓库。NPR MP3 容器/完整解码时长差约 0.74 秒，最终定位使用同一完整解码样本时间；失败和静态留峰增益有独立收据。
+
+四条真实候选已经接入工作台下拉框，刷新后可试听、选择；现有服务独立重启为 PID41000、exec90802（历史观察，后续应查当前进程）。固定本人8秒输入、准备后的源SHA相同，OpenVoiceV2 CPU LERP五次真实推理：Vogue清唱100/50、Vogue讲话100、NPR讲话100/50。输出均7.999274秒、有限、无数字削波，下载SHA核对通过。首次重新加载总74.9319秒，后四次7.4394–7.7184秒，不是严格速度benchmark。浏览器实际生成、输出播放器readyState4/error空已核验。
+
+本轮没有新训练或付费GPU操作。α是向量参数，未校准身份百分比；还没有用户听评，不宣布Adele相似度、自然度或相对旧RVC音质改善。本人新讲话、麦克风硬件及歌声专用底座质量仍待验收。详见 voice_workbench/ADELE_REFERENCE_REPORT.md 与 benchmarks/adele_reference_exploration/ADELE_BENCHMARK_SUMMARY.json。

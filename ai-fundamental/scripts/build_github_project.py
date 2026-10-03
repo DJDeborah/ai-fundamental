@@ -178,6 +178,17 @@ def make_site(site, source, release, asset_base):
             if original is None:
                 raise FileNotFoundError('Verified demo audio missing: ' + name)
             shutil.copy2(original, demo / 'audio' / (name + '.wav'))
+    adele_demo = ROOT / 'voice_lab/voice_workbench/static_adele_demo'
+    if (adele_demo / 'index.html').is_file():
+        # Only the portable page, sanitized evidence and explicitly published
+        # user/generated audio may enter the site; no reference interviews.
+        names = ('source', 'vogue_singing_alpha050', 'vogue_singing_alpha100',
+                 'vogue_speech_alpha100', 'npr_speech_alpha050', 'npr_speech_alpha100')
+        for relative in ('index.html', 'summary.json') + tuple('listening/' + name + '.wav' for name in names):
+            original = adele_demo / relative
+            destination = site / 'adele-exploration' / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(original, destination)
     (site / 'index.html').write_text(frame('AI Fundamental · 本人清唱试听', content, source, release), encoding='utf-8')
     import markdown
     for source_md, target, title in ((RESULT / 'MEASURED_REPORT.md', 'report.html', '清唱实测报告'),

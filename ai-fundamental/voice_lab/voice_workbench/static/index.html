@@ -31,9 +31,10 @@
     </section>
     <section class="card">
       <h2>2 · 参考声音</h2>
+      <div class="field"><label for="referenceSelect">本机内置候选 · 有来源的实际文件</label><select id="referenceSelect"><option value="">不选候选 · 使用上传或开放默认参考</option></select><div id="referenceInfo" class="help">正在读取已准备的参考…</div><audio id="referencePlayer" controls preload="metadata" class="hidden"></audio><p id="referenceNotice" class="note hidden">公开访谈/清唱版权参考，尚未验收；非开放授权音库，只在本机研究试听。短清唱参考按真实时长显示，不代表完整训练数据。</p></div>
       <div class="field"><label for="targetFile">目标参考 · 建议 5–15 秒干净人声</label><input id="targetFile" type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac"><audio id="targetPlayer" controls class="hidden"></audio></div>
       <div id="defaultArea" class="hidden"><label class="check"><input id="useDefault" type="checkbox"><span>使用开放参考：<strong id="defaultName"></strong></span></label><p id="defaultLicense" class="help"></p><audio id="defaultPlayer" controls preload="metadata"></audio></div>
-      <p class="note">当前开放参考女声不是 Adele。探索 Adele 音色需要真实的目标参考；本工具不会把普通女声标成 Adele。公开展示时应核实录音来源与使用许可。</p>
+      <p class="note">Linda Johnson 开放参考不是 Adele。Adele 候选来自实际公开访谈或短清唱，属于版权参考，尚未验收，并非开放授权音库。本工具不会把普通女声标成 Adele。</p>
       <details><summary>可选：独立的本人参考</summary><div class="field"><label for="selfFile">本人参考 · 决定模型内插值的本人端</label><input id="selfFile" type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac"><audio id="selfPlayer" controls class="hidden"></audio><p class="help">不上传时，由引擎使用本次输入作为本人参考。本人重建诊断也可使用它。</p></div></details>
     </section>
     <section class="card full">
@@ -74,6 +75,7 @@
 const $ = id => document.getElementById(id);
 let sourceBlob = null, sourceName = '', sourceUrl = null, recording = null, mediaStream = null, chunks = [], timerId = null, stopTimeout = null, startAt = 0, converting = false, starting = false, exampleAvailable = false;
 const fileUrls = new Map();
+let builtinReferences = new Map();
 // Each preview is heard alone, so two controls cannot accidentally sound like a chorus.
 document.addEventListener('play',event=>{if(event.target instanceof HTMLMediaElement){document.querySelectorAll('audio').forEach(player=>{if(player!==event.target)player.pause();});}},true);
 function showError(message){$('error').textContent=message;$('error').classList.remove('hidden');}
@@ -101,8 +103,8 @@ $('record').addEventListener('click',async()=>{
 });
 $('stop').addEventListener('click',stopRecording);
 $('sourceFile').addEventListener('change',()=>{const file=$('sourceFile').files[0];if(file){if(file.size>20*1024*1024){showError('输入文件超过 20 MB。');return;}clearError();setSource(file,file.name);}});
-for(const [input,player] of [['targetFile','targetPlayer'],['selfFile','selfPlayer']]){$(input).addEventListener('change',()=>{const file=$(input).files[0];if(file){preview(file,player);if(input==='targetFile')$('useDefault').checked=false;}else{$(player).classList.add('hidden');}});}
-$('useDefault').addEventListener('change',()=>{if($('useDefault').checked){$('targetFile').value='';$('targetPlayer').classList.add('hidden');}});
+for(const [input,player] of [['targetFile','targetPlayer'],['selfFile','selfPlayer']]){$(input).addEventListener('change',()=>{const file=$(input).files[0];if(file){preview(file,player);if(input==='targetFile'){$('useDefault').checked=false;$('referenceSelect').value='';showSelectedReference();}}else{$(player).classList.add('hidden');}});}
+$('useDefault').addEventListener('change',()=>{if($('useDefault').checked){$('targetFile').value='';$('targetPlayer').classList.add('hidden');$('referenceSelect').value='';showSelectedReference();}});
 $('alpha').addEventListener('input',()=>{$('alphaValue').textContent=`${$('alpha').value}%`;});
 $('mode').addEventListener('change',()=>{$('singingNotice').classList.toggle('hidden',$('mode').value!=='singing');});
 $('diagnostic').addEventListener('change',()=>{$('diagnosticHint').classList.toggle('hidden',!$('diagnostic').checked);$('alpha').disabled=$('diagnostic').checked;});
@@ -110,7 +112,19 @@ async function refreshStatus(){
   try{const response=await fetch('/api/status',{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const state=await response.json();const ready=state.ffmpeg_ready&&state.engine?.ready;$('statusDot').className='dot '+(ready?'ready':'warn');$('statusTitle').textContent=state.busy?'模型正在处理录音':ready?'本地推理引擎已就绪':'本地服务已连接 · 模型尚未就绪';$('statusDetail').textContent=[state.engine?.message,state.engine?.device?`设备 ${state.engine.device}`:'',state.ffmpeg_ready?'':'缺少 FFmpeg；目前不能转码'].filter(Boolean).join(' · ')||'可以录音或上传。0% 旁路只做格式规范化。';if(state.default_reference){const ref=state.default_reference;$('defaultName').textContent=ref.name||'开放参考女声';$('defaultLicense').textContent=[ref.license,ref.description].filter(Boolean).join(' · ');$('defaultPlayer').src=ref.audio_url;$('defaultArea').classList.remove('hidden');}else{$('defaultArea').classList.add('hidden');$('useDefault').checked=false;}controls();}
   catch(error){$('statusDot').className='dot warn';$('statusTitle').textContent='未连接到本地转换服务';$('statusDetail').textContent='请运行 app.py，并打开 http://127.0.0.1:8872。GitHub 静态页面无法执行模型。';}
 }
-$('refresh').addEventListener('click',refreshStatus);
+$('refresh').addEventListener('click',()=>{refreshStatus();loadReferences();});
+function showSelectedReference(){
+  const ref=builtinReferences.get($('referenceSelect').value);const player=$('referencePlayer');player.pause();
+  if(!ref){player.removeAttribute('src');player.load();player.classList.add('hidden');$('referenceNotice').classList.add('hidden');$('referenceInfo').textContent=builtinReferences.size?'未选择版权候选。可以上传目标录音，或使用 Linda Johnson 开放默认参考。':'暂无已准备的版权候选；开放默认参考与上传仍可使用。';return;}
+  player.src=ref.audio_url;player.classList.remove('hidden');$('referenceNotice').classList.remove('hidden');
+  const seconds=typeof ref.duration_s==='number'?`${ref.duration_s.toFixed(3)} 秒`:'时长由播放器显示';const kind=ref.kind==='singing'?'短清唱候选':'讲话候选';const approval=ref.quality_approved?'已有试听验收标记':'尚未验收';
+  $('referenceInfo').replaceChildren(document.createTextNode(`${kind} · ${seconds} · ${approval} · ${ref.license} `));const source=document.createElement('a');source.href=ref.source_url;source.textContent='查看真实来源';source.target='_blank';source.rel='noopener';$('referenceInfo').append(source);
+}
+async function loadReferences(){
+  try{const response=await fetch('/api/references',{cache:'no-store'});const data=await response.json();if(!response.ok)throw new Error(data.detail?.message||`HTTP ${response.status}`);const previous=$('referenceSelect').value;builtinReferences=new Map((data.items||[]).map(ref=>[ref.id,ref]));$('referenceSelect').replaceChildren(new Option('不选候选 · 使用上传或开放默认参考',''));for(const ref of builtinReferences.values())$('referenceSelect').add(new Option(ref.name,ref.id));if(builtinReferences.has(previous))$('referenceSelect').value=previous;showSelectedReference();}
+  catch(error){builtinReferences=new Map();$('referenceSelect').replaceChildren(new Option('内置候选不可用；可上传或用开放默认参考',''));showSelectedReference();$('referenceInfo').textContent=`候选读取失败：${error.message}`;}
+}
+$('referenceSelect').addEventListener('change',()=>{if($('referenceSelect').value){$('targetFile').value='';$('targetPlayer').pause();$('targetPlayer').classList.add('hidden');$('useDefault').checked=false;}showSelectedReference();});
 async function loadExamples(){
   try{
     const response=await fetch('/api/examples',{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();$('examplesList').replaceChildren();
@@ -120,15 +134,15 @@ async function loadExamples(){
 }
 $('loadExample').addEventListener('click',async()=>{
   clearError();starting=true;controls();$('taskState').textContent='正在载入固定清唱输入…';
-  try{const response=await fetch('/examples/self_singing_input_8s.wav');if(!response.ok)throw new Error(`无法读取示例（HTTP ${response.status}）`);const blob=await response.blob();setSource(blob,'demo.wav');$('sourceFile').value='';$('mode').value='singing';$('singingNotice').classList.remove('hidden');if(!$('defaultArea').classList.contains('hidden')&&!$('targetFile').files[0])$('useDefault').checked=true;$('taskState').textContent='已载入本人清唱。先试听输入，再选择参数并生成。';}
+  try{const response=await fetch('/examples/self_singing_input_8s.wav');if(!response.ok)throw new Error(`无法读取示例（HTTP ${response.status}）`);const blob=await response.blob();setSource(blob,'demo.wav');$('sourceFile').value='';$('mode').value='singing';$('singingNotice').classList.remove('hidden');if(!$('defaultArea').classList.contains('hidden')&&!$('targetFile').files[0]&&!$('referenceSelect').value)$('useDefault').checked=true;$('taskState').textContent='已载入本人清唱。先试听输入，再选择参数并生成。';}
   catch(error){showError(error.message);$('taskState').textContent='载入未完成。';}
   finally{starting=false;controls();}
 });
 $('convert').addEventListener('click',async()=>{
-  clearError();if(!sourceBlob)return;const alpha=Number($('alpha').value)/100;const diagnostic=$('diagnostic').checked;const target=$('targetFile').files[0];const self=$('selfFile').files[0];const useDefault=$('useDefault').checked;
-  if((alpha>0||diagnostic)&&!diagnostic&&!target&&!useDefault){showError('请上传目标参考，或选择已安装的开放参考女声。0% 可以直接试听原声旁路。');return;}
+  clearError();if(!sourceBlob)return;const alpha=Number($('alpha').value)/100;const diagnostic=$('diagnostic').checked;const target=$('targetFile').files[0];const self=$('selfFile').files[0];const referenceId=$('referenceSelect').value;const useDefault=!referenceId&&$('useDefault').checked;
+  if((alpha>0||diagnostic)&&!diagnostic&&!target&&!referenceId&&!useDefault){showError('请上传目标参考、选择已准备的内置候选，或勾选开放参考女声。0% 可以直接试听原声旁路。');return;}
   for(const file of [target,self]){if(file&&file.size>20*1024*1024){showError('参考文件超过 20 MB。');return;}}
-  const data=new FormData();data.append('source_file',sourceBlob,sourceName||'recording.webm');if(target)data.append('target_file',target);if(self)data.append('self_file',self);data.append('alpha',String(alpha));data.append('mode',$('mode').value);data.append('method',$('method').value);data.append('diagnostic_self',String(diagnostic));data.append('use_default_reference',String(useDefault));
+  const data=new FormData();data.append('source_file',sourceBlob,sourceName||'recording.webm');if(target)data.append('target_file',target);if(self)data.append('self_file',self);data.append('alpha',String(alpha));data.append('mode',$('mode').value);data.append('method',$('method').value);data.append('diagnostic_self',String(diagnostic));data.append('use_default_reference',String(useDefault));if(referenceId&&!target&&!diagnostic&&alpha>0)data.append('reference_id',referenceId);
   converting=true;controls();$('taskState').textContent=alpha===0&&!diagnostic?'正在规范化原声，不运行 AI…':'正在执行一次模型推理；请等待真实输出…';$('resultArea').classList.add('hidden');
   try{const response=await fetch('/api/convert',{method:'POST',body:data});const result=await response.json();if(!response.ok){let detail=result.detail;const message=Array.isArray(detail)?detail.map(x=>x.msg).join('；'):(typeof detail==='string'?detail:detail?.message||`HTTP ${response.status}`);throw new Error(message+(result.receipt_url?`\n运行记录：${result.receipt_url}`:''));}
     const audioUrl=result.audio_url+'?t='+Date.now();$('resultPlayer').src=audioUrl;$('download').href=result.audio_url;$('receiptLink').href=result.receipt_url;$('resultMessage').textContent=result.result?.message||(result.result?.bypass?'这是格式规范化后的原声；没有 AI 推理。':'这是模型生成的一条输出。请试听噪声、清晰度与是否出现双声部。');$('resultJson').textContent=JSON.stringify(result,null,2);$('resultArea').classList.remove('hidden');$('taskState').textContent='完成。点击下方播放器试听。';$('resultArea').scrollIntoView({behavior:'smooth',block:'nearest'});
@@ -137,6 +151,7 @@ $('convert').addEventListener('click',async()=>{
 });
 window.addEventListener('pagehide',()=>{stopRecording();for(const url of fileUrls.values())URL.revokeObjectURL(url);});
 refreshStatus();
+loadReferences();
 loadExamples();
 </script>
 </body>

@@ -7,18 +7,22 @@ import importlib
 import json
 import math
 import os
+import re
 import shutil
 import subprocess
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
+from urllib.parse import urlparse
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 HERE = Path(__file__).resolve().parent
+ASSET_ROOT = (HERE / "assets").resolve()
+REFERENCE_CATALOG = ASSET_ROOT / "reference_catalog.json"
 SESSION_ROOT = Path(os.environ.get("VOICE_WORKBENCH_SESSIONS", str(HERE / "local_sessions"))).resolve()
 SESSION_ROOT.mkdir(parents=True, exist_ok=True)
 MAX_BYTES = 20 * 1024 * 1024
@@ -120,6 +124,58 @@ def audio_probe(path: Path) -> dict:
         raise HTTPException(422, detail={"code": "invalid_audio", "message": f"无法读取音频：{type(exc).__name__}。请使用正常的 WAV/MP3/M4A/WebM 文件。"}) from exc
 
 
+def reference_catalog() -> dict[str, tuple[Path, dict]]:
+    """Read a deliberate local catalog, never discover arbitrary recordings."""
+    if not REFERENCE_CATALOG.is_file():
+        return {}
+    try:
+        payload = json.loads(REFERENCE_CATALOG.read_text(encoding="utf-8-sig"))
+        items = payload.get("items") if isinstance(payload, dict) else None
+        if not isinstance(items, list):
+            raise ValueError("items 必须是数组")
+        accepted, seen = {}, set()
+        for item in items:
+            if not isinstance(item, dict):
+                raise ValueError("参考条目必须是对象")
+            reference_id = item.get("id")
+            if not isinstance(reference_id, str) or not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", reference_id):
+                raise ValueError("参考 id 必须是 1–64 个小写字母、数字、下划线或短横线")
+            if reference_id in seen:
+                raise ValueError("参考 id 重复，必须严格唯一")
+            seen.add(reference_id)
+            for field in ("name", "path", "source_url", "license"):
+                if not isinstance(item.get(field), str) or not item[field].strip():
+                    raise ValueError(f"参考缺少 {field}")
+            parsed_url = urlparse(item["source_url"])
+            if parsed_url.scheme not in ("http", "https") or not parsed_url.netloc:
+                raise ValueError("参考 source_url 必须是有效的 HTTP(S) 来源")
+            if item.get("kind") not in ("speech", "singing"):
+                raise ValueError("参考 kind 必须是 speech 或 singing")
+            if not isinstance(item.get("quality_approved", False), bool):
+                raise ValueError("quality_approved 必须是布尔值")
+            relative = Path(item["path"])
+            if relative.is_absolute():
+                raise ValueError("参考 path 必须相对 assets")
+            path = (ASSET_ROOT / relative).resolve()
+            try:
+                path.relative_to(ASSET_ROOT)
+            except ValueError as exc:
+                raise ValueError("参考 path 超出 assets") from exc
+            if path.suffix.lower() != ".wav":
+                raise ValueError("内置参考必须为 WAV 文件")
+            if not path.is_file():
+                continue
+            public = {key: item[key] for key in ("id", "name", "kind", "source_url", "license")}
+            public["quality_approved"] = item.get("quality_approved", False)
+            public["audio_url"] = f"/api/references/{reference_id}.wav"
+            public["notice"] = "公开访谈/清唱版权参考，供本机研究使用；非开放授权音库，尚未验收。"
+            accepted[reference_id] = (path, public)
+        return accepted
+    except (ValueError, OSError, TypeError) as exc:
+        raise HTTPException(503, detail={"code": "reference_catalog_invalid",
+                                        "message": f"内置参考配置有误：{exc}"}) from exc
+
+
 def normalize_audio(source: Path, destination: Path, sample_rate: int) -> dict:
     metadata = audio_probe(source)
     if metadata["duration_s"] is not None and metadata["duration_s"] > MAX_SECONDS + 0.15:
@@ -213,6 +269,28 @@ async def examples():
                       for name, label in EXAMPLE_FILES.items()]}
 
 
+@app.get("/api/references")
+async def references():
+    catalog = await asyncio.to_thread(reference_catalog)
+    items = []
+    for path, public in catalog.values():
+        metadata = await asyncio.to_thread(audio_probe, path)
+        items.append({**public, "duration_s": metadata["duration_s"]})
+    return {"items": items, "local_only": True,
+            "notice": "这些来源明确的版权参考只供本机试听/研究，非开放授权音库。"}
+
+
+@app.get("/api/references/{reference_id}.wav")
+async def builtin_reference_audio(reference_id: str):
+    if not re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", reference_id):
+        raise HTTPException(404, "未找到内置参考")
+    entry = (await asyncio.to_thread(reference_catalog)).get(reference_id)
+    if entry is None:
+        raise HTTPException(404, "未找到已准备的内置参考")
+    path, _ = entry
+    return FileResponse(path, media_type="audio/wav", filename=path.name)
+
+
 @app.get("/examples/{name}.wav")
 async def example_audio(name: str):
     if name not in EXAMPLE_FILES:
@@ -257,6 +335,7 @@ async def convert(
     method: Literal["lerp", "slerp"] = Form("lerp"),
     diagnostic_self: bool = Form(False),
     use_default_reference: bool = Form(False),
+    reference_id: str = Form(""),
 ):
     if not math.isfinite(alpha) or not 0 <= alpha <= 1:
         raise HTTPException(422, detail={"code": "invalid_alpha", "message": "alpha 必须在 0–1 之间。"})
@@ -286,11 +365,24 @@ async def convert(
                 shutil.copyfile(source, output)
                 result = {"ai_inference": False, "bypass": True, "message": "0%：原录音经过格式规范化直接输出；没有运行 AI 推理。"}
             else:
-                if target_file is not None:
+                if target_file is not None and not diagnostic_self:
                     target_uploaded = await save_upload(target_file, directory, "target")
                     target = directory / "target.wav"
                     receipt["target"] = await asyncio.to_thread(normalize_audio, target_uploaded, target, sample_rate)
                     receipt["target_name"] = target_file.filename
+                    receipt["target_selection"] = "uploaded_target"
+                elif reference_id and not diagnostic_self:
+                    entry = (await asyncio.to_thread(reference_catalog)).get(reference_id)
+                    if entry is None:
+                        raise HTTPException(422, detail={"code": "unknown_reference",
+                                                        "message": "内置参考尚未准备好或 id 不在白名单中；请重新选择。"})
+                    reference_path, reference_info = entry
+                    target = directory / "target.wav"
+                    receipt["target"] = await asyncio.to_thread(normalize_audio, reference_path, target, sample_rate)
+                    receipt["target_selection"] = "local_reference_catalog"
+                    receipt["reference_id"] = reference_id
+                    receipt["target_reference"] = reference_info
+                    receipt["target_original_sha256"] = sha256(reference_path)
                 elif use_default_reference and not diagnostic_self:
                     default_path, default_info = default_reference(state)
                     if default_path is None:
@@ -298,12 +390,13 @@ async def convert(
                     target = directory / "target.wav"
                     receipt["target"] = await asyncio.to_thread(normalize_audio, default_path, target, sample_rate)
                     receipt["target_reference"] = default_info
+                    receipt["target_selection"] = "open_default_reference"
                 if self_file is not None:
                     self_uploaded = await save_upload(self_file, directory, "self")
                     self_ref = directory / "self.wav"
                     receipt["self"] = await asyncio.to_thread(normalize_audio, self_uploaded, self_ref, sample_rate)
                 if target is None and not diagnostic_self:
-                    raise HTTPException(422, detail={"code": "target_required", "message": "请上传目标参考，或选用已安装的开放参考女声。"})
+                    raise HTTPException(422, detail={"code": "target_required", "message": "请上传目标参考，选择已准备的内置候选，或选用开放参考女声。"})
                 if state.get("ready") is not True:
                     raise HTTPException(503, detail={"code": "engine_not_ready",
                                                     "message": state.get("message") or "模型尚未准备好；请先安装引擎依赖并准备模型权重。",

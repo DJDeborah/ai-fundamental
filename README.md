@@ -1,5 +1,8 @@
 # Sideproject · AI Fundamental
 
+**新增 Adele 来源参考探索：** 已自行取得 4 段实际访谈/短清唱候选，完成本人同一清唱的 5 次真实 CPU 模型推理。[▶ 原声和五条 AI 小样](https://djdeborah.github.io/sideproject/adele-exploration/) · [来源、操作与实测报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/voice_workbench/ADELE_REFERENCE_REPORT.md)。原采访/字幕仅留本机；AI 输出尚未通过音质及 Adele 相似度验收，没有新训练。
+
+
 **2026-10-03：声音质量反馈与新底座探索。** 原X/Y尚未通过音质验收（X噪声、Y多声部感），现已完成代码/波形审计。新增 [六条研究试听小样](https://djdeborah.github.io/sideproject/next-voice/)、[可录音的本机工作台](https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/voice_lab/voice_workbench) 与 [深度拆解报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/VOICE_NEXT_EXPERIMENT.md)。小样是OpenVoice预训练CPU推理，参考Linda Johnson，**不是Adele**；中间参数和轻唱质量仍待试听验收。旧RVC的FP32指训练，旧导出/推理为FP16。
 
 
