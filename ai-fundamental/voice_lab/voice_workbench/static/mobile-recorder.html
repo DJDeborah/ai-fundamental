@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="用手机录音、试听并下载，再上传到电脑声音工作台进行音色转换。">
+  <title>手机录音 · Voice Workbench</title>
+  <style>
+    :root{color-scheme:light;--ink:#183536;--accent:#146359;--muted:#58716f;--line:#d5e0d8}*{box-sizing:border-box}body{margin:0;background:#faf9f4;color:var(--ink);font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif}main{max-width:760px;margin:auto;padding:34px 20px 50px}a{color:var(--accent);text-underline-offset:4px}.eyebrow{letter-spacing:.1em;font-size:12px;font-weight:700;color:var(--accent)}h1{font-size:clamp(30px,6vw,44px);line-height:1.25;margin:15px 0}h2{font-size:20px;margin:0 0 15px}.muted{color:var(--muted)}.card{padding:24px;border:1px solid var(--line);background:#fff;border-radius:18px;margin:20px 0}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}button,.button{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:11px 17px;background:#edf3ef;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-block}.primary{background:var(--accent);color:white;border-color:var(--accent)}button:disabled{opacity:.5;cursor:default}.timer{font-variant-numeric:tabular-nums;color:var(--muted)}audio{width:100%;margin:14px 0}input{max-width:100%;margin-top:8px}.hidden{display:none!important}.help{font-size:13px;color:var(--muted)}.error{padding:12px;background:#fff0eb;color:#993627;border-radius:9px}.steps{padding-left:22px}.steps li{margin:12px 0}code{font-size:13px;overflow-wrap:anywhere}.notice{padding:13px 17px;background:#f1ead7;border-radius:12px;font-size:14px}#state{min-height:28px}label{display:block;font-size:14px;font-weight:650}.ready{font-size:13px;color:var(--accent)}
+  </style>
+</head>
+<body><main>
+  <nav><a href="index.html">← 回到 AI 小样试听</a></nav>
+  <div class="eyebrow" style="margin-top:24px">VOICE WORKBENCH / 手机录音</div>
+  <h1>电脑没话筒，<br>用手机录下来。</h1>
+  <p class="muted">手机打开这个网页，录制一小段讲话或轻唱。先试听，再把文件传到电脑做音色转换。</p>
+  <p class="notice">这里录制和保存你的原声。网页不会自动上传录音；AI 转换在电脑工作台执行。</p>
+  <section class="card" aria-label="录制原声">
+    <h2>1 · 录一段原声</h2>
+    <p class="help">建议 5–15 秒；保持页面在前台，最多约 30 秒自动停止。首次点击才请求麦克风权限。</p>
+    <div class="row"><button id="start" class="primary">● 开始录音</button><button id="stop" disabled>停止</button><span id="timer" class="timer">00:00 / 00:30</span></div>
+    <p id="state" role="status" class="help">请在手机 Safari / Chrome 等浏览器中打开。电脑没有话筒时，用下方文件选择也能试听已有录音。</p>
+    <p id="error" role="alert" class="error hidden"></p>
+    <label for="file">或者选择手机已有的录音文件</label>
+    <input id="file" type="file" accept="audio/*,.wav,.mp3,.m4a,.webm,.ogg,.flac">
+    <div id="preview" class="hidden">
+      <audio id="player" controls></audio><p id="info" class="ready"></p>
+      <div class="row"><a id="download" class="button primary" download>下载原声文件</a><button id="share" disabled>分享录音文件</button></div>
+      <p class="help">下载保存在手机的「文件 / 下载」中。支持文件分享的手机也可直接用分享按钮传送；这是文件分享，不是发布到 GitHub。</p>
+    </div>
+  </section>
+  <section class="card">
+    <h2>2 · 传到电脑，再转换</h2>
+    <ol class="steps">
+      <li>点击「下载原声文件」，将 <code>.webm / .m4a / .wav</code> 文件保存下来。</li>
+      <li>用数据线、AirDrop、网盘或聊天工具的<strong>文件发送</strong>把原文件传到电脑。保留后缀，避免发送成压缩后的语音消息。</li>
+      <li><strong>在电脑浏览器</strong>打开 <a href="http://127.0.0.1:8872/">本机声音工作台</a>，点击「也可以上传录音」，选择刚传来的文件。手机的 localhost 指向手机本身，不能在手机上用这个地址连接电脑。</li>
+      <li>录音内容选「说话」或「轻唱」；参考选 Adele / NPR 连续访谈候选，α 先设为 100%，点击「生成并试听」，然后再试 50%。</li>
+    </ol>
+    <p class="help">工作台未打开时，在电脑项目目录执行 <code>.\.venv\Scripts\python.exe -X utf8 app.py</code>。无需在手机安装 Python，也不需要给电脑插话筒。</p>
+  </section>
+  <p class="help">权限被拒绝或没有麦克风：检查手机浏览器权限，或者使用系统录音机保存文件，再通过文件选择试听。GitHub Pages 没有模型推理后端；当前手机页面不会直接生成变声结果。</p>
+</main>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+let stream=null, recorder=null, pending=false, finalizing=false, parts=[], started=0, tick=null, limit=null, generation=0, failed=false, file=null, url=null;
+function error(message){$('error').textContent=message;$('error').classList.remove('hidden');}
+function clearError(){$('error').textContent='';$('error').classList.add('hidden');}
+function release(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}clearInterval(tick);clearTimeout(limit);tick=limit=null;}
+function controls(){const busy=pending||finalizing||!!(recorder&&recorder.state!=='inactive');$('start').disabled=busy;$('file').disabled=busy;$('stop').disabled=finalizing||!busy;$('stop').textContent=pending?'取消等待':'停止';$('share').disabled=busy||!file||!navigator.canShare||!navigator.canShare({files:[file]});}
+function extension(type){return type.includes('mp4')?'m4a':type.includes('ogg')?'ogg':'webm';}
+function show(blob,name){if(!blob.size||blob.size>20*1024*1024){error('文件为空或超过 20 MB；请重新录制短片段。');return;}if(url)URL.revokeObjectURL(url);file=new File([blob],name,{type:blob.type||'application/octet-stream'});url=URL.createObjectURL(file);$('player').src=url;$('download').href=url;$('download').download=name;$('download').classList.remove('hidden');$('preview').classList.remove('hidden');$('info').textContent=`${name} · ${(file.size/1024).toFixed(1)} KB · 原声，未运行 AI`;controls();}
+function stop(){if(pending){generation++;pending=false;$('state').textContent='已取消等待。若之后授予权限，本次请求也不会开始录音。';}if(recorder&&recorder.state==='recording'){finalizing=true;recorder.stop();$('state').textContent='正在保存录音…';}release();controls();}
+$('start').addEventListener('click',async()=>{
+  clearError();if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){error('此浏览器无法网页录音。请用手机系统录音机保存文件，或在 Safari / Chrome 的 HTTPS 页面打开。');return;}
+  $('player').pause();pending=true;controls();$('state').textContent='正在等待麦克风权限…';const request=++generation;
+  try{
+    const granted=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false});
+    if(request!==generation||document.hidden){granted.getTracks().forEach(t=>t.stop());return;}
+    stream=granted;let options={};for(const type of ['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg;codecs=opus']){if(MediaRecorder.isTypeSupported(type)){options={mimeType:type};break;}}
+    recorder=new MediaRecorder(stream,options);parts=[];failed=false;
+    recorder.addEventListener('dataavailable',event=>{if(event.data.size)parts.push(event.data);});
+    recorder.addEventListener('error',()=>{failed=true;finalizing=true;error('录音设备中断；请重新录制或使用手机系统录音机。');stop();});
+    recorder.addEventListener('stop',()=>{const type=recorder.mimeType||'audio/webm';const blob=new Blob(parts,{type});if(!failed&&blob.size){show(blob,'voice-'+new Date().toISOString().replace(/[:.]/g,'-')+'.'+extension(type));$('state').textContent='录音已保存，麦克风已释放。先试听，再下载或分享原文件。';}else if(!failed){error('没有收到录音数据，请检查麦克风后重新录制。');}recorder=null;finalizing=false;release();controls();});
+    recorder.start(250);started=performance.now();$('timer').textContent='00:00 / 00:30';tick=setInterval(()=>{$('timer').textContent='00:'+String(Math.min(30,Math.floor((performance.now()-started)/1000))).padStart(2,'0')+' / 00:30';},200);limit=setTimeout(stop,29500);$('state').textContent='正在录音。说 5–15 秒后点停止；离开页面会停止录音。';
+  }catch(exc){release();if(request===generation){const messages={NotFoundError:'没有检测到话筒。请在手机上打开此网页，或用系统录音机保存文件。',NotAllowedError:'麦克风权限未允许。请在手机浏览器设置中允许，或选择已有录音文件。',NotReadableError:'话筒正在被其他应用占用，或设备无法录音。'};error(messages[exc.name]||'无法开始录音，请换用手机系统录音机保存文件。');$('state').textContent='未开始录音。';}}
+  finally{if(request===generation){pending=false;controls();}}
+});
+$('stop').addEventListener('click',stop);
+$('file').addEventListener('change',()=>{const chosen=$('file').files[0];if(chosen){clearError();show(chosen,chosen.name);$('state').textContent='已选择已有录音，没有请求话筒权限。';}});
+$('player').addEventListener('loadedmetadata',()=>{const duration=$('player').duration;if(Number.isFinite(duration)&&duration>30.15){error('这段录音超过 30 秒；请先在手机录音机中裁短，再上传工作台。');file=null;$('download').classList.add('hidden');controls();}else if(Number.isFinite(duration)){$('info').textContent+=` · ${duration.toFixed(2)} 秒`;}});
+$('share').addEventListener('click',async()=>{if(!file)return;const selected=file;try{await navigator.share({files:[selected],title:'原声录音'});}catch(exc){if(exc.name!=='AbortError')error('当前浏览器无法分享此文件，请使用下载按钮后手动发送。');}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+window.addEventListener('pagehide',()=>{generation++;pending=false;stop();if(url)URL.revokeObjectURL(url);});
+</script></body></html>

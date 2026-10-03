@@ -184,7 +184,7 @@ def make_site(site, source, release, asset_base):
         # user/generated audio may enter the site; no reference interviews.
         names = ('source', 'vogue_singing_alpha050', 'vogue_singing_alpha100',
                  'vogue_speech_alpha100', 'npr_speech_alpha050', 'npr_speech_alpha100')
-        for relative in ('index.html', 'summary.json') + tuple('listening/' + name + '.wav' for name in names):
+        for relative in ('index.html', 'summary.json', 'mobile-recorder.html') + tuple('listening/' + name + '.wav' for name in names):
             original = adele_demo / relative
             destination = site / 'adele-exploration' / relative
             destination.parent.mkdir(parents=True, exist_ok=True)

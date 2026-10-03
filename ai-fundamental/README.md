@@ -1,5 +1,8 @@
 # 从零到 0.1B：可复现的语言模型实验课
 
+**电脑没有话筒：** [手机录音入口](https://djdeborah.github.io/sideproject/adele-exploration/mobile-recorder.html)。手机录音 → 下载/分享原文件 → 电脑工作台上传转换。网页不会自动上传录音，目前没有云端模型推理后端。
+
+
 **新增 Adele 来源参考探索：** 已自行取得 4 段实际访谈/短清唱候选，完成本人同一清唱的 5 次真实 CPU 模型推理。[▶ 原声和五条 AI 小样](https://djdeborah.github.io/sideproject/adele-exploration/) · [来源、操作与实测报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/voice_workbench/ADELE_REFERENCE_REPORT.md)。原采访/字幕仅留本机；AI 输出尚未通过音质及 Adele 相似度验收，没有新训练。
 
 

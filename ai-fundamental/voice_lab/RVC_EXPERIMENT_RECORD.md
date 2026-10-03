@@ -184,3 +184,5 @@ GitHub 更新提交 `0600876ff72da7b1ec33c21fd020580ea87ce2c7`；41个变更文�
 四条真实候选已经接入工作台下拉框，刷新后可试听、选择；现有服务独立重启为 PID41000、exec90802（历史观察，后续应查当前进程）。固定本人8秒输入、准备后的源SHA相同，OpenVoiceV2 CPU LERP五次真实推理：Vogue清唱100/50、Vogue讲话100、NPR讲话100/50。输出均7.999274秒、有限、无数字削波，下载SHA核对通过。首次重新加载总74.9319秒，后四次7.4394–7.7184秒，不是严格速度benchmark。浏览器实际生成、输出播放器readyState4/error空已核验。
 
 本轮没有新训练或付费GPU操作。α是向量参数，未校准身份百分比；还没有用户听评，不宣布Adele相似度、自然度或相对旧RVC音质改善。本人新讲话、麦克风硬件及歌声专用底座质量仍待验收。详见 voice_workbench/ADELE_REFERENCE_REPORT.md 与 benchmarks/adele_reference_exploration/ADELE_BENCHMARK_SUMMARY.json。
+
+新试听页已发布到 https://djdeborah.github.io/sideproject/adele-exploration/ ，提交80a697e8b70f47d26a98a86bee55c79cbcbec715。31个变更文件、22个唯一Git blob及整棵tree核验通过，未强制更新；所有6条公网WAV和脱敏summary与本机一致。浏览器首次导航遇到传输超时，恢复后确认页面已打开、6控件controls=true、readyState4、error=null，保存实际截图PUBLIC_ADELE_DEMO.png。没有试听音质验收或新的付费任务。
