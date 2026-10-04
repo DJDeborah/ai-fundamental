@@ -1,22 +1,22 @@
 # 从零到 0.1B：可复现的语言模型实验课
 
-**电脑没有话筒：** [手机录音入口](https://djdeborah.github.io/sideproject/adele-exploration/mobile-recorder.html)。手机录音 → 下载/分享原文件 → 电脑工作台上传转换。网页不会自动上传录音，目前没有云端模型推理后端。
+**电脑没有话筒：** [手机录音入口](https://djdeborah.github.io/ai-fundamental/adele-exploration/mobile-recorder.html)。手机录音 → 下载/分享原文件 → 电脑工作台上传转换。网页不会自动上传录音，目前没有云端模型推理后端。
 
 
-**新增 Adele 来源参考探索：** 已自行取得 4 段实际访谈/短清唱候选，完成本人同一清唱的 5 次真实 CPU 模型推理。[▶ 原声和五条 AI 小样](https://djdeborah.github.io/sideproject/adele-exploration/) · [来源、操作与实测报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/voice_workbench/ADELE_REFERENCE_REPORT.md)。原采访/字幕仅留本机；AI 输出尚未通过音质及 Adele 相似度验收，没有新训练。
+**新增 Adele 来源参考探索：** 已自行取得 4 段实际访谈/短清唱候选，完成本人同一清唱的 5 次真实 CPU 模型推理。[▶ 原声和五条 AI 小样](https://djdeborah.github.io/ai-fundamental/adele-exploration/) · [来源、操作与实测报告](https://github.com/DJDeborah/ai-fundamental/blob/main/ai-fundamental/voice_lab/voice_workbench/ADELE_REFERENCE_REPORT.md)。原采访/字幕仅留本机；AI 输出尚未通过音质及 Adele 相似度验收，没有新训练。
 
 
-**2026-10-03：声音质量反馈与新底座探索。** 原X/Y尚未通过音质验收（X噪声、Y多声部感），现已完成代码/波形审计。新增 [六条研究试听小样](https://djdeborah.github.io/sideproject/next-voice/)、[可录音的本机工作台](https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/voice_lab/voice_workbench) 与 [深度拆解报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/VOICE_NEXT_EXPERIMENT.md)。小样是OpenVoice预训练CPU推理，参考Linda Johnson，**不是Adele**；中间参数和轻唱质量仍待试听验收。旧RVC的FP32指训练，旧导出/推理为FP16。
+**2026-10-03：声音质量反馈与新底座探索。** 原X/Y尚未通过音质验收（X噪声、Y多声部感），现已完成代码/波形审计。新增 [六条研究试听小样](https://djdeborah.github.io/ai-fundamental/next-voice/)、[可录音的本机工作台](https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental/voice_lab/voice_workbench) 与 [深度拆解报告](https://github.com/DJDeborah/ai-fundamental/blob/main/ai-fundamental/voice_lab/VOICE_NEXT_EXPERIMENT.md)。小样是OpenVoice预训练CPU推理，参考Linda Johnson，**不是Adele**；中间参数和轻唱质量仍待试听验收。旧RVC的FP32指训练，旧导出/推理为FP16。
 
 
-**[▶ 在线播放：原声 / 匿名 X / 匿名 Y / A / B](https://DJDeborah.github.io/sideproject/)** · [项目亮点与图表](../README.md) · [模型下载](https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03)
+**[▶ 在线播放：原声 / 匿名 X / 匿名 Y / A / B](https://DJDeborah.github.io/ai-fundamental/)** · [项目亮点与图表](../README.md) · [模型下载](https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03)
 
-[![原声与匿名输出的实际波形；点击进入播放器](website/audio_preview.png)](https://DJDeborah.github.io/sideproject/)
+[![原声与匿名输出的实际波形；点击进入播放器](website/audio_preview.png)](https://DJDeborah.github.io/ai-fundamental/)
 
 实际完成：100.68M Transformer 三种子实验、Triton 前向基准、局部 scaling 留出检验；本人清唱 RVC A/B 各 1000 次真实更新。后训练与 Agent 的正式能力对照尚未完成，详见报告。
 
 
-**新增：本人清唱 A/B 实验已完成。** [在线试听](https://DJDeborah.github.io/sideproject/) · [声音实测报告](voice_lab/runs/new4090d_ab_retry1/MEASURED_REPORT.md) · [术语与操作教程](voice_lab/RVC_STEP_BY_STEP.md) · [模型和完整项目下载](DOWNLOADS.md)
+**新增：本人清唱 A/B 实验已完成。** [在线试听](https://DJDeborah.github.io/ai-fundamental/) · [声音实测报告](voice_lab/runs/new4090d_ab_retry1/MEASURED_REPORT.md) · [术语与操作教程](voice_lab/RVC_STEP_BY_STEP.md) · [模型和完整项目下载](DOWNLOADS.md)
 
 
 歌声音色转换的新增学习路线在 [`voice_lab/README.md`](voice_lab/README.md)：本人录音准备、单卡 DDSP-SVC 转换模块训练、Jupyter 音频试听、双音色比例扫描及实验报告。首次云端上传包为 `dist/voice_lab_autodl_starter.zip`，与下面的语言模型实验分别记录。

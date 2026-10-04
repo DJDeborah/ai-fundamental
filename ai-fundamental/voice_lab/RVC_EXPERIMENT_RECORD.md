@@ -149,7 +149,7 @@ A/B 的 summary 都为 complete，实际更新各 1000；A 320.7028 秒，B 313.
 
 用户授权新建 `DJDeborah/sideproject` 公开仓库，项目位于 `ai-fundamental/`。README 已加入亮点、Mermaid 流程图、原声/匿名 X/Y 的实际波形、scaling 曲线、A/B 原始训练曲线及试听入口。719 个 Git blob 与本机字节核对通过；五个线上 WAV 与核验过的本机文件完全相同，浏览器中五个播放器均 controls=true、readyState=4、error=null。
 
-公开入口：https://djdeborah.github.io/sideproject/ 。模型和完整本机结果包在 https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03 ，共六个资产全部由 GitHub 服务端 SHA256 对照本机确认。凭据、虚拟环境、浏览器会话截图、缓存和中断下载残包未上传。0.1B 云端 checkpoint 没有完整本机副本，已在 README 明确其未包含；原语音云端 ZIP 尾段仍待无卡模式补取，本次发布不会把该归档状态改称完成。此次只发布既有产物，没有训练或付费 GPU 操作。
+公开入口：https://djdeborah.github.io/ai-fundamental/ 。模型和完整本机结果包在 https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03 ，共六个资产全部由 GitHub 服务端 SHA256 对照本机确认。凭据、虚拟环境、浏览器会话截图、缓存和中断下载残包未上传。0.1B 云端 checkpoint 没有完整本机副本，已在 README 明确其未包含；原语音云端 ZIP 尾段仍待无卡模式补取，本次发布不会把该归档状态改称完成。此次只发布既有产物，没有训练或付费 GPU 操作。
 
 
 ### 2026-10-03 用户音质失败反馈与新路线
@@ -172,7 +172,7 @@ A/B 的 summary 都为 complete，实际更新各 1000；A 320.7028 秒，B 313.
 
 ### 2026-10-03 新路线上线与本机交互交付
 
-GitHub 更新提交 `0600876ff72da7b1ec33c21fd020580ea87ce2c7`；41个变更文件、30个唯一Git blob经API上传后核验，整棵Git tree与本机预备提交完全一致，没有强制更新。正常Git传输遇到连接重置/连接失败，改用同一账户已登记凭据的Git Data API，凭据只在内存，未保存在文件。发布网址 https://djdeborah.github.io/sideproject/next-voice/ 。六条公网WAV均HTTP200且SHA256与本机真实推理产物一致。浏览器六个控件controls=true、readyState=4、error=null，实际页面截图已查看。额外公网原生互斥点击复验遇到Browser传输超时/运行时重置，因此不记为通过；本机此前的实际互斥点击已通过，同一页面播放监听代码已公开。
+GitHub 更新提交 `0600876ff72da7b1ec33c21fd020580ea87ce2c7`；41个变更文件、30个唯一Git blob经API上传后核验，整棵Git tree与本机预备提交完全一致，没有强制更新。正常Git传输遇到连接重置/连接失败，改用同一账户已登记凭据的Git Data API，凭据只在内存，未保存在文件。发布网址 https://djdeborah.github.io/ai-fundamental/next-voice/ 。六条公网WAV均HTTP200且SHA256与本机真实推理产物一致。浏览器六个控件controls=true、readyState=4、error=null，实际页面截图已查看。额外公网原生互斥点击复验遇到Browser传输超时/运行时重置，因此不记为通过；本机此前的实际互斥点击已通过，同一页面播放监听代码已公开。
 
 本机真实模型服务地址 http://127.0.0.1:8872/ ，保留运行供用户录音体验。当前目标是Linda Johnson，不是Adele；没有新云端安装/训练/推理。旧定时任务已删除。后续所缺为本人新讲话验收、实际Adele参考、新云端预算与歌声底座对照；不得把此次机制与数值通过当成歌手混合质量验收。
 
@@ -185,4 +185,6 @@ GitHub 更新提交 `0600876ff72da7b1ec33c21fd020580ea87ce2c7`；41个变更文�
 
 本轮没有新训练或付费GPU操作。α是向量参数，未校准身份百分比；还没有用户听评，不宣布Adele相似度、自然度或相对旧RVC音质改善。本人新讲话、麦克风硬件及歌声专用底座质量仍待验收。详见 voice_workbench/ADELE_REFERENCE_REPORT.md 与 benchmarks/adele_reference_exploration/ADELE_BENCHMARK_SUMMARY.json。
 
-新试听页已发布到 https://djdeborah.github.io/sideproject/adele-exploration/ ，提交80a697e8b70f47d26a98a86bee55c79cbcbec715。31个变更文件、22个唯一Git blob及整棵tree核验通过，未强制更新；所有6条公网WAV和脱敏summary与本机一致。浏览器首次导航遇到传输超时，恢复后确认页面已打开、6控件controls=true、readyState4、error=null，保存实际截图PUBLIC_ADELE_DEMO.png。没有试听音质验收或新的付费任务。
+新试听页已发布到 https://djdeborah.github.io/ai-fundamental/adele-exploration/ ，提交80a697e8b70f47d26a98a86bee55c79cbcbec715。31个变更文件、22个唯一Git blob及整棵tree核验通过，未强制更新；所有6条公网WAV和脱敏summary与本机一致。浏览器首次导航遇到传输超时，恢复后确认页面已打开、6控件controls=true、readyState4、error=null，保存实际截图PUBLIC_ADELE_DEMO.png。没有试听音质验收或新的付费任务。
+
+2026-10-03 手机录音入口：用户电脑无话筒，新增 GitHub HTTPS mobile-recorder.html，录音/自动限时停止/释放话筒、原声试听、文件下载及按用户操作的文件分享；另支持选择手机已有录音。明确手机 localhost 不是电脑工作台，流程为手机保存原文件后传电脑上传转换，未部署云端推理或启动 GPU。实际选择既有8秒WAV，controls=true/readyState4、下载文件名保留、无需请求话筒权限；真实手机硬件录制未测试。提交a6261c03f1aa2a4b0fee8d6243ee9580d811630c、16文件/11唯一blob/tree通过校验；在线HTML字节一致、原六条WAV与summary再次对照通过。

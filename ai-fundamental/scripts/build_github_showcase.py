@@ -15,8 +15,8 @@ def main():
     repo = args.repository.resolve()
     project = repo / 'ai-fundamental'
     site = project / 'website'
-    pages = 'https://DJDeborah.github.io/sideproject/'
-    github = 'https://github.com/DJDeborah/sideproject'
+    pages = 'https://DJDeborah.github.io/ai-fundamental/'
+    github = 'https://github.com/DJDeborah/ai-fundamental'
     release = github + '/releases/tag/ai-fundamental-2026-10-03'
 
     import matplotlib
@@ -48,7 +48,7 @@ def main():
     fig.savefig(site / 'audio_preview.png', dpi=145, facecolor=fig.get_facecolor())
     plt.close(fig)
 
-    intro = f'''# Sideproject · AI Fundamental
+    intro = f'''# AI Fundamental
 
 **从代码到真实训练，再到你能亲耳听到的结果。**
 
@@ -139,8 +139,8 @@ GAN loss 是训练目标，不能当作听感评分。[打开播放器]({pages})
 - `SHA256SUMS.txt`：下载后校验文件字节。
 
 ```bash
-git clone https://github.com/DJDeborah/sideproject.git
-cd sideproject/ai-fundamental
+git clone https://github.com/DJDeborah/ai-fundamental.git
+cd ai-fundamental/ai-fundamental
 python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 # Windows: .venv\\Scripts\\activate

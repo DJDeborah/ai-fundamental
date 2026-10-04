@@ -14,7 +14,7 @@ table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:
 th{background:#e7efee}pre{overflow:auto;padding:16px;background:#e8eeed;border-radius:9px;font-size:13px}code{font-family:Consolas,monospace;font-size:.9em}
 img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-left:16px;color:var(--muted)}footer{margin-top:44px;border-top:1px solid #ccd7d7;padding-top:16px;font-size:13px;color:var(--muted)}
 </style></head>
-<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="_1">清唱模型：从文件到试听的深度拆解</h1>
+<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="_1">清唱模型：从文件到试听的深度拆解</h1>
 <p>本教程对应你这次的真实实验。训练输出最终保存到本机 <code>voice_lab/runs/new4090d_ab_retry1</code>；真实完成状态以该目录 <code>comparison.json</code> 为准。</p>
 <h2 id="1">1. 先明确输入和输出</h2>
 <p>这次模型接收一段已经唱好的人声，生成目标音色的人声。输入提供歌词、旋律、节奏。只用你的录音训练，因此第一次测试是“未见过的你 → 重建你的音色”。另一位授权歌者 → 你的音色，需要另外准备输入才能验证。</p>
@@ -378,4 +378,4 @@ img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-
 <h2 id="9">9. 这次小数据试验能说明到哪一步</h2>
 <p>能检验：两种初始化是否能在你这批数据上完成真实更新、固定片段重建怎样、时间/显存/音高指标怎样。不能检验：任意歌者效果、实时延迟、多卡增益、商业音质、任意用户零样本音色混合。</p>
 <p>要加强对照，依次扩展跨歌者授权输入、更多音域/唱法、多个随机种子、多首测试歌曲及多听者盲评。每一步都保留固定输入、公共控制变量与真实失败证据。</p></article>
-<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>
+<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>

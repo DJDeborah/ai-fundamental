@@ -1,12 +1,12 @@
-# Sideproject · AI Fundamental
+# AI Fundamental
 
-**电脑没有话筒：** [手机录音入口](https://djdeborah.github.io/sideproject/adele-exploration/mobile-recorder.html)。手机录音 → 下载/分享原文件 → 电脑工作台上传转换。网页不会自动上传录音，目前没有云端模型推理后端。
-
-
-**新增 Adele 来源参考探索：** 已自行取得 4 段实际访谈/短清唱候选，完成本人同一清唱的 5 次真实 CPU 模型推理。[▶ 原声和五条 AI 小样](https://djdeborah.github.io/sideproject/adele-exploration/) · [来源、操作与实测报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/voice_workbench/ADELE_REFERENCE_REPORT.md)。原采访/字幕仅留本机；AI 输出尚未通过音质及 Adele 相似度验收，没有新训练。
+**电脑没有话筒：** [手机录音入口](https://djdeborah.github.io/ai-fundamental/adele-exploration/mobile-recorder.html)。手机录音 → 下载/分享原文件 → 电脑工作台上传转换。网页不会自动上传录音，目前没有云端模型推理后端。
 
 
-**2026-10-03：声音质量反馈与新底座探索。** 原X/Y尚未通过音质验收（X噪声、Y多声部感），现已完成代码/波形审计。新增 [六条研究试听小样](https://djdeborah.github.io/sideproject/next-voice/)、[可录音的本机工作台](https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/voice_lab/voice_workbench) 与 [深度拆解报告](https://github.com/DJDeborah/sideproject/blob/main/ai-fundamental/voice_lab/VOICE_NEXT_EXPERIMENT.md)。小样是OpenVoice预训练CPU推理，参考Linda Johnson，**不是Adele**；中间参数和轻唱质量仍待试听验收。旧RVC的FP32指训练，旧导出/推理为FP16。
+**新增 Adele 来源参考探索：** 已自行取得 4 段实际访谈/短清唱候选，完成本人同一清唱的 5 次真实 CPU 模型推理。[▶ 原声和五条 AI 小样](https://djdeborah.github.io/ai-fundamental/adele-exploration/) · [来源、操作与实测报告](https://github.com/DJDeborah/ai-fundamental/blob/main/ai-fundamental/voice_lab/voice_workbench/ADELE_REFERENCE_REPORT.md)。原采访/字幕仅留本机；AI 输出尚未通过音质及 Adele 相似度验收，没有新训练。
+
+
+**2026-10-03：声音质量反馈与新底座探索。** 原X/Y尚未通过音质验收（X噪声、Y多声部感），现已完成代码/波形审计。新增 [六条研究试听小样](https://djdeborah.github.io/ai-fundamental/next-voice/)、[可录音的本机工作台](https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental/voice_lab/voice_workbench) 与 [深度拆解报告](https://github.com/DJDeborah/ai-fundamental/blob/main/ai-fundamental/voice_lab/VOICE_NEXT_EXPERIMENT.md)。小样是OpenVoice预训练CPU推理，参考Linda Johnson，**不是Adele**；中间参数和轻唱质量仍待试听验收。旧RVC的FP32指训练，旧导出/推理为FP16。
 
 
 **从代码到真实训练，再到你能亲耳听到的结果。**
@@ -15,17 +15,17 @@ Tokenizer、0.1B Transformer、Triton attention、scaling law，以及本人清�
 
 ### 先体验，再读代码
 
-**[▶ 打开在线试听网页](https://DJDeborah.github.io/sideproject/)** · [声音实测报告](https://DJDeborah.github.io/sideproject/report.html) · [逐步操作与术语](https://DJDeborah.github.io/sideproject/tutorial.html) · [完整项目 / 模型下载](https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03)
+**[▶ 打开在线试听网页](https://DJDeborah.github.io/ai-fundamental/)** · [声音实测报告](https://DJDeborah.github.io/ai-fundamental/report.html) · [逐步操作与术语](https://DJDeborah.github.io/ai-fundamental/tutorial.html) · [完整项目 / 模型下载](https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03)
 
-[![原声和匿名 X/Y 的真实波形；点击打开播放器](ai-fundamental/website/audio_preview.png)](https://DJDeborah.github.io/sideproject/)
+[![原声和匿名 X/Y 的真实波形；点击打开播放器](ai-fundamental/website/audio_preview.png)](https://DJDeborah.github.io/ai-fundamental/)
 
 点击上图进入带播放按钮的网页。手机和电脑都可播放已有音频，无需安装 Python、租 GPU 或登录 AutoDL。
 
 | 试听内容 | 播放 / 下载 |
 |---|---|
-| 未参与训练的本人原声，20 秒 | [原声 WAV](https://DJDeborah.github.io/sideproject/listening/input.wav) |
-| 匿名 X，19.98 秒 | [X WAV](https://DJDeborah.github.io/sideproject/blind/X.wav) |
-| 匿名 Y，19.98 秒 | [Y WAV](https://DJDeborah.github.io/sideproject/blind/Y.wav) |
+| 未参与训练的本人原声，20 秒 | [原声 WAV](https://DJDeborah.github.io/ai-fundamental/listening/input.wav) |
+| 匿名 X，19.98 秒 | [X WAV](https://DJDeborah.github.io/ai-fundamental/blind/X.wav) |
+| 匿名 Y，19.98 秒 | [Y WAV](https://DJDeborah.github.io/ai-fundamental/blind/Y.wav) |
 
 建议先听 X/Y 并评分，再在网页展开身份，查看 A/B 原始音频及模型。
 
@@ -68,13 +68,13 @@ flowchart LR
 
 ![三种模型大小、三个种子的实际曲线与留出预测](ai-fundamental/report/figures/scaling_fit.png)
 
-[完整语言模型报告](https://DJDeborah.github.io/sideproject/lm-report.html) · [PDF](ai-fundamental/output/pdf/0.1B_transformer_final_report.pdf) · [原始指标](ai-fundamental/report/data/cloud/)
+[完整语言模型报告](https://DJDeborah.github.io/ai-fundamental/lm-report.html) · [PDF](ai-fundamental/output/pdf/0.1B_transformer_final_report.pdf) · [原始指标](ai-fundamental/report/data/cloud/)
 
 ### 歌声模型：看原始训练轨迹，再听声音
 
 ![A/B 六项真实训练损失曲线](ai-fundamental/voice_lab/runs/new4090d_ab_retry1/training_curves.png)
 
-GAN loss 是训练目标，不能当作听感评分。[打开播放器](https://DJDeborah.github.io/sideproject/)，自行比较清晰度、自然度和音高稳定性。
+GAN loss 是训练目标，不能当作听感评分。[打开播放器](https://DJDeborah.github.io/ai-fundamental/)，自行比较清晰度、自然度和音高稳定性。
 
 ## 学习路线
 
@@ -89,7 +89,7 @@ GAN loss 是训练目标，不能当作听感评分。[打开播放器](https://
 
 ## 下载与继续运行
 
-[Release 下载页](https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03)提供：
+[Release 下载页](https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03)提供：
 
 - `rvc_A_scratch_step1000.pth` / `rvc_B_finetune_step1000.pth`：两套最终推理模型。
 - `voice_self_rvc_results_20261003.zip`：模型、0/500/1000 快照、WAV、原始日志、报告和教程。
@@ -98,8 +98,8 @@ GAN loss 是训练目标，不能当作听感评分。[打开播放器](https://
 - `SHA256SUMS.txt`：下载后校验文件字节。
 
 ```bash
-git clone https://github.com/DJDeborah/sideproject.git
-cd sideproject/ai-fundamental
+git clone https://github.com/DJDeborah/ai-fundamental.git
+cd ai-fundamental/ai-fundamental
 python -m venv .venv
 # Linux/macOS: source .venv/bin/activate
 # Windows: .venv\Scripts\activate

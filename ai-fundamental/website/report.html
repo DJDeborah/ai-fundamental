@@ -14,7 +14,7 @@ table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:
 th{background:#e7efee}pre{overflow:auto;padding:16px;background:#e8eeed;border-radius:9px;font-size:13px}code{font-family:Consolas,monospace;font-size:.9em}
 img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-left:16px;color:var(--muted)}footer{margin-top:44px;border-top:1px solid #ccd7d7;padding-top:16px;font-size:13px;color:var(--muted)}
 </style></head>
-<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="rvc">本人清唱 RVC：随机初始化与预训练微调的受控小数据实验</h1>
+<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="rvc">本人清唱 RVC：随机初始化与预训练微调的受控小数据实验</h1>
 <h2 id="_1">摘要</h2>
 <p>本实验比较相同 RVC v2 40 kHz 架构的两种转换模型初始化：A 的生成器和判别器随机初始化；B 加载固定官方预训练生成器和判别器。两组共用冻结的预训练 HuBERT 内容编码器、RMVPE 音高提取器和完全相同的训练特征。输入为一位参与者的六段清唱/练声，原始总时长约 379 秒。按完整录音划分，训练 311.38 秒、验证 33.64 秒、测试 34.24 秒；固定测试录音的前 20 秒用于推理和评价。</p>
 <p><strong>实际相同步数完成：True。</strong> 本报告记录真实训练、模型、音频和客观音高测量；尚未收集盲听评分，因此没有音质胜者结论。这是按科研报告结构组织的学习试验，证据规模尚不足以支持 NeurIPS 级别的研究贡献或统计结论。</p>
@@ -184,4 +184,4 @@ img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-
 <li><code>environment.json</code>、<code>assets.json</code>、下载和预算记录：环境、公共资产来源与费用边界。</li>
 </ul>
 <p><a href="https://github.com/RVC-Project/Retrieval-based-Voice-Conversion-WebUI/blob/81eed5e8f68b6bed1789f682fe78cdd324495afc/docs/en/cli.md">RVC 固定源码与 CLI</a>；<a href="https://huggingface.co/lj1995/VoiceConversionWebUI/tree/e6d0c1a17da07c33557852f9dfa2bd44cc75737d">固定公共资产</a>。这些是本次实际使用版本，商用许可仍需分别核验代码、权重、数据。</p></article>
-<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>
+<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>

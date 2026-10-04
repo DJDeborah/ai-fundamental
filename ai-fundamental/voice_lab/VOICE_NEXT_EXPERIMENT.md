@@ -234,7 +234,7 @@ Set-Location -LiteralPath 'I:\sideprojects\ai fundamental\voice_lab\voice_workbe
 
 | 位置 | 能做什么 | 怎样访问 |
 |---|---|---|
-| [现有 GitHub Pages](https://djdeborah.github.io/sideproject/) | 静态播放已经生成的音频、看报告和图 | 直接用浏览器链接 |
+| [现有 GitHub Pages](https://djdeborah.github.io/ai-fundamental/) | 静态播放已经生成的音频、看报告和图 | 直接用浏览器链接 |
 | 本机服务 | 使用你电脑的 CPU 和模型，录音/上传后实际推理 | 服务运行时打开 `http://127.0.0.1:8872/` |
 | 后续云端服务 | 使用云端 CPU/GPU 推理，同一交互入口 | 模型服务启动后，用 SSH 转发连接 |
 
@@ -298,6 +298,6 @@ ssh -N -L 8872:127.0.0.1:8872 -p <SSH端口> root@<SSH主机>
 
 通过浏览器正常点击参考播放器再点击输入播放器，观察到前者paused=true、后者paused=false；这是独占播放检查，不能宣称修复了原WAV质量。浏览器麦克风按钮与30秒停止逻辑已实现；没有替用户录制讲话，没有验证用户麦克风硬件。
 
-**现在体验：**本机服务运行时打开 http://127.0.0.1:8872/ ，点击“载入现有8秒清唱”或自行录音，选参考，生成并试听。开源模型缓存已在本机准备好。其它电脑按 [工作台安装与操作](voice_workbench/README.md) 准备；[在线预生成小样](https://djdeborah.github.io/sideproject/next-voice/) 只播放现有WAV，不能执行模型。
+**现在体验：**本机服务运行时打开 http://127.0.0.1:8872/ ，点击“载入现有8秒清唱”或自行录音，选参考，生成并试听。开源模型缓存已在本机准备好。其它电脑按 [工作台安装与操作](voice_workbench/README.md) 准备；[在线预生成小样](https://djdeborah.github.io/ai-fundamental/next-voice/) 只播放现有WAV，不能执行模型。
 
 证据：本机 `voice_workbench/benchmarks/BENCHMARK_RECEIPT.json`、`SAME_CLIP_COMPARISON.json`、`UI_API_VERIFICATION.json`；每条模型WAV旁有原始metadata。公开副本见 [OpenVoice 实测摘要与输出哈希](runs/quality_audit_20261003/OPENVOICE_BENCHMARK.json)，不包含私人交互会话录音。完整模型与参考哈希在准备收据。新的Adele目标和新讲话验收仍待输入，SoulX/Seed歌声对照仍未运行，不能宣布最终方案完成。

@@ -8,7 +8,7 @@
 
 ### 电脑没有话筒：用手机录音
 
-1. 用手机 Safari / Chrome 打开 [手机录音入口](https://djdeborah.github.io/sideproject/adele-exploration/mobile-recorder.html)，点击「开始录音」并允许麦克风，录制 5–15 秒后停止。
+1. 用手机 Safari / Chrome 打开 [手机录音入口](https://djdeborah.github.io/ai-fundamental/adele-exploration/mobile-recorder.html)，点击「开始录音」并允许麦克风，录制 5–15 秒后停止。
 2. 试听并点击「下载原声文件」；可用文件分享、数据线、AirDrop、网盘或聊天工具的文件发送，将 `.webm / .m4a` 原文件传到电脑。
 3. 在电脑打开下面的本机工作台，使用「也可以上传录音」选择文件，选择 Adele / NPR 参考，点击生成。不需要给电脑接话筒。
 
@@ -110,7 +110,7 @@ py -3.10 -m venv .venv
 
 本机服务已经实际验证上传→FFmpeg→真实模型→WAV 下载及收据；Adele 四条候选可在本机菜单试听并选择。以这些真实参考做的五次新试转均已产出 WAV：首次包含重新启动后的加载，约 **74.93 秒**，后四次约 **7.44–7.72 秒**。同一 8 秒清唱输入、输出约 7.999 秒；没有新增训练或微调，也没有用原声/换声波形叠加。加载条件不同，不能把这些耗时当严格的速度对照。
 
-获取与运行证据见 [Adele 参考获取与试转报告](ADELE_REFERENCE_REPORT.md)。[公开生成小样的静态展示入口](https://djdeborah.github.io/sideproject/adele-exploration/)随网站部署启用，只播放预生成 WAV，不执行推理或提供原始访谈参考。**这批听感未验收，不能宣称已解决多声部、电流声或达到 Adele 相似度。** 麦克风硬件录制仍需要你亲自试一次；SoulX-Singer-SVC/Seed-VC 的歌声对照未在本轮运行。
+获取与运行证据见 [Adele 参考获取与试转报告](ADELE_REFERENCE_REPORT.md)。[公开生成小样的静态展示入口](https://djdeborah.github.io/ai-fundamental/adele-exploration/)随网站部署启用，只播放预生成 WAV，不执行推理或提供原始访谈参考。**这批听感未验收，不能宣称已解决多声部、电流声或达到 Adele 相似度。** 麦克风硬件录制仍需要你亲自试一次；SoulX-Singer-SVC/Seed-VC 的歌声对照未在本轮运行。
 
 ## 文件与接口
 

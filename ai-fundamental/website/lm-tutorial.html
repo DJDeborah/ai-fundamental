@@ -14,7 +14,7 @@ table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:
 th{background:#e7efee}pre{overflow:auto;padding:16px;background:#e8eeed;border-radius:9px;font-size:13px}code{font-family:Consolas,monospace;font-size:.9em}
 img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-left:16px;color:var(--muted)}footer{margin-top:44px;border-top:1px solid #ccd7d7;padding-top:16px;font-size:13px;color:var(--muted)}
 </style></head>
-<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="tokenizer-transformer-01b-agent">从零学习 Tokenizer → Transformer → 0.1B → Agent：逐步实操版</h1>
+<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="tokenizer-transformer-01b-agent">从零学习 Tokenizer → Transformer → 0.1B → Agent：逐步实操版</h1>
 <p>适用对象：第一次接触模型训练的人。先在这台 Windows 电脑完成 <strong>CPU 教学版</strong>，再租 NVIDIA GPU 做 Triton、0.1B 和多卡实验。所有命令均从项目目录 <code>I:\sideprojects\ai fundamental</code> 执行。每一步都写出「入口 → 输入 → 输出 → 验收」。不要一次粘贴整篇；完成一站再继续。</p>
 <h2 id="_1">先回答你最关心的三件事</h2>
 <ol>
@@ -299,7 +299,7 @@ runs/.../base.pt + metrics.jsonl
 <p><code>powershell
    .\.venv\Scripts\python.exe -c "import torch; print(torch.__version__, torch.cuda.is_available())"
    .\.venv\Scripts\python.exe -m pytest -q</code></p>
-<p><strong>本机实测：</strong> <code>2.4.1+cpu False</code>；<code>18 passed, 1 skipped</code>。<code>False</code> 表示 CUDA 不可用。<code>skipped</code> 不是通过。如果 <code>.venv</code> 被删，按 <a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/README.md#环境">README 的安装步骤</a>重建。</p>
+<p><strong>本机实测：</strong> <code>2.4.1+cpu False</code>；<code>18 passed, 1 skipped</code>。<code>False</code> 表示 CUDA 不可用。<code>skipped</code> 不是通过。如果 <code>.venv</code> 被删，按 <a href="https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental/README.md#环境">README 的安装步骤</a>重建。</p>
 <ol>
 <li>查看具体跳过原因：</li>
 </ol>
@@ -452,7 +452,7 @@ python -m fundamental.compare --kind inference --single runs/infer_1gpu.jsonl --
 </code></pre>
 <p>输出 <code>speedup</code> 和 <code>parallel_efficiency</code>。例如 4 卡 throughput 是 1 卡的 3 倍，则效率 3/4=75%；这是<strong>算式示例，不是本项目实测结果</strong>。推理代码把多个请求分给多卡、每卡各一份模型，测的是总吞吐；它没有 KV cache，不能代表生产推理延迟。</p>
 <h2 id="_7">十四、最终报告怎样从“草稿”变成研究结果</h2>
-<p>打开 <a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/report/neurips_style.md">NeurIPS 风格报告草稿</a>。每一个结果行填：数据来源/许可证、模型和 tokenizer hash、GPU 型号、PyTorch/Triton 版本、命令与 seed、训练 token、wall time、GPU-hours、loss/正确率/成功率、置信区间、失败或跳过实验。先收集原始 JSONL，再画图和写结论。没有 GPU 测试数据时，Triton 和多卡表格必须保持「待测」。</p>
+<p>打开 <a href="https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental/report/neurips_style.md">NeurIPS 风格报告草稿</a>。每一个结果行填：数据来源/许可证、模型和 tokenizer hash、GPU 型号、PyTorch/Triton 版本、命令与 seed、训练 token、wall time、GPU-hours、loss/正确率/成功率、置信区间、失败或跳过实验。先收集原始 JSONL，再画图和写结论。没有 GPU 测试数据时，Triton 和多卡表格必须保持「待测」。</p>
 <p><strong>建议的学习节奏：</strong> 第一轮只做本机第 0–3 站和聊天体验；第二轮理解后训练与 Agent 的数据格式；第三轮租一张 4090 做 CUDA 正确性与短跑；第四轮再决定是否值得花钱做 0.1B 完整训练和多卡对照。</p>
 <h2 id="autodl-4090">十五、你当前这台 AutoDL 4090 实例：按真实产物逐站验收</h2>
 <p>以下命令在 AutoDL 的 <strong>JupyterLab → Terminal</strong> 输入，一条一条运行。终端提示符应以 <code>~/ai-fundamental#</code> 结尾；如果不在项目目录，先运行 <code>cd ~/ai-fundamental</code>。数据放在 <code>/root/autodl-tmp</code>，而不是 JupyterLab 左侧文件浏览器默认的 <code>/root</code>。</p>
@@ -538,4 +538,4 @@ tail -20 /root/autodl-tmp/runs/scaling_grid_v2_supervisor.log
 <ol>
 <li>如果 <code>fundamental.train</code> 还在运行，继续等待原作业。若不在运行，检查 manifest 和对应目录的 <code>latest.pt</code>、<code>metrics.jsonl</code>，再从 checkpoint 恢复。<strong>不要在确认旧作业已停止之前启动同一 grid 的第二份进程。</strong></li>
 </ol></article>
-<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>
+<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>

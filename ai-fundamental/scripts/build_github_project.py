@@ -222,8 +222,8 @@ def make_site(site, source, release, asset_base):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', type=Path, required=True)
-    parser.add_argument('--repo-url', default='https://github.com/DJDeborah')
-    parser.add_argument('--project-path', default='sideproject/ai-fundamental')
+    parser.add_argument('--repo-url', default='https://github.com/DJDeborah/ai-fundamental')
+    parser.add_argument('--project-path', default='ai-fundamental')
     parser.add_argument('--branch', default='main')
     parser.add_argument('--release-tag', default='ai-fundamental-2026-10-03')
     args = parser.parse_args()

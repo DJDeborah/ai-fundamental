@@ -14,7 +14,7 @@ table{display:block;overflow:auto;border-collapse:collapse;width:100%;font-size:
 th{background:#e7efee}pre{overflow:auto;padding:16px;background:#e8eeed;border-radius:9px;font-size:13px}code{font-family:Consolas,monospace;font-size:.9em}
 img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-left:16px;color:var(--muted)}footer{margin-top:44px;border-top:1px solid #ccd7d7;padding-top:16px;font-size:13px;color:var(--muted)}
 </style></head>
-<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="01b-transformer">从原始文本到 0.1B Transformer：一项可复核的单卡研究与失败模式分析</h1>
+<body><main><nav><a href="index.html">试听首页</a><a href="report.html">声音实验报告</a><a href="tutorial.html">操作教程</a><a href="lm-report.html">语言模型报告</a><a href="https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental">GitHub 项目</a></nav><article><h1 id="01b-transformer">从原始文本到 0.1B Transformer：一项可复核的单卡研究与失败模式分析</h1>
 <p><strong>A Reproducible Single-GPU Study of a From-Scratch 0.1B Transformer</strong><br />
 <strong>最终报告，2026-10-02 · NeurIPS 风格研究稿（教学与实测记录，不声称会议录用或完整的通用能力）</strong></p>
 <h2 id="_1">摘要</h2>
@@ -314,7 +314,7 @@ img{max-width:100%;height:auto}blockquote{border-left:3px solid #92b6b4;padding-
 python scripts/plot_final_analysis.py
 python scripts/plot_attention.py --input report/data/cloud/attention_event_ab.jsonl --out report/figures/attention_event_ab.png
 </code></pre>
-<p>完整的入门逐步命令见<a href="lm-tutorial.html">BEGINNER_TUTORIAL.md</a>，旧实验实时研究记录见<a href="https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental/report/neurips_style.md">归档日志</a>。<strong>原始两块 Parquet 与大 checkpoint 仍在 AutoDL 数据盘，不在本地小型报告包中</strong>；本地拥有的是配置、数据清单、分词器、逐点指标与绘图脚本。真正从头重跑还需重新取同一 Parquet 内容并校验 SHA-256，复用固定词表及配方。不要把 Jupyter token、租赁账号凭据或个人语音数据写进研究包。</p>
+<p>完整的入门逐步命令见<a href="lm-tutorial.html">BEGINNER_TUTORIAL.md</a>，旧实验实时研究记录见<a href="https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental/report/neurips_style.md">归档日志</a>。<strong>原始两块 Parquet 与大 checkpoint 仍在 AutoDL 数据盘，不在本地小型报告包中</strong>；本地拥有的是配置、数据清单、分词器、逐点指标与绘图脚本。真正从头重跑还需重新取同一 Parquet 内容并校验 SHA-256，复用固定词表及配方。不要把 Jupyter token、租赁账号凭据或个人语音数据写进研究包。</p>
 <h2 id="8">8. 复现信息与声明</h2>
 <ul>
 <li>GPU / 软件：RTX 4090；driver 580.76.05；PyTorch 2.8.0+cu128；CUDA runtime 12.8；Triton 3.4.0。训练 BF16，注意力独立基准 fp16。</li>
@@ -333,4 +333,4 @@ python scripts/plot_attention.py --input report/data/cloud/attention_event_ab.js
 <li><a href="https://triton-lang.org/main/getting-started/tutorials/06-fused-attention.html">Triton Fused Attention tutorial</a>.</li>
 <li><a href="https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu">FineWeb-Edu dataset card</a>.</li>
 </ol></article>
-<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>
+<footer>2026-10-03 · 实测记录 · <a href="https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03">模型与完整结果下载</a><br>网页播放现有 WAV；新音频转换需要运行模型。</footer></main></body></html>

@@ -1,7 +1,7 @@
 # 项目与模型下载
 
-- [GitHub 项目](https://github.com/DJDeborah/sideproject/tree/main/ai-fundamental)：课程源码、固定上游源码、教程、数据划分、实测报告和音频。
-- [Release 下载](https://github.com/DJDeborah/sideproject/releases/tag/ai-fundamental-2026-10-03)：两套最终模型、完整本机结果包、可复现项目包。
+- [GitHub 项目](https://github.com/DJDeborah/ai-fundamental/tree/main/ai-fundamental)：课程源码、固定上游源码、教程、数据划分、实测报告和音频。
+- [Release 下载](https://github.com/DJDeborah/ai-fundamental/releases/tag/ai-fundamental-2026-10-03)：两套最终模型、完整本机结果包、可复现项目包。
 - `rvc_A_scratch_step1000.pth`：A 的最终转换模型。
 - `rvc_B_finetune_step1000.pth`：B 的最终转换模型。
 - `voice_self_rvc_results_20261003.zip`：模型与 0/500/1000 快照、WAV、原始训练指标和教程。
