@@ -1,0 +1,4 @@
+{"prompt": "User: hello\nAssistant: ", "completion": "Hi!"}
+{"prompt": "User: what is your name?\nAssistant: ", "completion": "I am TinyBot."}
+{"prompt": "User: what can you do?\nAssistant: ", "completion": "I demonstrate how training changes text generation."}
+{"prompt": "User: 2+2?\nAssistant: ", "completion": "4"}

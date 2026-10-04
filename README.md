@@ -1,5 +1,7 @@
 # AI Fundamental
 
+**最新 0.1B 学习路径：** [Learning AI Path](learning-ai-path/) 收录当前完整源码、测试、原始指标、图、带内嵌代码的研究报告、第一版公开快照与独立 ZIP。旧 `ai-fundamental/` 目录继续保留此前发布的版本与声音实验。
+
 **电脑没有话筒：** [手机录音入口](https://djdeborah.github.io/ai-fundamental/adele-exploration/mobile-recorder.html)。手机录音 → 下载/分享原文件 → 电脑工作台上传转换。网页不会自动上传录音，目前没有云端模型推理后端。
 
 

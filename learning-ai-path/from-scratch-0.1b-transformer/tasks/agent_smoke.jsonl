@@ -1,0 +1,4 @@
+{"prompt": "Step 1/2. Current value: 1. Next checkpoint: 6. Recent actions: none. Reply with exactly ADD <integer>.", "completion": "ADD 5", "seed": 0, "step": 0}
+{"prompt": "Step 2/2. Current value: 6. Next checkpoint: -2. Recent actions: ADD 5. Reply with exactly ADD <integer>.", "completion": "ADD -8", "seed": 0, "step": 1}
+{"prompt": "Step 1/2. Current value: -3. Next checkpoint: -10. Recent actions: none. Reply with exactly ADD <integer>.", "completion": "ADD -7", "seed": 1, "step": 0}
+{"prompt": "Step 2/2. Current value: -10. Next checkpoint: -11. Recent actions: ADD -7. Reply with exactly ADD <integer>.", "completion": "ADD -1", "seed": 1, "step": 1}

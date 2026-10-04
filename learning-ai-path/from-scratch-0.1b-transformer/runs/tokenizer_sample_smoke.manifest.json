@@ -1,0 +1,11 @@
+{
+  "input": "clean_fineweb_pilot\\train.jsonl",
+  "input_sha256": "66e57c66394652fac3f635f40fd405f21d11aab6324d88fffcd45799394f1e20",
+  "documents_seen": 969,
+  "selection": "lowest SHA-256 normalized-text digests within UTF-8 text-byte budget",
+  "target_text_bytes": 100000,
+  "selected_documents": 28,
+  "selected_text_bytes": 99950,
+  "output": "runs\\tokenizer_sample_smoke.jsonl",
+  "output_sha256": "10bc3309a2671a4c31a50052df71825588763f8a21dda5fe8f7603cd87e40971"
+}

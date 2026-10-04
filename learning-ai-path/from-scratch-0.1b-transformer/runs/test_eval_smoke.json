@@ -1,0 +1,30 @@
+{
+  "split": "test",
+  "checkpoint": "runs\\smoke\\base.pt",
+  "checkpoint_sha256": "e6e1777aec6a1aba5fcce89b924483b38208e0dd7c1b980778c5b13e4574cd83",
+  "tokenizer_sha256": "dc096745db3421ec46f51401eda01833e237987afb6fa7b7050faa06ec9d0cdf",
+  "tokens_in_split": 466,
+  "targets_evaluated": 465,
+  "nll_nats": 2499.511933326721,
+  "loss_nats_per_token": 5.375294480272519,
+  "perplexity": 216.00347170698402,
+  "seq_len": 32,
+  "batch_size": 2,
+  "elapsed_s": 0.1619242001324892,
+  "targets_per_s": 2871.7140465694993,
+  "device": "CPU",
+  "max_cuda_memory_allocated_bytes": null,
+  "checkpoint_metadata": {
+    "config": {
+      "vocab_size": 512,
+      "dim": 128,
+      "layers": 4,
+      "heads": 4,
+      "hidden": 512,
+      "max_seq_len": 128
+    },
+    "step": 2,
+    "tokens_seen": 64,
+    "seed": 42
+  }
+}

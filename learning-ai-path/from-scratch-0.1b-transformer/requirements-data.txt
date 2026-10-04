@@ -1,0 +1,3 @@
+# Only needed for the full FineWeb-Edu Parquet pipeline.
+pyarrow>=16
+requests>=2.31

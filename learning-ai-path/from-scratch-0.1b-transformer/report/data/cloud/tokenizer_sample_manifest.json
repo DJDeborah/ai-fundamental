@@ -1,0 +1,11 @@
+{
+  "input": "/root/autodl-tmp/corpus/clean/train.jsonl",
+  "input_sha256": "877a1ff88c77b202a175eb57137acf82204b22875633bab4dda07c36f6a5cca0",
+  "documents_seen": 1416623,
+  "selection": "lowest SHA-256 normalized-text digests within UTF-8 text-byte budget",
+  "target_text_bytes": 50000000,
+  "selected_documents": 10397,
+  "selected_text_bytes": 49999833,
+  "output": "/root/autodl-tmp/corpus/tokenizer_sample_train.jsonl",
+  "output_sha256": "14d53b2370bafe8ffed70972766bee1c81e387e6e3a463849b0a98cf77e2a060"
+}

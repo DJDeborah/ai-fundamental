@@ -1,0 +1,5 @@
+{"kind":"attention_forward","gpu":"NVIDIA GeForce RTX 4090","shape":[2,12,1024,64],"max_abs_error":0.00048828125,"sdpa_ms":0.06251034140586853,"triton_ms":0.04810675233602524,"triton_speedup":1.2994088848325147}
+{"kind":"attention_forward","gpu":"NVIDIA GeForce RTX 4090","shape":[2,12,1024,64],"max_abs_error":0.00048828125,"sdpa_ms":0.06256915628910065,"triton_ms":0.04828943312168121,"triton_speedup":1.295711136874126}
+{"kind":"attention_forward","gpu":"NVIDIA GeForce RTX 4090","shape":[2,12,1024,64],"max_abs_error":0.00048828125,"sdpa_ms":0.0625775083899498,"triton_ms":0.04828653484582901,"triton_speedup":1.2959618781871494}
+{"kind":"attention_forward","gpu":"NVIDIA GeForce RTX 4090","shape":[2,12,1024,64],"max_abs_error":0.00048828125,"sdpa_ms":0.06255443394184113,"triton_ms":0.04824522137641907,"triton_speedup":1.2965933652532893}
+{"kind":"attention_forward","gpu":"NVIDIA GeForce RTX 4090","shape":[2,12,1024,64],"max_abs_error":0.00048828125,"sdpa_ms":0.06244829297065735,"triton_ms":0.048028022050857544,"triton_speedup":1.3002470287976877}

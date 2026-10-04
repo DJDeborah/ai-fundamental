@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "raw": 1000,
+    "train": 969,
+    "test": 17,
+    "val": 14
+  },
+  "allowed_licenses": [
+    "odc-by"
+  ],
+  "split": "sha256(normalized text) mod 1000: 980/10/10",
+  "min_chars": 20
+}

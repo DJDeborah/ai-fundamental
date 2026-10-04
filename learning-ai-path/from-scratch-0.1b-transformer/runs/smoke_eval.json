@@ -1,0 +1,102 @@
+[
+  {
+    "checkpoint": "runs\\smoke\\base.pt",
+    "stage": "base",
+    "n": 2,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.6576280471103807
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "    ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "    ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "checkpoint": "runs\\smoke_sft.pt",
+    "stage": "sft",
+    "n": 2,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.6576280471103807
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "    ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "    ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "checkpoint": "runs\\smoke_dpo.pt",
+    "stage": "dpo",
+    "n": 2,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.6576280471103807
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "    ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "    ",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "checkpoint": "runs\\smoke_rlvr.pt",
+    "stage": "rlvr",
+    "n": 2,
+    "correct": 0,
+    "accuracy": 0.0,
+    "wilson95": [
+      0.0,
+      0.6576280471103807
+    ],
+    "cases": [
+      {
+        "prompt": "Compute 25 + 0. Answer: ",
+        "expected": "25",
+        "output": "    ",
+        "correct": false
+      },
+      {
+        "prompt": "Compute 25 + 1. Answer: ",
+        "expected": "26",
+        "output": "    ",
+        "correct": false
+      }
+    ]
+  }
+]

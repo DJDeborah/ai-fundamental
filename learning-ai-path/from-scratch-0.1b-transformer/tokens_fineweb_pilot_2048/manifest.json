@@ -1,0 +1,20 @@
+{
+  "train": {
+    "documents": 969,
+    "tokens": 2225271,
+    "dtype": "uint16",
+    "format": "raw little-endian .bin"
+  },
+  "val": {
+    "documents": 14,
+    "tokens": 71566,
+    "dtype": "uint16",
+    "format": "raw little-endian .bin"
+  },
+  "test": {
+    "documents": 17,
+    "tokens": 28781,
+    "dtype": "uint16",
+    "format": "raw little-endian .bin"
+  }
+}
